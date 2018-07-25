@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block body %}
+	<!--nav-bar-->
+	{% include 'sinppet/nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<!--main header-->
+	<div id="main-container">
+	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-10">
+
+			<div style="padding-top: 80px">
+			<div class="About-header">
+				<p class="uk-heading-hero"> Platform to explore market from every angel.</p>
+				<p class="about-description"> Hubblelook's entire system designed to understand and analysis market in-depth. It's refreshingly simple. We've gone through every possible ways to figure-out which is the ultimate and most effective way to gather data. At the end we have come-up with several brilliant idea, with pure combination of these small solutions Hubblelook becomes a powerful and intuitive tools for finance, business, economics or market sectors.
+				</p>
+			</div>
+		</div>
+			<a style="margin-bottom: 50px;" class="founder-notes" uk-toggle="target: #my-id; animation: uk-animation-fade"> A message from founder </a>
+			<div class="note uk-box-shadow-xlarge uk-background uk-padding" id="my-id">
+				<p style="padding-top:20px; ">
+					Dear All,
+					<br>
+					Knowing market intuitively would help us to build great products, making better decision. I profoundly believe that as a human everybody must know what’s going on at the market. Today’s Market are divided into several sectors and people are getting information through various method. Reviews of product, blogs, personal thoughts, news and so on are including into that method.
+					Founders or companies are spending lot of times to establish communication with people to provide better services or understand where they should make the improvement.
+					<br>
+					Meanwhile,to see the future, creators must understand problems, it requires gathering information from different sources. The way we have designed Hubblelook it fulfills several perspectives which helps people or businesses make communication like never before.
+					<br>
+					As a market analysis and communication platform, we invented a simple process called ‘Initial Keyword Method’ which allow us to establish better market communication platform. Communication with various facility, engagement with several ways allow anyone to get lots of data from people. Hubblelook allows businesses or people to see all the data with the perspective for better market understanding.
+					<br>
+					 I think Hubblelook as market communication and analysis platform can push the trend of innovation to the next level. Hubblelook can inspire people to invent surprising things. Innovators can easily figure out their fundamental perspective and go for it.
+					Running business would be much easier, establishing engagement with people or customer would be easiest task from now.
+					All the best for your future!
+					<p class="lead">Shohan, Founder</p>
+					
+				</p>
+			</div>
+		</div>
+		<div class="col-1"></div>
+	</div>
+</div>
+	{% include 'sinppet/footer.html' %}
+	{% block footer %}
+	{% endblock %}
+	<style>
+		html, body{
+			background color: #F5F5F5;
+		}
+		.about-header {
+			padding-top: 80px;
+		}
+		#main-container {
+			min-height: 100vh;
+		}
+		.about-description {
+			padding-top:50px;
+			padding-bottom: 60px;
+			font-size: 25px;
+			line-height: 30px;
+		
+		}
+		.founder-notes {
+
+			padding-bottom: 60px;
+			margin-bottom:50px;
+			padding-top: 20px;
+			font-size: 20px;
+			font-weight: bolder;
+			cursor: pointer;
+		}
+		.note {
+
+			padding-bottom: 40px;
+			margin-bottom:60px;
+			padding-top: 10px;
+			font-size: 18px;
+			cursor:pointer;
+		}
+		#text-founder-note{
+			padding-left:50px;
+			padding-right: 50px;
+			padding-bottom: 30px;
+			font-size: 16px;
+			color: black;
+			text-indent: 25px;
+		
+		}
+		.uk-background {
+			background-color: #cfd8dc;
+		}
+		#Shohan-founder {
+			padding-top: 80px;
+		}
+		.footer {
+			margin-top:40px;
+			margin-bottom: 20px;
+		}
+		footer div a {
+			font-weight: bold;
+		}
+	</style>
+{% endblock %}

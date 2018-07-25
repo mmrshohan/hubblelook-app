@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div id="main-container">
+  <div class="container">
+    <div class="row">
+      {% autoescape off %}
+      <div class="col-12">
+        <!-- product image -->
+        <img class="ui huge centered image" src="{% static '14_illinois.jpg' %}">
+        <!-- end image section -->
+      </div>
+    </div>
+  </div>
+  <!-- features and other option code -->
+  <div class="padding about-details ">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <p class="h1"> {{ addproduct.product_name }} </p>
+          <p class="display-4 title"> {{ addproduct.title }} </p>
+          <p href="" id="url"><b>{{ addproduct.product_url|urlize }}</b></p>
+          {% if addproduct.Prices is not None %}
+            <h2 class="ui sub header">Price</h2>
+            <span>{{ addproduct.Prices }}</span>
+          {% endif %}
+          <p class="about-details">
+            {{ addproduct.about_details }}
+          </p>
+          <div> {{ addproduct.details }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endautoescape %}
+<div class="padding container">
+  <div class="row">
+    <div class="col-12">
+      <div id="comment" class="content">
+        <i class="archive icon"></i>
+        <span class="uk-text" id="keep-it">  Save it  </span>
+       
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% include 'sinppet/footer.html' %}
+{% block footer %}
+{% endblock %}
+<style type="text/css">
+#main-container {
+  min-height: 100vh;
+  padding-top: 50px;
+}
+body, html {
+background: #FAFAFA;
+}
+.margin-top {
+margin-top: 80px;
+}
+.title {
+font-size: 30px;
+padding-top: 10px;
+}
+.about-details {
+font-size: 16px;
+line-height: 30px;
+}
+#about-centre {
+padding-left: 40px;
+}
+#url {
+color: #f0504b;
+padding-top: 30px;
+font-size:15px;
+}
+#features {
+padding-top: 80px;
+}
+#obj-padding {
+padding-left: 20px;
+}
+.options {
+font-size: 20px;
+}
+.padding {
+padding-top: 30px;
+}
+</style>
+{% endblock %}

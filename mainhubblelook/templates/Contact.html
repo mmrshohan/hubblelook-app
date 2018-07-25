@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block body %}
+	{% load crispy_forms_tags %}
+	<!-- Navigation bar-->
+	{% include 'sinppet/nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<div class="header-background uk-box-shadow-small">
+		<div class="ui grid">
+			<div class="row">
+				<div class="four wide column"></div>
+				<div class="center aligned eight wide column">
+					<h1 class="ui header" id='header'> Hi, if you need to talk to us, our doors are always open for you </h1>
+				</div>
+				<div class="four wide column"></div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-3"></div>
+			<div class="col-6">
+				<!-- info for the customers to use our knowlegde section  -->
+				<!-- Sementic ui messeging tools  -->
+				<div class="info">
+					<div class="ui info message">
+						<i class="close icon"></i>
+						<p>
+							Our <a id="knowledge" href="{% url 'customecare-view' %}"><b>knowledge</b></a> center might help you to explore Hubblelook
+							and get your questions answer.
+						</p>
+					</div>
+				</div>
+				<div style = 'padding-top: 30px'>
+					<form action="" method="post">
+						{% csrf_token %}
+						{{ form|crispy }}
+						<input class="ui secondary button" type="submit" value="Send" />
+					</form>
+				</div>
+				<div class="col-3"></div>
+			</div>
+		</div>
+	</div>
+	<!-- footer  'sinppet/footer.html' -->
+	{% include 'sinppet/footer.html' %}
+	{% block footer %}
+	{% endblock %}
+	
+	<script>
+		// close the info tab
+		// Sementiv ui
+		$('.message .close')
+	.on('click', function() {
+	$(this)
+	.closest('.message')
+	.transition('fade')
+	;
+	})
+	;
+	</script>
+	<style type="text/css" media="screen">
+	.header-background{
+		width: 100%;
+		height: 200px;
+		background: #EEEEEE;
+		margin-top: 40px;
+	}
+	#header {
+		font-size: 40px;
+		padding-top: 20px;
+		padding-bottom: 50px;
+	}
+	.info {
+		padding-top: 20px;
+	}
+	#knowledge {
+		text-decoration: none;
+		color: none;
+		}
+		
+	</style>
+	
+	
+{% endblock %}

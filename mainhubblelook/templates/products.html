@@ -1,0 +1,77 @@
+<!-- base.html contains all CDN -->
+{% extends 'base.html' %}
+{% block body %}
+	<!--  Navigation bar-->
+	{% include 'sinppet/nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<div id="main-container">
+		<div class="row">
+			<div class="col-1">
+			</div>
+			<div class="col-10">
+				<div style="padding-bottom: 50px;">
+					<div class="ui message">
+						<div class="header uk-text-center" >
+							Hubblelook provides three products to have intutive engagement with market and marketplace.
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1"> </div>
+		</div>
+		<!-- CSS  =========================================================================================================== -->
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">
+				<div class="paragraph">
+					<div class="uk-heading-primary uk-text-bold">
+						Market Communication
+					</div>
+					<p>Hubblelook has defined market communication from every possible way. In 21 centuries, we are connecting with market in different way compare to nineteen centuries. Our main intention was to build easy, effective and timesaving market communication facility. Our tiredness searching of proper process of communicate with market lead to this incredible “Initial key word” system to create a smooth engagement between people and market.
+					</p>
+				</div>
+				<div class="paragraph">
+					<div class="uk-heading-primary uk-text-bold">
+						Market Analysis
+					</div>
+					<p>Market analysis is the fundamentals for any businesses or to develop any products. Even for investment, making any kind of financial decision or purchasing market analysis is involve almost everywhere. Our approaches of market analysis are very simple but surprisingly powerful.
+						<br>
+						We have designed our market analysis system so simple as if any normal can easily use it. We believe this is one of our achievement.
+					</p>
+				</div>
+				<div class="paragraph">
+					<div class="uk-heading-primary uk-text-bold">
+						Customer care
+					</div>
+					<p>We believe that customer care is very sensitive and fundamental for every kind of businesses. Particularly for the small businesses to maintain customer care is important but it is very expensive at some point.
+						<br>
+						At Hubblelook, we worked so hard to find a very simple solution by focusing on our core and we have added one extra keyword called “feedback” to our initial keyword. Again we have made very simple but powerful approach to solve this problem.
+					</p>
+				</div>
+			</div>
+			<div class="col-1"></div>
+		</div>
+	</div>
+	<!--  Footer  -->
+	{% include 'sinppet/footer.html' %}
+	{% block footer %}
+	{% endblock %}
+	<!--==================================================================================================================== -->
+	<!-- CSS  -------------------------------------------------------------------------------------------------------- -->
+	<!--==================================================================================================================== -->
+	<style>
+	html, body {
+		background-color: #f5f5f5;
+	}
+	#main-container {
+		min-height: 100vh;
+		padding-top: 100px;
+	}
+	.paragraph {
+		padding-bottom:80px;
+	}
+	</style>
+	<!--==================================================================================================================== -->
+	<!--==================================================================================================================== -->
+{% endblock %}

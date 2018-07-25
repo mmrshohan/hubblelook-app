@@ -1,0 +1,54 @@
+
+{% extends 'base.html' %} 
+{% block body %}
+
+
+<div class="padding">
+{% for obj in quickword %}
+
+<div class="ui centered card" style="width:55rem">
+  <div class="content">
+    <div class="right floated meta">{{ obj.pub_time }} </div>
+    <img class="ui avatar image" src=" "> {{ request.user }}
+     <div class="meta">
+        <a>Friends</a>
+      </div>
+  </div>
+  <div class="ui large header" id="quick-word-description">
+       <p> {{ obj.description }} </p>
+      </div>
+   <div id="comment" class="content">
+
+    <i class="heart outline like icon"></i>
+      17 likes
+
+    <i class="comments icon"></i>
+    3 comments
+
+
+
+  <div class="extra content">
+    <div class="ui large transparent left icon input">
+      <input type="text" placeholder="{{ request.user }}, talk about it">
+    </div>
+  </div>
+ 
+
+</div>
+  </div>
+{% endfor %}
+</div>
+
+{% include 'sinppet/footer.html' %}
+{% block footer %}
+{% endblock %}
+
+<style type="text/css" media="screen">
+
+.padding  {
+  padding-top: 50px;
+}
+  
+</style>
+
+{% endblock %}

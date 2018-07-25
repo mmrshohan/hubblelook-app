@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+  <!-- Navigation bar-->
+  {% include 'sinppet/nav-bar.html' %}
+  {% block nav %}
+  {% endblock %}
+ 
+    <div id="main-container">
+      <div class="row">
+        <div class="col-lg-2 col-sm-1"></div>
+        <div class="col-lg-8 col-sm-10">
+          {% autoescape off %}
+          <h1 class="ui header" style='font-size: 40px; word-spacing: 8px; letter-spacing: 2px;'>
+          {{ article.title|capfirst }}
+          
+          </h1>
+          <div class="sub header"> </div>
+          <div class="item">
+            <div class="content">
+              <div class="uk-text-meta"> {{ article.description|wordcount }} words </div>
+            </div>
+          </div>
+          
+          <!-- horizental list -->
+          <div class="ui very relaxed horizontal list">
+            <div class="item">
+              <img class="ui avatar image" src="/images/avatar/small/daniel.jpg">
+              <div class="content">
+                <a class="header">{{ user.username }}</a>
+              </div>
+            </div>
+          </div>
+          <!--  list end here -->
+          <p class='article'>
+            {{ article.description|capfirst }}
+          </p>
+          {% endautoescape %}
+        </div>
+        <div class="col-lg-2 col-sm-1"></div>
+      </div>
+    </div>
+    
+  
+
+
+
+  <!--  Footer  -->
+{% include 'sinppet/footer.html' %}
+{% block footer %}
+{% endblock %}
+
+  
+  <style type="text/css" media="screen">
+
+  .article{
+  font-size: 16px;
+  line-height: 30px;
+  
+  }
+  #main-container{
+    min-height: 100%;
+  }
+
+ 
+
+  </style>
+{% endblock %}

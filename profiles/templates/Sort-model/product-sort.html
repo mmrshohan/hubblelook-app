@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %} 
+{% block body %}
+
+
+<div class="padding">
+  {% for product in addproduct %}
+  <div class="ui centered card" style="width:55rem">
+     <div class="content">
+      <div class="right floated meta"> 14h </div>
+      <img class="ui avatar image" src=""> {{ request.user }}
+       <div class="meta">
+          <a>Friends</a>
+        </div>
+    </div>
+    <div class="ui huge image">
+      <img src="">
+    </div>
+    
+    <div class="ui center aligned content">
+      <h3><a class="header" href= {% url 'add-product-view' product.id %}> {{ product.product_name|capfirst }}</a></h3>
+      <p>
+        <span class="date"><span class="launched-in">Launched in</span> <strong> Sep 2014</strong></span>
+      </p>
+    </div>
+    
+    <div class="content">
+      <i class="comment icon "></i>
+      3 comments
+    <span class="left floated">
+        <i class="heart outline like icon"></i>
+        17 likes
+      </span>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% include 'sinppet/footer.html' %}
+{% block footer %}
+{% endblock %}
+
+<style type="text/css" media="screen">
+.padding  {
+  padding-top: 50px;
+}
+  
+</style>
+
+{% endblock %}

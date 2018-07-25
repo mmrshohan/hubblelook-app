@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block body %}
+	{% include 'sinppet/nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<div class="header-meet-hubblelook">
+		<div class="ui grid">
+			<div class="row">
+				<div class="one wide column"></div>
+				<div class="fourteen wide column">
+					<div class="ui center aligned huge header" id="meet-hubblelook" >
+						meet hubblelook
+					</div>
+					<h4 style="text-align:center"> We have created a phenomenal market analysis system for everybody, for the first time and introducing to you a whole new way to communicate with market.</h4>
+					
+				</div>
+				<div class="one wide column"></div>
+			</div>
+		</div>
+	</div>
+	<!-- sub-header  -->
+	<div class="row">
+		<div class="col-lg-1 col-sm-1 col-1"> </div>
+		<div class="col-lg-10 col-sm-10 col-10">
+			<div class="sub-header uk-background-muted uk-box-shadow-medium">
+				<div uk-scrollspy="target: > div; cls:uk-animation-fade; delay: 500"> <!-- scroll by Uikits -->
+					<div class="container">
+						<div class="ui center aligned huge header" id="header">
+							Market analysis and communication in one place
+						</div>
+						<p class="paragraph">Everyday lots of things are happening into our market system. People are always trying to push the boundaries to make our life even better. Fundamentally, we spend so much time on researching market to understand the real problems and searching solution.
+							Hubblelook platform will help you to save some of your valuable time which you can spend on building your desire products by engaging yourself with this real-time market.
+							Mrket believes in data and information, with coming this two you can do more which would help our human’s every day.
+						</p>
+					</div>
+					<div class="container">
+						<div class="ui divider"></div>
+						<div class="ui center aligned huge header" id="header">
+							Invented a dynamic market communication system
+						</div>
+						<p class="paragraph">
+							We have defined market communication in several ways to provide diverse and indepth information. Information can be many types and Hubblelook provides that facility to connect with all kind of information.
+						</p>
+					</div>
+					<div class="container">
+						<div class="ui divider"></div>
+						<div class="ui center aligned huge header" id="header">
+							Very simple but powerful platform
+						</div>
+						<p class="paragraph">
+							Mrket has built by combining some brilliant segmentation and process to establish a real-time data driven platform.  We have spent so much time on searching every possible way to allow people express their thoughts besides maintaining real news.
+							You must have to know about what’s going on this world and what people think about your product to build something surprizing.
+						</p>
+					</div>
+					<div class="container">
+						<div class="ui divider"></div>
+						<div class="ui center aligned huge header" id="header">
+							Know what people thinks about your products or initiative and then make it even better.
+						</div>
+						<p class="paragraph">
+							Establishing engagement is very easy through various medium but we have narrowed down this fact by considering what matters. Post your product and know what people think, establish continuous engagement like ever before. Simple more than you can think of.
+						</p>
+					</div>
+					<div class="container para-5">
+						<div class="ui divider"></div>
+						<div class="ui center aligned huge header" id="header">
+							Save some bucks!
+						</div>
+						<p class="paragraph">
+							You can spend money to understand about the market by hiring bluechip consultancy firms or you can save some money by allowing yourself to analysis all the facts. Understanding problem often time is challenging and takes huge time but Hubblelook it would make it handy for you.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-1 col-sm-1 col-1"> </div>
+	</div>
+	<!--footer -->
+	<!--Used sementic UI grid system -->
+	{% include 'sinppet/footer.html' %}
+	{% block footer %}
+	{% endblock %}
+	<style type="text/css">
+
+		body, html {
+			background-color: #F3F1F1;
+		}
+		.paragraph {
+			font-size: 20px;
+			padding-top: 20px;
+			word-spacing: 7px;
+		}
+		._sub-header {
+			background: #FAFAFA;
+			padding-bottom: 100px;
+			box-shadow: 0 0px 60px rgba(0,0,0,0.10)
+		}
+		.sub-header {
+			margin-bottom: 80px;
+		}
+		.header-meet-hubblelook {
+			padding-bottom: 50px;
+		}
+		#meet-hubblelook {
+			font-size: 80px;
+			padding-top: 40px;
+				}
+		#header {
+				padding-top: 60px;
+				padding-left: 120px;
+				padding-right: 120px;
+				font-size: 38px;
+				word-spacing: 8px;
+				letter-spacing: 1px;
+		}
+		.para-5 {
+			padding-bottom: 80px;
+		}
+	</style>
+	
+{% endblock %}

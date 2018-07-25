@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block body %}
+	<!--  Navigation bar-->
+	{% include 'sinppet/nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+
+  <div id="main-container">
+	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-10">
+			<div id="heading" class="uk-heading-primary uk-text-bold"> Privacy and terms</div>
+			<p id="sub-point"> Coming very soon. we are revising our terms and conditions.  </p>
+		</div>
+		<div class="-col-1"></div>
+	</div>
+</div>
+
+
+
+<!--  Footer  -->
+{% include 'sinppet/footer.html' %}
+{% block footer %}
+{% endblock %}
+
+
+
+	<style type="text/css" media="screen">
+	html, body {
+		background-color: #ffffff;
+	}
+	#main-container {
+		min-height: 100vh;
+	}
+	#heading{
+		padding-top: 60px;
+	}
+	#sub-point{
+		padding-top: 20px;
+	}
+
+		
+	</style>
+	
+{% endblock %}

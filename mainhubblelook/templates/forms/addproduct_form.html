@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block body %}
+  {% load crispy_forms_tags %}
+  {% include 'sinppet/nav-bar.html' %}
+  {% load crispy_forms_tags %}
+  {% block nav %}
+  {% endblock %}
+  <div class="container">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8" style="padding-top: 50px;">
+        <div style="padding-bottom: 30px;" class="uk-text-lead uk-text-bold">
+          Write down your product details to have a better feedback/customer engagement
+        </div>
+        <form method="post" action="">
+          {% csrf_token %}
+          {{ form.media }}
+          {{ form|crispy }}
+
+          <input id="padding" class="ui secondary button" type="submit" value="Post" >
+          
+          <!--
+          <div class="ui form">
+            <div class="field">
+              <input  type="text" name="product_name" placeholder="Write product name">
+              <input  type="text" name="title" placeholder="title">
+              <input  type="number" name="Prices" placeholder="Prices, if any">
+              <input  type="date" name="launched_time" placeholder="ex: 2018-07-01">
+            </div>
+          </div>
+          <input type="hidden" name="details">
+          <div id="editor"></div>
+          <input id="padding" class="ui secondary button" type="submit" value="Post" >
+            -->
+        </form>
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </div>
+
+
+  <!--  Footer  -->
+  {% include 'sinppet/footer.html' %}
+  {% block footer %}
+  {% endblock %}
+  <script>
+  
+  var quill = new Quill("#editor", {
+  modules: {
+  toolbar: [
+  ['bold', 'italic'],
+  ['link', 'blockquote', 'code-block', 'image'],
+  [{
+  list: 'ordered'
+  }, {
+  list: 'bullet'
+  }]
+  ]
+  },
+  
+  placeholder: 'Compose an epic...',
+  theme: 'snow'
+  });
+  
+  var form = document.querySelector('form');
+  form.onsubmit = function() {
+  // Populate hidden form on submit
+  var about = document.querySelector('input[name=details]');
+  //get JSON from quill editor
+  var jsonData = quill.getContents();
+  //access "insert" data from the JSON
+  about.value = jsonData.ops[0].insert;
+  console.log("Submitted", $(form).serialize(), $(form).serializeArray());
+  };
+  </script>
+  <style>
+  #editor {
+  height: 400px;
+  
+  }
+  #padding{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  }
+  
+  
+  </style>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% block footer %}
+  <!--footer -->
+  <!--Used sementic UI grid system -->
+  <footer class="footer">
+    
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="uk-text-center col-8">
+        <div class="ui horizontal list">
+          <a class="item" href="{% url 'about' %}">ABOUT </a>
+          {% if user.is_authenticated %}
+            <a class="item" href="{% url 'explore' %}"> LEARN </a>
+          {% endif %}
+          <a class="item" href="{% url 'products' %}">PRODUCTS</a>
+          <a class="item" href="{% url 'job-view' %}">JOBS</a>
+          <a class="item" href="{% url 'Privacy-View' %}">PRIVACY AND TERMS</a>
+          <a class="item" href="{% url 'InvCon-view' %}">INVESTMENT</a>
+          <a class="item" href="{% url 'customecare-view' %}"> KNOWLEDGE </a>
+          <a class="item" href="{% url 'Contact-View' %}">CONTACT</a>
+        </div>
+      </div>
+      
+      <!--copyright code-->
+      <div class="col-2">
+        <div class="ui right floated horizontal list">
+          <div class="disabled item" href="#">© Hubblelook 2018</div>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+  <style>
+  
+  .footer {
+  position: relative;
+  margin-top:50px;
+  margin-bottom: 40px;
+  margin-left: 0px;
+  margin-right: 0px;
+  }
+  footer div a {
+  font-weight: bold;
+  font-family:  'Roboto', sans-serif;
+
+  }
+  
+  </style>
+{% endblock %}
+

@@ -1,0 +1,58 @@
+
+{% extends 'base.html' %} 
+{% block body %}
+
+
+<div class="padding">
+  {% for article in article_view %}
+  <div class="ui centered card" style="width:55rem">
+     <div class="content">
+
+        <div id="flex-display" class="right floated"><div class="meta">
+          {{ article.article_pub_time }}
+
+        </div>
+
+      </div>
+      <img class="ui avatar image" src="/images/avatar/large/elliot.jpg"> {{  article.user_name }}
+       <div class="meta">
+          <a>Article</a>
+        </div>
+      </div>
+      <div class="ui huge image" >
+      <img src="/images/apple.jpeg">
+    </div>
+    <div class="content">
+      <a href= "{% url 'details' %}" class="header">{{ article.Initial_keyword_choices }} {{ article.article_title|title }}</a>
+        <div class="description">
+         <p style='color: black;'>{{ article.article_description|capfirst|truncatewords:25 }} </p>
+        </div>
+    </div>   
+
+    <div class="content">
+      <i class="comment icon "></i>
+      3 comments
+    <span class="left floated">
+        <i class="heart outline like icon"></i>
+        17 likes
+      </span>
+    </div>
+  </div>
+
+
+  {% endfor %}
+
+</div>
+{% include 'sinppet/footer.html' %}
+{% block footer %}
+{% endblock %}
+
+
+<style>
+.padding {
+  padding-top: 50px;
+}
+  
+</style>
+
+{% endblock %}

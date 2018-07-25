@@ -1,0 +1,106 @@
+<!-- Anything related to investment and contribution  -->
+{% extends 'base.html' %}
+{% block body %}
+	<div class="main-container">
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-8" style="padding-top: 50px;">
+			<!-- Back to HOME button -->
+				<a href="{% url 'home' %}">
+					<button class="uk-button uk-button-secondary uk-button-small">BACK TO HOME</button>
+				</a>
+			<!-- HOME button end here -->
+				<div style="padding-top: 100px;">
+					<div class="uk-heading-hero uk-text-cente uk-light">Back us, be our valueable partner</div>
+				</div>
+				<h5 class="uk-light" style="padding-top: 30px;"> Hubblelooks unique perspective is to create intutive market communication and analysis platform facility. Recently we have three products which are communication, analysis and customer care and near future surely we will going to increase the number of products.
+				<br>
+				The way we are designing our products it is suitable for any market geographically which increases our profit goals. Almost everybody is somehow involving with market communication or analysis and Hubblelook is mature enough to provide their needs.
+				</h5>
+			</div>
+			<!--  return page -->
+			<div class="col-2" >
+			</div>
+		</div>
+		<!--  investment details and information -->
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-7 text">
+				<div class="ui celled horizontal list uk-light">
+					<div class="item">
+						<a href="#modal-example" uk-toggle>Contact</a>
+						<!-- This is the modal -->
+						<div id="modal-example" uk-modal>
+							<div class="uk-modal-dialog uk-modal-body">
+								<h2 class="uk-modal-title">Headline</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								<p class="uk-text-right">
+									<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+									<button class="uk-button uk-button-primary" type="button">Save</button>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="item"><a href="https://docs.google.com/presentation/d/1-2kqOdHiNkJ1IusINlmHI_a0um_5ujS_V9uNxd3u2Qc/edit#slide=id.p"> slides </a></div>
+					<div class="item"><a href="mmrshohan09@gmail.com"> swift-contact </a></div>
+				</div>
+			</div>
+			<div class="col-3"></div>
+		</div>
+	</div>
+	<!-- Footer -->
+	<footer class="footer">
+		
+		<div class="row">
+			<div class="col-lg-4 col-sm-2"></div>
+			<div class="center aligned col-lg-6 col-sm-8">
+				<div class="ui horizontal list ">
+					<a class="item uk-text-muted" href="{% url 'about' %}">About </a>
+					{% if user.is_authenticated %}
+						<a class="item uk-text-muted" href="{% url 'explore' %}"> Explore </a>
+					{% endif %}
+					<a class="item uk-text-muted" href="">Jobs</a>
+					<a class="item uk-text-muted" href="#">Privacy & Terms</a>
+					<a class="item uk-text-muted" href="{% url 'InvCon-view' %}">Investment</a>
+					<a class="item uk-text-muted" href=""> Knowledge </a>
+					<a class="item uk-text-muted" href="{% url 'Contact-View' %}">Contact</a>
+				</div>
+			</div>
+			
+			<!--copyright code-->
+			<div class="col-lg-1 col-sm-2">
+				<div class="ui right floated horizontal lis uk-text-mutedt">
+					<div class="disabled item  uk-text-muted" href="#">© Hubblelook 2018</div>
+				</div>
+			</div>
+		</div>
+		
+	</footer>
+	<!-- footer end -->
+	
+	<style type="text/css" media="screen">
+	body, html {
+		background-color: #333332;
+	}
+	.main-container {
+		min-height: 100%;
+	}
+	.text {
+		text-align: center;
+		padding-top: 200px;
+	}
+	.footer {
+		position: relative;
+		margin-top:40px;
+		margin-bottom: 20px;
+		margin-left: 0px;
+		margin-right: 0px;
+		}
+	footer div a {
+		font-weight: bold;
+		}
+	
+		
+	</style>
+	
+{% endblock %}

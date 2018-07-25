@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block body %}
+  {% load crispy_forms_tags %}
+  {% include 'sinppet/nav-bar.html' %}
+  {% block nav %}
+  {% endblock %}
+  {% load static %}
+  <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+  <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+  <!--Article form using django crispy form -->
+  <div id="main-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div style="padding-bottom: 30px;" class="uk-text-lead uk-text-bold">
+            Express your opinion in a board way
+          </div>
+          <form action="" method="post">
+            {% csrf_token %}
+            
+            {{ form.media }}
+            {{ form|crispy }}
+            
+            <input id="submit" class="ui secondary button " type="submit" value="Post" />
+          </form>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+  </div>
+  <!--  Footer  -->
+  {% include 'sinppet/footer.html' %}
+  {% block footer %}
+  {% endblock %}
+  <script>
+  </script>
+  <style>
+  #main-container {
+  min-height: 100%;
+  }
+  .article-title {
+  padding-bottom: 10px;
+  }
+  #submit {
+  margin-top: 25px;
+  }
+  </style>
+{% endblock %}
+var quill = new Quill('#editor', {
+modules: {
+toolbar: [
+[{ header: [1, 2, false] }],
+['bold', 'italic', 'underline'],
+['image', 'code-block']
+]
+},
+placeholder: 'Compose an epic...',
+theme: 'snow'  // or 'bubble'
+});
+
+var form = document.querySelector('form');
+form.onsubmit = function() {
+// Populate hidden form on submit
+var about = document.querySelector('input[name=description]');
+//get JSON from quill editor
+var jsonData = quill.getContents();
+//access "insert" data from the JSON
+about.value = jsonData.ops[0].insert;
+console.log("Submitted", $(form).serialize(), $(form).serializeArray());
+};

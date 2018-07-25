@@ -31,14 +31,33 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.humanize',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # main apps
     'mainhubblelook',
+    'customercare',
+    'profiles',
+    'jobs',
+
+
+    # third party apps 
+    'ckeditor',
+    'crispy_forms',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
+
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,7 +74,7 @@ ROOT_URLCONF = 'hublok.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +86,25 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)
+
+#Django All-auth configer
+ACCOUNT_EMAIL_REQUIRED =False
+ACCOUNT_LOGOUT_REDIRECT_URL ='/home/'
+LOGIN_REDIRECT_URL = '/home/'
+ACCOUNT_SESSION_REMEMBER =True
+ACCOUNT_USERNAME_REQUIRED =True
+ACCOUNT_EMAIL_REQUIRED =False
+
 
 WSGI_APPLICATION = 'hublok.wsgi.application'
 
@@ -120,3 +158,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, "static")
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

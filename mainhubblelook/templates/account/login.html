@@ -1,0 +1,83 @@
+{% extends "account/base.html" %}
+{% load crispy_forms_tags %}
+{% block body %}
+  {% load i18n %}
+  {% load account socialaccount %}
+  {% block content %}
+    <div class="container padding">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6 position">
+          <div class="uk-text-center">
+            <a href="{% url 'home' %}"> <p id="logo">  Hubblelook </p>
+            <p id="logo-title" class="uk-text-center"> A Market Communication and Analysis Platform </p>
+          </a>
+        </div>
+        
+        
+        <!--
+        <h5>{% trans "Sign In Here" %}</h5>
+        -->
+        <form class="login" method="POST" action="{% url 'account_login' %}">
+          {% csrf_token %}
+          {{ form|crispy }}
+          {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          
+          <button class="ui button" type="submit">{% trans "Sign In" %}</button>
+          {% get_providers as socialaccount_providers %}
+          {% if socialaccount_providers %}
+            <p>{% blocktrans with site.name as site_name %} Have not signup yet,<a href="{{ signup_url }}"> sign up </a>
+          here now or sign in below:{% endblocktrans %}</p>
+          <div class="socialaccount_ballot">
+            <div class="socialaccount_providers">
+              <button class="ui google plus button">
+              <i class="google plus icon"> </i>
+              {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+              </button>
+              <!--
+              {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+              -->
+            </div>
+            
+          </div>
+          {% include "socialaccount/snippets/login_extra.html" %}
+        {% else %}
+          <div class="uk-background-primary uk-box-shadow-medium" >
+            <h2>  Welcome to Hubblelook </h2>
+            
+          </div>
+          <p>{% blocktrans %}If you have not created an account yet, then please
+            <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+          {% endif %}
+          <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+        </form>
+      </div>
+      <div class="col-3"></div>
+      <!--===============================================================================-->
+      <style>
+      html, body {
+      background-color: #b0bec5;
+      }
+      .position{
+      padding-top: 100px;
+      }
+      #logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: bold;
+      font-size: 30px;
+      color: #263238;
+      
+      }
+      #logo-title {
+      font-family: 'Bitter', serif;
+      font-weight:bold;
+      color: #263238;
+      padding-bottom:20px;
+      
+      
+      }
+      </style>
+    {% endblock %}
+  {% endblock %}

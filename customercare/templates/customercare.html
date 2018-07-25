@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block body %}
+	<!-- Navigation bar-->
+	{% include 'sinppet/nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<!-- sementic ui -->
+	<div class="wrapper">
+		<div class="ui grid">
+			<div class="row">
+				<div class="four wide column"></div>
+				<div class=" center aligned eight wide column">
+					<h1 class="customer-care-header"> Search anything about Hubblelook </h1>
+				</div>
+			</div>
+			<div class="four wide column"></div>
+		</div>
+		<form action="" method="GET">
+			{% csrf_token %}
+			<div class="row">
+				<div class="col-2"> </div>
+				<div class="col-8">
+					<div class="ui fluid action input">  <!--Sementic ui search form -->
+						<input type="search" name="q" placeholder=" What do you want to know?">
+						<div class="ui secondary button">Search</div>
+					</div>
+				</div>
+				<div class="col-2"></div>
+			</div>
+		</form>
+		<!-- Customer care blog post -->
+		{% for blog in blogs %}
+			{% autoescape off %}
+			<div class="blog-area">
+				<div class="row">
+					<div class="col-lg-3"> </div>
+					<div class="col-lg-6">
+						
+						<a style="text-decoration: none; color: black;" href="{% url 'customecare-article' blog.id blog.slug %}" ><h5 style="cursor: pointer;">{{ blog.title }}</h5></a>
+						<div class="uk-text-meta"> {{ blog.topic|upper }} </div>
+						<p> by {{ blog.written_by }} </p>
+						
+					</li>
+				</ul>
+			</div>
+			<div class="col-lg-3"></div>
+		</div>
+	</div>
+{% endautoescape %}
+{% endfor %}
+</div>
+<!-- footer -->
+{% include 'sinppet/footer.html' %}
+{% block footer %}
+{% endblock %}
+<style>
+	
+	html, body {
+		margin:0;
+		padding: 0;
+		height: 100%;
+	
+	}
+	.wrapper {
+		min-height: 100%;
+	}
+	.customer-care-header{
+		padding-top: 30px;
+		font-size:45px ;
+		font-weight: bolder;
+		word-spacing: 10px;
+	}
+	#detials {
+		color:#000000;
+		font-size: 17px;
+	}
+	.blog-area {
+		padding-top: 70px;
+	}
+	
+
+</style>
+{% endblock %}

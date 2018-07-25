@@ -1,0 +1,62 @@
+<!-- official letter list view  template -->
+{% extends 'base.html' %}
+{% block body %}
+  {% load humanize %}
+  {% include 'sinppet/nav-bar.html' %}
+  {% block nav %}
+  {% endblock %}
+  <!-- official letter list view  -->
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6" style="padding-top: 50px;">
+      <a href="{% url 'offical-letter-form' user.username %}">
+      <button class="fluid ui button">POST OFFICIAL LETTER HERE</button>
+    </a>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  {% for letter in letter_list %}
+    <div class="list-padding">
+      <div class="row">
+        <div class="col-lg-3"> </div>
+        <div class="col-lg-6">
+          <div class="ui divided items">
+            <div class="item">
+              <div class="content">
+                <a style="text-decoration: none; color: black;" class="header" href="{% url 'offical-letter-details-view' user.username letter.id letter.slug %}">{{ letter.title }}</a>
+                <div class="meta">
+                  <span class="cinema"> {{ letter.pub_time }}</span>
+                </div>
+                <div class="description">
+                  <p>{{ letter.letter|truncatewords:60 }}</p>
+                </div>
+              </div>
+            </div>
+            <!-- delete and update button  -->
+            <div class='action-button'>
+              <button class="ui button" ><a href="{% url 'offical-letter-update-view' letter.id %}"> update  </a></button>
+              <form action="{% url 'offical-letter-delete-view' letter.id %}" method="post">
+                {% csrf_token %}
+                <button class="ui button" type= "submit" > delete </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3"> </div>
+      </div>
+    </div>
+  {% endfor %}
+
+  <!--footer -->
+  {% include 'sinppet/footer.html' %}
+  {% block footer %}
+  {% endblock %}
+  <style>
+  .list-padding {
+  padding-top: 60px;
+  }
+  .action-button {
+  display:flex;
+  }
+  </style>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block body %}
+<!-- Navigation bar by Sementic ui-->
+  {% include 'sinppet/nav-bar.html' %}
+  {% block nav %}
+  {% endblock %}
+  
+  
+  <div class="padding">
+    
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="uk-text-center col-8">
+          <div class="fluid-container">
+            <h1 style="font-size: 60px;"> Find a job in here </h1>
+            <p class="lead"> If you love to solve problems, always wanted make differnece. This is palce is for you, now find your position and start making impact</p>
+          </div>
+        </div>
+        <div class="col-2"></div>
+      </div>
+  
+  </div>
+  <div id="main-container">
+    <div class="wrapper">
+      {% for jobview in job %}
+        <div class="ui card">
+          <div class="content">
+            <div class="header"> {{ jobview.type_of_job }}</div>
+          </div>
+          <div class="content">
+            <h4 class="ui sub header">Vacancy</h4>
+            <div class="ui small feed">
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+                    <a style=' color:#2979FF'>Location</a> {{ jobview.job_location }}
+                  </div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+                    <a>{{ jobview.qualification }}</a>
+                  </div>
+                </div>
+              </div>
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+                    <a style=' color:#2979FF'>Email to us</a> {{ jobview.apply_job }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="extra content">
+            <!-- From Bootstrape -->
+            <!-- Button trigger modal -->
+            <button type="button" class="ui secondary button" data-toggle="modal" data-target="#exampleModalLong">
+            Details
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{ jobview.type_of_job }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>{{ jobview.job_details }}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {% empty %}
+  
+          <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 uk-text-center">
+              <p style=' color:#4183c4; padding-top: 50px;'> <b>Sorry! No vacancy for now, do not forget to stay tuned</b></p>
+            </div>
+            <div class="col-3"></div>
+          </div>
+ 
+      {% endfor %}
+    </div>
+  </div>
+  <!--footer -->
+  <!--Used sementic UI grid system -->
+  
+  {% include 'sinppet/footer.html' %}
+  {% block footer %}
+  {% endblock %}
+  <style>
+  .padding {
+  padding-top: 60px;
+  }
+  #main-container {
+  min-height: 100vh;
+  }
+  .wrapper{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50px;
+  }
+  .footer {
+  margin-top:40px;
+  margin-bottom: 20px;
+  }
+  footer div a {
+  font-weight: bold;
+  }
+  </style>
+{% endblock %}

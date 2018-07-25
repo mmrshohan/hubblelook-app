@@ -1,0 +1,393 @@
+<!---- This the home page of Hubblelook ---->
+<!-- base.html contains all CDN -->
+{% extends 'base.html' %}
+{% block body %}
+  {% load humanize %}
+  <!--  Navigation bar-->
+  {% include 'sinppet/nav-bar.html' %}
+  {% block nav %}
+  {% endblock %}
+  <!--==============================-->
+  <!--"Search bar" from sementic-ui -->
+  <!--==============================-->
+  <form action="" method="GET">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class=" col-lg-8">
+        <div class="ui fluid action input" style="padding-bottom: 20px;">
+          <input type="search" placeholder="Search..." name="q" >
+          <button type="submit" class="ui button" value="search"> Search </button>
+        </div>
+        <!-- Quick learn button  -->
+        <div class="uk-text-center" style="padding-bottom: 20px;">
+          <button href="#modal-full" uk-toggle class="uk-button uk-button-text"> Quick Learn and Tips </button>
+          <div id="modal-full" class="uk-modal-full" uk-modal>
+            <div class="uk-modal-dialog">
+              <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+              <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+                <div class="uk-padding-large uk-align-center" uk-height-viewport>
+                  <h5 class="uk-text-danger">Quick Learn and Tips would tell you why Hubblelook is all you need to maintain your businesses, financial life or nurture your financial knowledge</h5>
+                  <ul>
+                    <h2><strong>Information:</strong></h2>
+                    <li> Hubblelook would provide you daily up to date news and knowledge about market and anything related to market.</li>
+                    <li>You Should see companies performance and people thought on them before investing on that participial company.</li>
+                    
+                    <li>Hubblelook designed to take care of all fundamental needs on behalf of any kind of businesses.</li>
+                    <li>Hubblelook is the real benefit for startups or SME's since Hubblelook can take of fundamental things such as Customer care, Market Analysis, customer engagement, learning about market. </li>
+                    <li>If you are a company, you can publish official letter from the profile section.</li>
+                    <h2><strong>Tips:</strong></h2>
+                    <li><span class="uk-text-danger"># SEARCH</span> Just search you would see the result. No need to use any Hashtag </li>
+                    <li><span class="uk-text-danger">#POST</span>  Be precise before posting your micro thought </li>
+                    <li> <span class="uk-text-danger">#COMPANY</span>  As a company,  you should put as much information as possible to the profile section</li>
+                    <li><span class="uk-text-danger">#POST</span>  Initial keywords would help you to shape your though</li>
+                    <li><span class="uk-text-danger">#POST</span> Hubblelook is very easy to use due to "Initial Keywords"</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end here  -->
+      </div>
+      <div class=" col-lg-2"></div>
+    </div>
+  </form>
+  <!--==================================================================================================== -->
+  <!-- Jumbotorn header  --------------------------------------------------------------------------------- -->
+  <!--==================================================================================================== -->
+  <div class="home-header">
+    <div class="jumbotron uk-box-shadow-medium">
+      <div class="container">
+        <div class="ui huge header" style="font-size: 4em;">Connect and communicate with the Market.<br> Market Analysis. Customer-Care. </div>
+        <p class="sub-header">
+          Know what people thinks about your products / talk about market, products, and more / Market resrerch become more easier and intutive / Your daily morning financial newspaper
+        </p>
+        <!-- Explore button -->
+        <a href="{% url 'explore' %}" class="uk-button uk-button-primary" id="exploreBtn">Learn more </a>
+      </div>
+    </div>
+  </div>
+  <!--==================================================================================================== -->
+  <!-- Cards  -->
+  <div class="row">
+    <div class="col-lg-3"> </div>
+    <div class="col-lg-7">
+      <div class="container">
+        <div class="ui items">
+          <!--============================================================================================== -->
+          <!-- card type for thoughts  -------------------------------------------------------------------------------------------------------- -->
+          <!--=============================================================================================== -->
+
+
+          <!--============================================================================================== -->
+          <!-- Demo ----------------------------------------------------------------------------------------- -->
+          <!--=============================================================================================== -->
+  <!-- Cards  -->
+  <div class="row">
+    <div class="col-lg-3"> </div>
+    <div class="col-lg-7">
+      <div class="container">
+        <div class="ui items">
+                {% for obj in quickword %}
+                {% for profile in profile %}
+                {% for post in posts %}
+                {% for post in posts %}
+
+            {% autoescape off %}
+            <div class="item">
+              <div class="content">
+                <div>
+                  <span class="right floated">
+                    {{ obj.pub_time|naturaltime }}
+                  </span>
+                  <p>
+                    {{ profile.name }}
+                    
+                    <span class="meta"> Ceo,
+                    Hubblelook </span> </p>
+                  </div>
+                  <!-- Quickword post-->
+                  <p class="header"><span class="font-italic">
+                    {{ obj.Initial_keyword_choices }}   
+                  </span>  
+                  {{ obj.description }}
+                </p>
+                <!-- endquickword post-->
+                <!--======================================================================================-->
+                <!-- article post-->
+                <a  class="header" style="text-decoration: none; cursor: pointer;">
+                  <span class="font-italic">
+                    {{ post.Article_initial_keyword_choices }}
+                  </span>
+                  {{ post.article_title|title }}
+                </a>
+                <p style='color: black;'>
+                  {{ post.description|capfirst|truncatewords:25 }}
+                </p>
+                <!-- endarticle post-->
+                <!-- Product view post-->
+                <div class="uk-text-center">
+                  <div class="ui header">
+                    <a id="product" href="">
+                      {{ post.product_name|title }}
+                      
+                    </a>
+                  </div>
+                  {% if post.launched_time %}
+                  <p>
+                    <span class="date"><span class="launched-in">Launched in</span> <strong> Sep 2014</strong></span>
+                  </p>
+                  {% endif %}
+                </div>
+              <!-- end productview post here-->
+              <div class="extra">
+                Keep it
+              </div>
+            </div>
+          </div>
+          <div class="ui section divider"></div>
+        {% endautoescape %}
+      {% endfor %}
+      <!------>
+    </div>
+  </div>
+</div>
+<div class="col-lg-2"> </div>
+</div>
+
+          <!--============================================================================================== -->
+          <!-- Demoendhere ----------------------------------------------------------------------------------------- -->
+          <!--=============================================================================================== -->
+
+
+<!--
+
+          
+          {% for obj in quickword %}
+            {% for profile in profile %}
+              <div class="item">
+                <div class="content">
+                  <div>
+                     {% autoescape off %}
+                    <span class="right floated"> {{ obj.pub_time|naturaltime }} </span>
+                    <p>{{ profile.name }} <span class="meta"> {{ profile.occupation }} </span> </p>
+                      {% endautoescape %}
+                  </div>
+                  <p class="header"><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.description }}</p>
+                  <div class="extra">
+                    Save
+                  </div>
+                </div>
+              </div>
+              <div class="ui section divider"></div>
+            {% endfor %}
+          {% endfor %}
+
+        -->
+          <!--==================================================================================================== -->
+          <!-- card type for article  -------------------------------------------------------------------------------------------------------- -->
+          <!--==================================================================================================== -->
+          <!--
+          {% for article in article_view %}
+          --> <!-- article card -->
+          <!--
+          {% for profile in profile %}
+            {% autoescape off %}
+            <div class="item">
+              <div class="content">
+                <div>
+                  <span class="right floated"> {{ article.article_pub_time|naturaltime }} </span>
+                  <p>{{ profile.name }} <span class="meta"> {{ profile.occupation }} </span> </p>
+                </div>
+                <div class="meta">
+                  Article
+                </div>
+                <a
+                  class="header" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
+                  <span class="font-italic"> {{ article.Initial_keyword_choices }}</span> {{ article.title|title }}
+                </a>
+                <p
+                  style='color: black;'>
+                  {{ article.description|capfirst|truncatewords:25 }}
+                </p>
+                
+                <div class="extra">
+                  Save
+                </div>
+              </div>
+            </div>
+            <div class="ui section divider"></div>
+          {% endautoescape %}
+        {% endfor %}
+      {% endfor %}
+    -->
+      <!--========================================================================================================= -->
+      <!-- card type for officila letter  (Oletter stand for official letter)----------------------------------------->
+      <!--========================================================================================================= -->
+    <!--
+          {% for Oletter in official_letter %}--> <!-- official letter  card -->
+          <!--
+      {% for profile in profile %}
+        <div class="item">
+          <div class="content">
+            <div class="ui selection list">
+              <div class="ui horizontal tiny blue label">
+                official letter by {{ profile.name }}
+              </div>
+            </div>
+            
+            <a class="header" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
+            
+            <span class="right floated"> {{ Oletter.pub_time|timesince }} </span>
+            <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
+          </div>
+        </div>
+        <div class="ui section divider"></div>
+      {% endfor %}
+    {% endfor %}
+  -->
+    <!--================================================================================================================ -->
+    <!-- card type for products  -------------------------------------------------------------------------------------- -->
+    <!--================================================================================================================ -->
+    <!--
+    {% for product in addproduct %} --><!-- product card -->
+    <!--
+    {% for product in addproduct %}
+      <div class="item">
+        <div class="content">
+          <div>
+            <span class="right floated"> {{ product.pub_time|naturaltime }} </span>
+            <p>{{ profile.name }} <span class="meta"> {{ profile.occupation }} </span> </p>
+          </div>
+          <div class="meta">
+            PRODUCT
+          </div>
+          
+          <div class="uk-text-center">
+            <div class="ui header">
+              <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
+            </div>
+            <p>
+              <span class="date"><span class="launched-in">Launched in</span> <strong> Sep 2014</strong></span>
+            </p>
+          </div>
+          
+          <div class="extra">
+            Save
+          </div>
+        </div>
+      </div>
+      <div class="ui section divider"></div>
+    {% endfor %}
+  {% endfor %}
+-->
+  <!---
+ 
+
+</div>
+</div>
+</div>
+<div class="col-lg-2"> </div>
+</div>
+ --->
+<!--  enddemo  -->
+<!--if no post then this template will appear  --------------------------------------------------------------- -->
+<!--========================================================================================================== -->
+{% if obj and article or product is not None %}
+<div class="ui grid">
+  <div class="row">
+    <div class="five wide column"></div>
+    <div class="center aligned six wide column">
+      <p> <b> You have not followed any one, yet!</b> <i class="meh icon"></i></p>
+    </div>
+    <div class="five wide column"></div>
+  </div>
+</div>
+{% endif %}
+<!--  endif  -->
+<!------------------------------------------------------------------------------------------------->
+<!--  Footer  -->
+{% include 'sinppet/footer.html' %}
+{% block footer %}
+{% endblock %}
+<!--================================================================================================= -->
+<!--================================================================================================= -->
+<!--Css style  -------------------------------------------------------------------------------------- -->
+<style type="text/css">
+body,
+html {
+margin: 0px
+}
+.main-header {
+padding-left: 30px;
+padding-right: 30px
+}
+.home-header {
+margin-right: 40px;
+margin-left: 40px
+}
+.padding {
+padding-top: 80px
+}
+.sub-header {
+padding-top: 10px;
+font-size: 16px;
+color: #8d8d8d;
+cursor: pointer
+}
+.sub-option {
+padding-top: 10px
+}
+#search-bar {
+padding-bottom: 20px
+}
+#exploreBtn {
+margin-left: 45%
+}
+#quick-word-description {
+padding-left: 10px
+}
+.launched-in {
+color: #1976D2;
+font-weight: bold
+}
+#flex-display {
+display: flex
+}
+#align-icon {
+padding-left: 4px
+}
+#product-post-card-image {
+width: 769px;
+height: 270px
+}
+.card-text {
+padding-top: 10px;
+padding-bottom: 30px
+}
+.grid-image {
+width: 150px;
+height: 150px
+}
+#product {
+text-align: center
+}
+.article-details {
+font-size: 15px
+}
+.card {
+margin-left: 480px;
+margin-right: 480px;
+margin-top: 20px;
+padding-left: 5px;
+padding-right: 5px;
+padding-top: 4px;
+padding-bottom: 4px
+}
+.profileHeader {
+margin-left: 40px;
+margin-right: 40px
+}
+</style>
+{% endblock %}

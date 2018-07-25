@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block body %}
+	{% load humanize %}
+	{% include 'sinppet/nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<!-- officla letter view -->
+	<div class="row border">
+		<div class="col-2"></div>
+		<div class="col-8">
+		<div class="ui breadcrumb">
+			<a href="{% url 'offical-letter-view' user.username %}" class="section">Official Letters</a>
+			<div class="divider"> / </div>
+			<div class="active section">Details</div>
+		</div>
+		<div class=" uk-background-muted uk-box-shadow-medium ">
+			<div class="text-padding">
+				
+				<h1 class="uk-text-primary">  {{ letter.title }} </h1>
+				<p>FROM <span class="uk-text-meta"> {{ letter.letter_from|upper }}</span> </p>
+				<h6> {{ letter.to_whom }} </h6>
+				<p> {{ letter.letter }} </p>
+				<p class="uk-text-meta"> Published: {{ letter.pub_time|timesince }} </p>
+			</div>
+		</div>
+	</div>
+	<div class="col-2"></div>
+</div>
+
+<!--  Footer  -->
+{% include 'sinppet/footer.html' %}
+{% block footer %}
+{% endblock %}
+	<style type="text/css" media="screen">
+	body, html {
+		background-color: #f5f5f5;
+	}
+	.breadcrumb {
+		background-color: transparent;
+	}
+	.border {
+		padding-top: 50px;
+		padding-bottom: 50px;
+		min-height: 100%;
+	}
+	.text-padding {
+		padding: 20px 20px 50px 50px;
+	}
+		
+	</style>
+{% endblock %}
