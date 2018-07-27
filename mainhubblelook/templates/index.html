@@ -64,7 +64,13 @@
           Know what people thinks about your products / talk about market, products, and more / Market resrerch become more easier and intutive / Your daily morning financial newspaper
         </p>
         <!-- Explore button -->
-        <a href="{% url 'explore' %}" class="uk-button uk-button-primary" id="exploreBtn">Learn more </a>
+        <div class="row">
+          <div class="col-lg-5 offset-lg-5 col-sm-5 offset-sm-5">
+        <button class="uk-button uk-button-primary " >
+        <a style="color: white"  href="{% url 'explore' %}" >Learn more </a>
+        </button>
+      </div>
+      </div>
       </div>
     </div>
   </div>
@@ -84,112 +90,112 @@
               <div class="item">
                 <div class="content">
                   <div>
-                     {% autoescape off %}
+                    {% autoescape off %}
                     <span class="right floated"> {{ obj.pub_time|naturaltime }} </span>
                     <p>{{ profile.name }} <span class="meta"> {{ profile.occupation }} </span> </p>
-                      {% endautoescape %}
-                  </div>
-                  <p class="header"><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.description }}</p>
-                  <div class="extra">
-                    Save
-                  </div>
+                  {% endautoescape %}
                 </div>
-              </div>
-              <div class="ui section divider"></div>
-            {% endfor %}
-          {% endfor %}
-          <!--==================================================================================================== -->
-          <!-- card type for article  -------------------------------------------------------------------------------------------------------- -->
-          <!--==================================================================================================== -->
-          
-          {% for article in article_view %} <!-- article card -->
-          {% for profile in profile %}
-            {% autoescape off %}
-            <div class="item">
-              <div class="content">
-                <div>
-                  <span class="right floated"> {{ article.article_pub_time|naturaltime }} </span>
-                  <p>{{ profile.name }} <span class="meta"> {{ profile.occupation }} </span> </p>
-                </div>
-                <div class="meta">
-                  Article
-                </div>
-                <a
-                  class="header" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
-                  <span class="font-italic"> {{ article.Initial_keyword_choices }}</span> {{ article.title|title }}
-                </a>
-                <p
-                  style='color: black;'>
-                  {{ article.description|capfirst|truncatewords:25 }}
-                </p>
-                
+                <p class="header"><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.description }}</p>
                 <div class="extra">
                   Save
                 </div>
               </div>
             </div>
             <div class="ui section divider"></div>
-          {% endautoescape %}
+          {% endfor %}
         {% endfor %}
-      {% endfor %}
-      <!--========================================================================================================= -->
-      <!-- card type for officila letter  (Oletter stand for official letter)----------------------------------------->
-      <!--========================================================================================================= -->
-      
-      {% for Oletter in official_letter %} <!-- official letter  card -->
-      {% for profile in profile %}
-        <div class="item">
-          <div class="content">
-            <div class="ui selection list">
-              <div class="ui horizontal tiny blue label">
-                official letter by {{ profile.name }}
+        <!--==================================================================================================== -->
+        <!-- card type for article  -------------------------------------------------------------------------------------------------------- -->
+        <!--==================================================================================================== -->
+        
+        {% for article in article_view %} <!-- article card -->
+        {% for profile in profile %}
+          {% autoescape off %}
+          <div class="item">
+            <div class="content">
+              <div>
+                <span class="right floated"> {{ article.article_pub_time|naturaltime }} </span>
+                <p>{{ profile.name }} <span class="meta"> {{ profile.occupation }} </span> </p>
+              </div>
+              <div class="meta">
+                Article
+              </div>
+              <a
+                class="header" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
+                <span class="font-italic"> {{ article.Initial_keyword_choices }}</span> {{ article.title|title }}
+              </a>
+              <p
+                style='color: black;'>
+                {{ article.description|capfirst|truncatewords:25 }}
+              </p>
+              
+              <div class="extra">
+                Save
               </div>
             </div>
-            
-            <a class="header" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
-            
-            <span class="right floated"> {{ Oletter.pub_time|timesince }} </span>
-            <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
           </div>
-        </div>
-        <div class="ui section divider"></div>
+          <div class="ui section divider"></div>
+        {% endautoescape %}
       {% endfor %}
     {% endfor %}
-    <!--================================================================================================================ -->
-    <!-- card type for products  -------------------------------------------------------------------------------------- -->
-    <!--================================================================================================================ -->
+    <!--========================================================================================================= -->
+    <!-- card type for officila letter  (Oletter stand for official letter)----------------------------------------->
+    <!--========================================================================================================= -->
     
-    {% for product in addproduct %} <!-- product card -->
-    {% for product in addproduct %}
+    {% for Oletter in official_letter %} <!-- official letter  card -->
+    {% for profile in profile %}
       <div class="item">
         <div class="content">
-          <div>
-            <span class="right floated"> {{ product.pub_time|naturaltime }} </span>
-            <p>{{ profile.name }} <span class="meta"> {{ profile.occupation }} </span> </p>
-          </div>
-          <div class="meta">
-            PRODUCT
-          </div>
-          
-          <div class="uk-text-center">
-            <div class="ui header">
-              <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
+          <div class="ui selection list">
+            <div class="ui horizontal tiny blue label">
+              official letter by {{ profile.name }}
             </div>
-            <p>
-              <span class="date"><span class="launched-in">Launched in</span> <strong> Sep 2014</strong></span>
-            </p>
           </div>
           
-          <div class="extra">
-            Save
-          </div>
+          <a class="header" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
+          
+          <span class="right floated"> {{ Oletter.pub_time|timesince }} </span>
+          <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
         </div>
       </div>
       <div class="ui section divider"></div>
     {% endfor %}
   {% endfor %}
-  <!---
-  --->
+  <!--================================================================================================================ -->
+  <!-- card type for products  -------------------------------------------------------------------------------------- -->
+  <!--================================================================================================================ -->
+  
+  {% for product in addproduct %} <!-- product card -->
+  {% for product in addproduct %}
+    <div class="item">
+      <div class="content">
+        <div>
+          <span class="right floated"> {{ product.pub_time|naturaltime }} </span>
+          <p>{{ profile.name }} <span class="meta"> {{ profile.occupation }} </span> </p>
+        </div>
+        <div class="meta">
+          PRODUCT
+        </div>
+        
+        <div class="uk-text-center">
+          <div class="ui header">
+            <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
+          </div>
+          <p>
+            <span class="date"><span class="launched-in">Launched in</span> <strong> Sep 2014</strong></span>
+          </p>
+        </div>
+        
+        <div class="extra">
+          Save
+        </div>
+      </div>
+    </div>
+    <div class="ui section divider"></div>
+  {% endfor %}
+{% endfor %}
+<!---
+--->
 </div>
 </div>
 </div>
@@ -200,13 +206,13 @@
 <!--========================================================================================================== -->
 {% if obj and article or product is not None %}
 <div class="ui grid">
-  <div class="row">
-    <div class="five wide column"></div>
-    <div class="center aligned six wide column">
-      <p> <b> You have not followed any one, yet!</b> <i class="meh icon"></i></p>
-    </div>
-    <div class="five wide column"></div>
-  </div>
+<div class="row">
+<div class="five wide column"></div>
+<div class="center aligned six wide column">
+<p> <b> You have not followed any one, yet!</b> <i class="meh icon"></i></p>
+</div>
+<div class="five wide column"></div>
+</div>
 </div>
 {% endif %}
 <!--  endif  -->

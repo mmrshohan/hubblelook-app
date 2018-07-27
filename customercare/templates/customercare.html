@@ -5,47 +5,44 @@
 	{% block nav %}
 	{% endblock %}
 	<!-- sementic ui -->
-	<div class="wrapper">
-		<div class="ui grid">
-			<div class="row">
-				<div class="four wide column"></div>
-				<div class=" center aligned eight wide column">
-					<h1 class="customer-care-header"> Search anything about Hubblelook </h1>
-				</div>
-			</div>
-			<div class="four wide column"></div>
-		</div>
+	<div id="wrapper">
+		<!-- Search bar -->
+		
+		
+		<div style="padding-bottom: 30px; padding-top: 50px;" class="uk-heading-primary uk-text-bold uk-text-center"> Search anything about Hubblelook </div>
+		
+		
 		<form action="" method="GET">
 			{% csrf_token %}
 			<div class="row">
-				<div class="col-2"> </div>
-				<div class="col-8">
+				<div class="col-lg-2 col-sm-0"> </div>
+				<div class="col-lg-8 col-sm-12">
 					<div class="ui fluid action input">  <!--Sementic ui search form -->
-						<input type="search" name="q" placeholder=" What do you want to know?">
-						<div class="ui secondary button">Search</div>
-					</div>
+					<input type="search" name="q" placeholder=" What do you want to know?">
+					<div class="ui secondary button">Search</div>
 				</div>
-				<div class="col-2"></div>
 			</div>
-		</form>
-		<!-- Customer care blog post -->
-		{% for blog in blogs %}
-			{% autoescape off %}
-			<div class="blog-area">
-				<div class="row">
-					<div class="col-lg-3"> </div>
-					<div class="col-lg-6">
-						
-						<a style="text-decoration: none; color: black;" href="{% url 'customecare-article' blog.id blog.slug %}" ><h5 style="cursor: pointer;">{{ blog.title }}</h5></a>
-						<div class="uk-text-meta"> {{ blog.topic|upper }} </div>
-						<p> by {{ blog.written_by }} </p>
-						
-					</li>
-				</ul>
-			</div>
-			<div class="col-lg-3"></div>
+			<div class="col-lg-2 col-sm-0"></div>
 		</div>
+	</form>
+	<!-- Customer care blog post -->
+	{% for blog in blogs %}
+		{% autoescape off %}
+		<div class="blog-area">
+			<div class="row">
+				<div class="col-lg-3"> </div>
+				<div class="col-lg-6">
+					
+					<a style="text-decoration: none; color: black;" href="{% url 'customecare-article' blog.id blog.slug %}" ><h5 style="cursor: pointer;">{{ blog.title }}</h5></a>
+					<div class="uk-text-meta"> {{ blog.topic|upper }} </div>
+					<p> by {{ blog.written_by }} </p>
+					
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-3"></div>
 	</div>
+</div>
 {% endautoescape %}
 {% endfor %}
 </div>
@@ -61,8 +58,8 @@
 		height: 100%;
 	
 	}
-	.wrapper {
-		min-height: 100%;
+	#wrapper {
+		min-height: 100vh;
 	}
 	.customer-care-header{
 		padding-top: 30px;
@@ -78,6 +75,5 @@
 		padding-top: 70px;
 	}
 	
-
 </style>
 {% endblock %}
