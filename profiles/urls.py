@@ -8,8 +8,7 @@ from profiles.views import (
     ProfileView, 
     Offical_Letter_View, Offical_Letter_Create_View, Offical_Letter_Detail_View, Offical_Letter_Update_View, 
     Offical_Letter_Delete_View,
-    Edit_Profile_View, 
-    Edit_profile_Update_View, 
+    ProfileCreateView,
     MicroThoughtsSortView, 
     ProductSortView, 
     ArticleSortView, 
@@ -21,7 +20,7 @@ from profiles.views import (
 
 
 urlpatterns = [
-    path('<username>/', ProfileView.as_view(), name='profile'),
+    path('<username>/', ProfileView.as_view(), name='portfolio'),
     #offical letter 
     path('<username>/official_letter/', Offical_Letter_View.as_view(), name='offical-letter-view'),
     path('<username>/official_letter_form/', Offical_Letter_Create_View.as_view(), name='offical-letter-form'),
@@ -33,8 +32,9 @@ urlpatterns = [
     path('<username>/products/', ProductSortView.as_view(), name='Product-sort'),
     path('<username>/articles/', ArticleSortView.as_view(), name='Article-sort'),
     #edit profile update 
-    path('<username>/edit/', Edit_Profile_View.as_view(), name='edit-profile'),
-    path('edit/update/<username>/<int:pk>', Edit_profile_Update_View.as_view(), name='edit-profile-update'),
+    path('<username>/create/', ProfileCreateView.as_view(), name='create-profile'),
+
+    
     #Microthought Post update/delete view 
     path('quick_word/update/<int:pk>', MicroThoughtsUpdateView.as_view(), name='micro-thoughts-update'),
     path('quick_word/delete/<int:pk>', MicroThoughtsDeleteView.as_view(), name='micro-thoughts-delete'),

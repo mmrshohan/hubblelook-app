@@ -8,8 +8,6 @@ from mainhubblelook.views import ( QuickWordView,
  Article_form, 
  Offical_Letter_Detail_View, 
  article_detials,
-
-
  )
 	
 

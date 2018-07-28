@@ -16,10 +16,6 @@ from .forms import Edit_Profile_Form, Official_Letter_Form
 from mainhubblelook.forms import Quick_word_form, Add_product_view, Article_form
 
 
-'''
-class Edit_Profile_View(TemplateView):
-	template_name = "edit-profile.html"
-'''
 
 class ProfileView(ListView):
 
@@ -37,17 +33,12 @@ class ProfileView(ListView):
         return context
 
 
-class Edit_Profile_View(CreateView):          #  Edit create view
-    form_class = Edit_Profile_Form
+class ProfileCreateView(CreateView):
     model = Profile
+    form_class = Edit_Profile_Form
     template_name = "edit-profile.html"
-    success_url = '/profile/'
+    success_url = "/portfolio/"
 
-class Edit_profile_Update_View(UpdateView):   # Edit update view
-    form_class = Edit_Profile_Form
-    model = Profile
-    template_name = "edit-profile.html"
-    success_url = "/profile/"
 
 
 #Micro Thoughts update view                     microthought update view
@@ -62,21 +53,21 @@ class MicroThoughtsDeleteView(DeleteView):
     model = QuickWord
     form_class = Quick_word_form
     template_name = 'profile.html'
-    success_url = reverse_lazy('profile')
+    success_url = reverse_lazy('portfolio')
 
 #Add product update UpdateView                   addProduct Update view 
 class AddProductUpdateView(UpdateView):
     model = AddProduct
     form_class = Add_product_view
     template_name = 'forms/addproduct_form.html'
-    success_url = '/profile/'
+    success_url = '/portfolio/'
 
 #Add prodcuct delete View                        addproduct  delete view 
 class AddProductDeleteView(DeleteView):
     model = AddProduct
     form_class = Add_product_view
     template_name = 'profile.html'
-    success_url = reverse_lazy('profile')
+    success_url = reverse_lazy('portfolio')
 
 
 #Add product update UpdateView                   Article update view
@@ -84,14 +75,14 @@ class ArticleUpdateView(UpdateView):
     model = Article
     form_class = Article_form
     template_name = 'forms/article-form.html'
-    success_url = '/profile/'
+    success_url = '/portfolio/'
 
 #Add prodcuct delete View                        Article delete view
 class ArticleDeleteView(DeleteView):
     model = Article
     form_class = Article_form
     template_name = 'profile.html'
-    success_url = reverse_lazy('profile')
+    success_url = reverse_lazy('portfolio')
 
 
 class Offical_Letter_View(ListView):                    # Official letter list view 

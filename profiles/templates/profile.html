@@ -17,7 +17,7 @@
           <div class="lead">{{ edit.title }}</div>
         {% endif %}
         {% if edit.url %}
-          <a href="#">{{ edit.url }}</a>
+          <a href="{{ edit.url }}">{{ edit.url|urlize }}</a>
         {% endif %}
         {% if edit.additional_url %}
           <div>
@@ -45,9 +45,11 @@
       Uikits modal
       -->
       {% if edit.about_details|wordcount >= 51 %}
+      <div>
         <a class="uk-button uk-button-text"
           uk-tooltip="title: Know more about {{ edit.name }}; pos: right"
         href="#modal-full" uk-toggle>MORE</a>
+      </div>
       {% endif %}
       
       <div id="modal-full" class="uk-modal-full" uk-modal>
@@ -71,13 +73,14 @@
 </div>
 <!-- end here   -->
 <!--  Profile buttons  -->
-<p uk-margin style="text-align: center;">
+<p style="text-align: center;">
 <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
 <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> products </a></button>
 <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> article </a></button>
 <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> official letter </a></button>
-<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'edit-profile-update' user.username edit.id %}">edit profile </a> </button>
+
 </p>
+
 <!--  Profile buttons end here  -->
 <!-- ================================================================================================-->
 <!-- Post cards =====================================================================================-->
@@ -91,6 +94,7 @@
     <!-- card type for thoughts  -------------------------------------------------------------------------------------------------------- -->
     <!--================================================================================================================================= -->
     
+<div id="mian-container">
     {% for obj in quickword %}
       <div class="item">
         <div class="content">
@@ -209,6 +213,7 @@
 </div>
 <div class="ui section divider"></div>
 {% endfor %}
+</div>
 <!---
 --->
 </div>
@@ -220,16 +225,16 @@
 <!--================================================================================================================================= -->
 <!--if no post then this template will appear  -------------------------------------------------------------------------------------- -->
 <!--================================================================================================================================= -->
-{% if obj and article or product is not None %}
-<div class="ui grid">
-<div class="row">
-<div class="five wide column"></div>
-<div class="center aligned six wide column">
-<p> <b> You have not followed any one, yet!</b> <i class="meh icon"></i></p>
-</div>
-<div class="five wide column"></div>
-</div>
-</div>
+{% if obj is not None and article is not None or product is not None %}
+  <div class="ui grid">
+    <div class="row">
+      <div class="five wide column"></div>
+      <div class="center aligned six wide column">
+        <h5>  You have not post anything, yet! <i class="meh icon"></i></h5>
+      </div>
+      <div class="five wide column"></div>
+    </div>
+  </div>
 {% endif %}
 <!--  endif  -->
 <!--footer -->
@@ -252,6 +257,9 @@ background: #58585b;
 color:#FFFFFF;
 border-radius: 0px;
 box-shadow: 0 0 2px rgba(34, 25, 25, 0.4);
+}
+#mian-container {
+  min-height: 100vh;
 }
 #header-details{
 font-size: 15px;

@@ -35,7 +35,7 @@
             {% if user.is_authenticated %}
               <!-- user profile redirect option through icon -->
               <div class="item user">
-                <a href="{% url 'profile' user.username %}" id="user-link" class="uk-text-capitalize user-link"
+                <a href="{% url 'portfolio' user.username %}" id="user-link" class="uk-text-capitalize user-link"
                   uk-tooltip="title: Hi {{ user.username }}, this is your profile; pos: bottom"
                   href="">
                   <b>{{ user.username|capfirst|truncatewords:1 }} </b>
@@ -105,7 +105,7 @@
       {% if user.is_authenticated %}
         <!-- user profile redirect option through icon -->
         <div class="item user">
-          <a  href="{% url 'profile' user.username  %}" class="uk-text-capitalize"
+          <a  href="{% url 'portfolio' user.username  %}" class="uk-text-capitalize"
             uk-tooltip="title: Hi {{ user.username }}, this is your profile; pos: bottom"
             href="">
             <b class="user-link">{{ user.username|capfirst|truncatewords:1 }} </b>

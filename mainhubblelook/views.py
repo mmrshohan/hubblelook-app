@@ -21,7 +21,6 @@ class QuickWordView(ListView):
         context = super(QuickWordView, self).get_context_data(**Kwargs)
         thought = QuickWord.objects.all()
         add_product = AddProduct.objects.all()
-        profiles = Profile.objects.all().last()
         article = Article.objects.all()
         official_letter = OfficalLetter.objects.all()
         query = self.request.GET.get('q')
@@ -36,7 +35,7 @@ class QuickWordView(ListView):
         context['article_view'] = article
         context['official_letter'] = official_letter
         context['quickword'] = thought
-        context['profile'] = profiles
+        
         return context
 
 
@@ -93,7 +92,6 @@ def article_detials(request, id, slug):
 
 #Contact View with form for customers 
 class ContactView(CreateView):
-
     template_name= "Contact.html"
     form_class = Contact_form
     success_url = '/Contact-View/'

@@ -59,18 +59,18 @@
   <div class="home-header">
     <div class="jumbotron uk-box-shadow-medium">
       <div class="container">
-        <div class="ui huge header" style="font-size: 4em;">Connect and communicate with the Market.<br> Market Analysis. Customer-Care. </div>
+        <div class="ui huge header" style="font-size: 4em;">Connect and communicate with the Market.<br> Market Analysis. Great customer sevice. </div>
         <p class="sub-header">
-          Know what people thinks about your products / talk about market, products, and more / Market resrerch become more easier and intutive / Your daily morning financial newspaper
+          Know what people thinks about your products / Studing market is easy / Market resrerch become for everyone / To make connection with market Hubblelook is all you need.
         </p>
         <!-- Explore button -->
         <div class="row">
           <div class="col-lg-5 offset-lg-5 col-sm-5 offset-sm-5">
-        <button class="uk-button uk-button-primary " >
-        <a style="color: white"  href="{% url 'explore' %}" >Learn more </a>
-        </button>
-      </div>
-      </div>
+            <button class="uk-button uk-button-primary " >
+            <a style="color: white"  href="{% url 'explore' %}" >Learn more </a>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -86,7 +86,7 @@
           <!--=============================================================================================== -->
           
           {% for obj in quickword %}
-            {% for profile in profile %}
+          
               <div class="item">
                 <div class="content">
                   <div>
@@ -103,13 +103,13 @@
             </div>
             <div class="ui section divider"></div>
           {% endfor %}
-        {% endfor %}
+   
         <!--==================================================================================================== -->
         <!-- card type for article  -------------------------------------------------------------------------------------------------------- -->
         <!--==================================================================================================== -->
         
         {% for article in article_view %} <!-- article card -->
-        {% for profile in profile %}
+       
           {% autoescape off %}
           <div class="item">
             <div class="content">
@@ -137,13 +137,13 @@
           <div class="ui section divider"></div>
         {% endautoescape %}
       {% endfor %}
-    {% endfor %}
+ 
     <!--========================================================================================================= -->
     <!-- card type for officila letter  (Oletter stand for official letter)----------------------------------------->
     <!--========================================================================================================= -->
     
     {% for Oletter in official_letter %} <!-- official letter  card -->
-    {% for profile in profile %}
+  
       <div class="item">
         <div class="content">
           <div class="ui selection list">
@@ -160,13 +160,13 @@
       </div>
       <div class="ui section divider"></div>
     {% endfor %}
-  {% endfor %}
+ 
   <!--================================================================================================================ -->
   <!-- card type for products  -------------------------------------------------------------------------------------- -->
   <!--================================================================================================================ -->
   
   {% for product in addproduct %} <!-- product card -->
-  {% for product in addproduct %}
+ 
     <div class="item">
       <div class="content">
         <div>
@@ -193,7 +193,7 @@
     </div>
     <div class="ui section divider"></div>
   {% endfor %}
-{% endfor %}
+
 <!---
 --->
 </div>
@@ -204,7 +204,7 @@
 <!--  enddemo  -->
 <!--if no post then this template will appear  --------------------------------------------------------------- -->
 <!--========================================================================================================== -->
-{% if obj and article or product is not None %}
+{% if obj and article or product is None %}
 <div class="ui grid">
 <div class="row">
 <div class="five wide column"></div>
