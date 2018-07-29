@@ -8,8 +8,8 @@
   <!--Micro thoughts form  -->
   <div class="container">
     <div class="row">
-      <div class="col-lg-3"></div>
-      <div class="col-lg-6">
+      <div class="col-lg-3 col-sm-0"></div>
+      <div class="col-lg-6 col-sm-12">
         <div style="padding-bottom: 30px;" class="uk-text-lead uk-text-bold">
           Share your quick thoughts in here
         </div>
@@ -19,7 +19,7 @@
           <input id="submit"class="ui secondary button" type="submit" value="Post" />
         </form>
       </div>
-      <div class="col-lg-3"></div>
+      <div class="col-lg-3 col-sm-0"></div>
     </div>
   </div>
   <!-- footer -->
@@ -29,26 +29,6 @@
   
   <script>
   
-  var quill = new Quill("#editor", {
-  modules: {
-  toolbar: [
-  ]
-  },
-  
-  placeholder: 'Write your thoughts in here but not more than 150 words',
-  theme: 'snow'
-  });
-  
-  var form = document.querySelector('form');
-  form.onsubmit = function() {
-  // Populate hidden form on submit
-  var about = document.querySelector('input[name=description]');
-  //get JSON from quill editor
-  var jsonData = quill.getContents();
-  //access "insert" data from the JSON
-  about.value = jsonData.ops[0].insert;
-  console.log("Submitted", $(form).serialize(), $(form).serializeArray());
-  };
   </script>
   <!--================================================================================================================================= -->
   <!--Css style  -------------------------------------------------------------------------------------- -->
@@ -56,7 +36,9 @@
   
   <style type="text/css" media="screen">
   html, body {
-  background-color: #f5f5f5;
+  background-color: #ffffff;
+  margin-left: 10px;
+  margin-right: 10px;
   }
   #editor {
   height: 130px;

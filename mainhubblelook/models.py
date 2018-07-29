@@ -17,37 +17,40 @@ change in here'''
 
 class QuickWord(models.Model):
 	I_THINK = 'I think'
-	GOOD_PART_OF = 'Feedback'
-	BAD_PART_OF ='Good part'
-	PROTOTYPE = 'Bad part'
-	FEEDBACK = 'Prototype'
+	GOOD_PART = 'Good part'
+	BAD_PART ='Bad part'
+	PROTOTYPE = 'Prototype'
+	FEEDBACK = 'Feedback'
+	INFO = 'Info'
 	REVIEW = 'Review'
 	ASK = 'Ask'
 	FINACIAL_MARKET = 'Financial market'
 	INITIAL_KEYWORD = (
 		(I_THINK, 'I THINK'),
 		(FEEDBACK, 'FEEDBACK'),
-		(GOOD_PART_OF, 'GOOD PART'),
-		(BAD_PART_OF, 'BAD PART'),
+		(GOOD_PART, 'GOOD PART'),
+		(BAD_PART, 'BAD PART'),
 		(PROTOTYPE, 'PROTOTYPE'),
+		(INFO, 'INFO'),
 		(REVIEW, 'REVIEW'),
 		(ASK, 'ASK'), 
 		(FINACIAL_MARKET, 'FINANCIAL MARKET')
 		)
 	
 	pub_time = models.DateTimeField('Publish time', auto_now=True, auto_now_add=False)
-	description = models.CharField(max_length=150, blank=False, null=False) 
+	micro_thought = models.CharField(max_length=200, blank=False, null=False) 
 	likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='likes')
 	topic = models.CharField(max_length=2000, null=True, blank=True)
 	Initial_keyword_choices = models.CharField(
-	 max_length=100,
+	 max_length=300,
 	 null=True, 
 	 blank=True, 
 	 choices=INITIAL_KEYWORD, 
-	 default=I_THINK) 
+	 default=I_THINK
+	 ) 
 
 	def __str__(self):
-		return self.description
+		return self.micro_thought
 
 	class Meta:
 		verbose_name = "Micro Thought"
@@ -111,7 +114,7 @@ class Article(models.Model):
 	 )
 	title = models.CharField(max_length=500, null=False, blank=False)
 	slug = models.SlugField(max_length=500, null=True, blank=True)
-	description = RichTextField()
+	micro_article = RichTextField()
 	article_pub_time = models.DateTimeField(auto_now=True, auto_now_add=False)
 	topic = models.CharField(max_length=2000, null=True, blank=True)
 

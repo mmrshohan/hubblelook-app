@@ -33,12 +33,20 @@ class ProfileView(ListView):
         return context
 
 
-class ProfileCreateView(CreateView):
+class ProfileCreateView(CreateView):         #Profile create view
     model = Profile
     form_class = Edit_Profile_Form
     template_name = "edit-profile.html"
-    success_url = "/portfolio/"
+    success_url = '/portfolio/'
 
+'''
+class ProfileUpdateView(UpdateView):
+    model = Profile
+    form_class = Edit_Profile_Form
+    template_name = "edit-profile.html"
+    success_url = "/portfolio"
+
+'''
 
 
 #Micro Thoughts update view                     microthought update view

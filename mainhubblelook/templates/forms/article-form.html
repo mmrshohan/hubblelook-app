@@ -11,10 +11,10 @@
   <div id="main-container">
     <div class="container">
       <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6">
+        <div class="col-lg-3 col-sm-0"></div>
+        <div class="col-lg-6 col-sm-12">
           <div style="padding-bottom: 30px;" class="uk-text-lead uk-text-bold">
-            Express your opinion in a board way
+            Write a micro article here
           </div>
           <form action="" method="post">
             {% csrf_token %}
@@ -25,7 +25,7 @@
             <input id="submit" class="ui secondary button " type="submit" value="Post" />
           </form>
         </div>
-        <div class="col-3"></div>
+        <div class="col-lg-3 col-sm-0"></div>
       </div>
     </div>
   </div>
@@ -36,6 +36,11 @@
   <script>
   </script>
   <style>
+  html, body {
+   background-color: #ffffff;
+   margin-right: 10px;
+   margin-left: 10px;
+  }
   #main-container {
   min-height: 100%;
   }

@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 from ckeditor.fields import RichTextField #Ckeditor for edit 
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save

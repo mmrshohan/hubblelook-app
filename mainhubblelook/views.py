@@ -25,11 +25,11 @@ class QuickWordView(ListView):
         official_letter = OfficalLetter.objects.all()
         query = self.request.GET.get('q')
         if query:
-            thought = thought.filter(Q(description__icontains=query)| Q(Initial_keyword_choices__icontains=query) |Q(topic__icontains=query))
-            article = article.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(Initial_keyword_choices__icontains=query))
+            thought = thought.filter(Q(micro_thought__icontains=query)| Q(Initial_keyword_choices__icontains=query))
+            article = article.filter(Q(title__icontains=query) | Q(micro_article__icontains=query) | Q(Initial_keyword_choices__icontains=query))
             add_product = add_product.filter(Q(product_name__icontains=query) | Q(Prices__icontains=query) | Q(details__icontains=query)
                 | Q(title__icontains=query)| Q(launched_time__icontains=query) | Q(topic__icontains=query) )
-            official_letter = official_letter.filter(Q(title__icontains=query)| Q(pub_time__icontains=query) |Q(letter__icontains=query) | Q(topic__icontains=query))
+            official_letter = official_letter.filter(Q(title__icontains=query)| Q(pub_time__icontains=query) |Q(letter__icontains=query))
 
         context['addproduct'] = add_product
         context['article_view'] = article

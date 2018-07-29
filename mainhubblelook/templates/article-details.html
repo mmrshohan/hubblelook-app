@@ -7,7 +7,7 @@
   {% endblock %}
  
     <div id="main-container">
-      <div class="row">
+      <div style="padding-top: 60px;" class="row">
         <div class="col-lg-2 col-sm-1"></div>
         <div class="col-lg-8 col-sm-10">
           {% autoescape off %}
@@ -18,7 +18,7 @@
           <div class="sub header"> </div>
           <div class="item">
             <div class="content">
-              <div class="uk-text-meta"> {{ article.description|wordcount }} words </div>
+              <div class="uk-text-meta"> {{ article.micro_article|wordcount }} words </div>
             </div>
           </div>
           
@@ -33,7 +33,7 @@
           </div>
           <!--  list end here -->
           <p class='article'>
-            {{ article.description|capfirst }}
+            {{ article.micro_article|capfirst }}
           </p>
           {% endautoescape %}
         </div>

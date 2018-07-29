@@ -9,6 +9,7 @@ from profiles.views import (
     Offical_Letter_View, Offical_Letter_Create_View, Offical_Letter_Detail_View, Offical_Letter_Update_View, 
     Offical_Letter_Delete_View,
     ProfileCreateView,
+    #ProfileUpdateView,
     MicroThoughtsSortView, 
     ProductSortView, 
     ArticleSortView, 
@@ -32,7 +33,8 @@ urlpatterns = [
     path('<username>/products/', ProductSortView.as_view(), name='Product-sort'),
     path('<username>/articles/', ArticleSortView.as_view(), name='Article-sort'),
     #edit profile update 
-    path('<username>/create/', ProfileCreateView.as_view(), name='create-profile'),
+    path('<username>/create', ProfileCreateView.as_view(), name='create-profile'),
+
 
     
     #Microthought Post update/delete view 

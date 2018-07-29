@@ -28,9 +28,9 @@ from mainhubblelook.views import ( ExploreView,
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
+    path('', include('mainhubblelook.urls')),
     path('accounts/', include('allauth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('', include('mainhubblelook.urls')),
     path('profile/', include('profiles.urls')),
     path('knowledge/', include('customercare.urls')),   # Customer support page
     path('jobs/', include('jobs.urls')),

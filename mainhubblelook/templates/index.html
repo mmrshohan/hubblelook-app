@@ -60,7 +60,7 @@
     <div class="jumbotron uk-box-shadow-medium">
       <div class="container">
         <div class="ui huge header" style="font-size: 4em;">Connect and communicate with the Market.<br> Market Analysis. Great customer sevice. </div>
-        <p class="sub-header">
+        <p class="lead">
           Know what people thinks about your products / Studing market is easy / Market resrerch become for everyone / To make connection with market Hubblelook is all you need.
         </p>
         <!-- Explore button -->
@@ -74,230 +74,214 @@
       </div>
     </div>
   </div>
-  <!--==================================================================================================== -->
-  <!-- Cards  -->
+<!-- Post card  ------------------------------------------------------------- -->
   <div class="row">
     <div class="col-lg-3"> </div>
     <div class="col-lg-7">
-      <div class="container">
-        <div class="ui items">
-          <!--============================================================================================== -->
-          <!-- card type for thoughts  -------------------------------------------------------------------------------------------------------- -->
-          <!--=============================================================================================== -->
-          
+      <div class="ui items">
+        <!--====================================================================================== -->
+        <!-- card type for thoughts  ------------------------------------------------------------- -->
+        <!--================================================================================== -->
+        
+        <div style="min-height: 100vh; padding-top: 30px; ">
           {% for obj in quickword %}
-          
+            <div class="ui items">
               <div class="item">
                 <div class="content">
-                  <div>
-                    {% autoescape off %}
-                    <span class="right floated"> {{ obj.pub_time|naturaltime }} </span>
-                    <p>{{ profile.name }} <span class="meta"> {{ profile.occupation }} </span> </p>
-                  {% endautoescape %}
-                </div>
-                <p class="header"><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.description }}</p>
-                <div class="extra">
-                  Save
+                  <div>   
+                    <p>{{  user.username }} <span class="meta"> Ceo, Hubblelook </span>  <span class="right floated">  {{ obj.pub_time|naturaltime }} </span></p>
+                    
+                  </div>
+                  <p class="ui header"><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.micro_thought }}</p>
+                  <div class="extra content">
+                    <span>
+                      Save
+                    </span>
+                    <span id="analysis"> Analysis </span>
+                    
+                  </div>
                 </div>
               </div>
             </div>
             <div class="ui section divider"></div>
           {% endfor %}
-   
-        <!--==================================================================================================== -->
-        <!-- card type for article  -------------------------------------------------------------------------------------------------------- -->
-        <!--==================================================================================================== -->
-        
-        {% for article in article_view %} <!-- article card -->
-       
+          <!--================================================================================================================================= -->
+          <!-- card type for article  -------------------------------------------------------------------------------------------------------- -->
+          <!--================================================================================================================================= -->
+          {% for article in article_view %} <!-- article card -->
           {% autoescape off %}
-          <div class="item">
-            <div class="content">
-              <div>
-                <span class="right floated"> {{ article.article_pub_time|naturaltime }} </span>
-                <p>{{ profile.name }} <span class="meta"> {{ profile.occupation }} </span> </p>
-              </div>
-              <div class="meta">
-                Article
-              </div>
-              <a
-                class="header" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
-                <span class="font-italic"> {{ article.Initial_keyword_choices }}</span> {{ article.title|title }}
-              </a>
-              <p
-                style='color: black;'>
-                {{ article.description|capfirst|truncatewords:25 }}
-              </p>
-              
-              <div class="extra">
-                Save
+          <div class="ui items">
+            <div class="item">
+              <div class="content">
+                <div>
+                  <span class="right floated">  {{ article.article_pub_time|naturaltime }} </span>
+                  <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
+                  <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px;"> <span class="meta"> ARTICLE </span></div>
+                  
+                </div>
+                <a class="ui header" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
+                  <span class="font-italic"> {{ article.Initial_keyword_choices }}</span> {{ article.title|title }}
+                </a>
+                <p>
+                  {{ article.micro_article|capfirst|truncatewords:50 }}
+                </p>
+                
+                <div class="extra content">
+                  <span>
+                    Save
+                  </span>
+                  <span id="analysis"> Analysis </span>
+                  
+                </div>
               </div>
             </div>
           </div>
           <div class="ui section divider"></div>
         {% endautoescape %}
       {% endfor %}
- 
-    <!--========================================================================================================= -->
-    <!-- card type for officila letter  (Oletter stand for official letter)----------------------------------------->
-    <!--========================================================================================================= -->
-    
-    {% for Oletter in official_letter %} <!-- official letter  card -->
-  
+      <!--======================================================================================== -->
+      <!-- card type for officila letter  (Oletter stand for official letter)--------------------- -->
+      <!--====================================================================================== -->
+      {% for Oletter in official_letter %} <!-- official letter  card -->
       <div class="item">
         <div class="content">
           <div class="ui selection list">
             <div class="ui horizontal tiny blue label">
-              official letter by {{ profile.name }}
+              official letter
+            </div>
+            <div class="uk-text-right">
+              <span uk-icon="more"></span>
             </div>
           </div>
-          
           <a class="header" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
-          
-          <span class="right floated"> {{ Oletter.pub_time|timesince }} </span>
+          <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
+            <span>  {{ Oletter.pub_time|naturaltime }}</span>
+          </div>
           <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
         </div>
       </div>
       <div class="ui section divider"></div>
     {% endfor %}
- 
-  <!--================================================================================================================ -->
-  <!-- card type for products  -------------------------------------------------------------------------------------- -->
-  <!--================================================================================================================ -->
-  
-  {% for product in addproduct %} <!-- product card -->
- 
-    <div class="item">
-      <div class="content">
-        <div>
-          <span class="right floated"> {{ product.pub_time|naturaltime }} </span>
-          <p>{{ profile.name }} <span class="meta"> {{ profile.occupation }} </span> </p>
-        </div>
-        <div class="meta">
-          PRODUCT
-        </div>
-        
-        <div class="uk-text-center">
-          <div class="ui header">
-            <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
+    <!--================================================================================================================ -->
+    <!-- card type for products  -------------------------------------------------------------------------------------- -->
+    <!--================================================================================================================ -->
+    {% for product in addproduct %} <!-- product card -->
+    <div class="ui itmes">
+      <div class="item">
+        <div class="content">
+          <div class="uk-text-right">
+            <span uk-icon="more"></span>
+            <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
+            <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <span>  {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div>
           </div>
-          <p>
-            <span class="date"><span class="launched-in">Launched in</span> <strong> Sep 2014</strong></span>
-          </p>
-        </div>
-        
-        <div class="extra">
-          Save
+          
+          <div class="uk-text-center">
+            <div class="ui header">
+              <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
+            </div>
+            <p>
+              {% if product.launched_time %}
+                <span class="date"><span class="launched-in">Launched in</span> <strong> Sep 2014</strong></span>
+                {%  endif %}
+              </p>
+            </div>
+            
+            <div class="extra content">
+              <span >
+                Save
+              </span>
+              <span id="analysis"> Analysis </span>
+              
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="ui section divider"></div>
-  {% endfor %}
-
-<!---
---->
+      <div class="ui section divider"></div>
+    {% endfor %}
+  </div>
 </div>
+  <!---
+  --->
 </div>
 </div>
 <div class="col-lg-2"> </div>
 </div>
-<!--  enddemo  -->
-<!--if no post then this template will appear  --------------------------------------------------------------- -->
-<!--========================================================================================================== -->
-{% if obj and article or product is None %}
-<div class="ui grid">
-<div class="row">
-<div class="five wide column"></div>
-<div class="center aligned six wide column">
-<p> <b> You have not followed any one, yet!</b> <i class="meh icon"></i></p>
-</div>
-<div class="five wide column"></div>
-</div>
-</div>
-{% endif %}
-<!--  endif  -->
-<!------------------------------------------------------------------------------------------------->
+<!--if no post then this template will appear  ---------------------------------- -->
+<!--============================================================== -->
+
+<!------------------------------------------------------------------------>
 <!--  Footer  -->
 {% include 'sinppet/footer.html' %}
 {% block footer %}
 {% endblock %}
 <!--================================================================================================= -->
-<!--================================================================================================= -->
 <!--Css style  -------------------------------------------------------------------------------------- -->
 <style type="text/css">
 body,
 html {
-margin: 0px
+  margin: 0px
 }
+
 .main-header {
-padding-left: 30px;
-padding-right: 30px
+  padding-left: 30px;
+  padding-right: 30px
 }
+
 .home-header {
-margin-right: 40px;
-margin-left: 40px
+  margin-right: 40px;
+  margin-left: 40px
 }
+
 .padding {
-padding-top: 80px
+  padding-top: 80px
 }
+
 .sub-header {
-padding-top: 10px;
-font-size: 16px;
-color: #8d8d8d;
-cursor: pointer
+  padding-top: 10px;
+  font-size: 16px;
+  color: #8d8d8d;
+  cursor: pointer
 }
+
 .sub-option {
-padding-top: 10px
+  padding-top: 10px
 }
-#search-bar {
-padding-bottom: 20px
-}
+
 #exploreBtn {
-margin-left: 45%
+  margin-left: 45%
 }
+
 #quick-word-description {
-padding-left: 10px
+  padding-left: 10px
 }
+
 .launched-in {
-color: #1976D2;
-font-weight: bold
+  color: #1976D2;
+  font-weight: bold
 }
-#flex-display {
-display: flex
-}
+
 #align-icon {
-padding-left: 4px
+  padding-left: 4px
 }
+
 #product-post-card-image {
-width: 769px;
-height: 270px
+  width: 769px;
+  height: 270px
 }
-.card-text {
-padding-top: 10px;
-padding-bottom: 30px
-}
+
 .grid-image {
-width: 150px;
-height: 150px
+  width: 150px;
+  height: 150px
 }
+
 #product {
-text-align: center
+  text-align: center
 }
+
 .article-details {
-font-size: 15px
+  font-size: 15px
 }
-.card {
-margin-left: 480px;
-margin-right: 480px;
-margin-top: 20px;
-padding-left: 5px;
-padding-right: 5px;
-padding-top: 4px;
-padding-bottom: 4px
-}
-.profileHeader {
-margin-left: 40px;
-margin-right: 40px
-}
+
+
 </style>
 {% endblock %}

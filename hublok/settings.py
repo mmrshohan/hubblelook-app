@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+
 ]
 
 
@@ -99,8 +99,8 @@ AUTHENTICATION_BACKENDS = (
 
 #Django All-auth configer
 ACCOUNT_EMAIL_REQUIRED =False
-ACCOUNT_LOGOUT_REDIRECT_URL ='/home/'
-LOGIN_REDIRECT_URL = '/home/'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = '/home'
 ACCOUNT_SESSION_REMEMBER =True
 ACCOUNT_USERNAME_REQUIRED =True
 ACCOUNT_EMAIL_REQUIRED =False

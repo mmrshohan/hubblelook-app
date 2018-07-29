@@ -6,8 +6,8 @@ from .models import QuickWord, AddProduct, Article, UserContactForm
 class Quick_word_form(forms.ModelForm):
 	class Meta:
 		model = QuickWord
-		fields = ['description', 'Initial_keyword_choices', 'topic']
-		widgets={'description': forms.Textarea(attrs={'size': 10})}
+		fields = ['micro_thought', 'Initial_keyword_choices', 'topic']
+		widgets={'micro_thought': forms.Textarea(attrs={'size': 10, 'placeholder': 'Do not write more than 200 words'})}
 	
   
 
@@ -21,7 +21,7 @@ class Add_product_view(forms.ModelForm):
 class Article_form(forms.ModelForm):
 	class Meta:
 		model = Article
-		fields = ['title', 'description', 'Initial_keyword_choices', 'topic' ]
+		fields = ['title', 'micro_article', 'Initial_keyword_choices', 'topic' ]
 
 
 ''' User Contact form view   '''
