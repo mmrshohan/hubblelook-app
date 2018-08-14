@@ -1,51 +1,90 @@
-
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block body %}
-
-
-<div class="padding">
-  {% for product in addproduct %}
-  <div class="ui centered card" style="width:55rem">
-     <div class="content">
-      <div class="right floated meta"> 14h </div>
-      <img class="ui avatar image" src=""> {{ request.user }}
-       <div class="meta">
-          <a>Friends</a>
-        </div>
+  <!--  Navigation bar-->
+  {% include 'sinppet/nav-bar.html' %}
+  {% block nav %}
+  {% endblock %}
+  {% load humanize %}
+  <div class="row" style="padding-top:60px;">
+    <div class="col-lg-3 col-sm-0"></div>
+    <div class="col-lg-6 col-sm-12">
+      <p class="uk-heading-primary uk-text-bold uk-text-center">Products posted by {{ user.username|capfirst }}</p>
     </div>
-    <div class="ui huge image">
-      <img src="">
-    </div>
-    
-    <div class="ui center aligned content">
-      <h3><a class="header" href= {% url 'add-product-view' product.id %}> {{ product.product_name|capfirst }}</a></h3>
-      <p>
-        <span class="date"><span class="launched-in">Launched in</span> <strong> Sep 2014</strong></span>
-      </p>
-    </div>
-    
-    <div class="content">
-      <i class="comment icon "></i>
-      3 comments
-    <span class="left floated">
-        <i class="heart outline like icon"></i>
-        17 likes
-      </span>
-    </div>
+    <div class="col-lg-3 col-sm-0"></div>
   </div>
-  {% endfor %}
-</div>
+  <!-- buttons -->
+  <div class="row">
+    <div class="col-lg-2 col-sm-0"></div>
+    <div class="col-lg-8 col-sm-12 uk-text-center">
+      <button id="space-between"class="uk-button uk-button-text uk-text-capitalize uk-text-lead "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
+      <button id="space-between"class="uk-button uk-button-text uk-text-capitalize uk-text-lead "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> articles </a> </button>
+    </div>
+    <div class="col-lg-2 col-sm-0"></div>
+  </div>
+   <!-- buttons end here -->
 
+  <div class="row" style="padding-top:60px;">
+    <div class="col-lg-3 col-sm-0"></div>
+    <div class="col-lg-6 col-sm-12">
+      <div id="mian-container">
+        {% for product in addproduct %} <!-- product card -->
+        <div class="ui itmes">
+          <div class="item">
+            <div class="content">
+              <div class="uk-text-right">
+                <span uk-icon="more"></span>
+                <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
+                <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <span>  {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div>
+              </div>
+              
+              <div class="uk-text-center">
+                <div class="uk-text-lead">
+                  <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
+                </div>
+                <p>
+                  {% if product.launched_time %}
+                    <span class="date"><span class="launched-in">Launched in</span> <strong> Sep 2014</strong></span>
+                    {%  endif %}
+                  </p>
+                </div>
+                
+                <div class="extra content">
+                  <span id="keep-it">
+                    Save
+                  </span>
+                  <span id="analysis"> Analysis </span>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui section divider"></div>
+          {% empty %}
+          <p class="uk-text-lead"> No product has been posted by you </p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-0"></div>
+  </div>
+  {% include 'sinppet/footer.html' %}
+  {% block footer %}
+  {% endblock %}
 
-{% include 'sinppet/footer.html' %}
-{% block footer %}
-{% endblock %}
+  <style type="text/css" media="screen">
+  #mian-container{
+    min-height: 100vh;
+  }
 
-<style type="text/css" media="screen">
-.padding  {
-  padding-top: 50px;
-}
+  #sub-button {
+  text-decoration: none;
+  color: black;
+  }
+  #space-between {
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 20px;
+
   
-</style>
-
+  
+  </style>
 {% endblock %}

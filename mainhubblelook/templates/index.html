@@ -17,32 +17,30 @@
       <div class=" col-lg-8">
         <div class="ui fluid action input" style="padding-bottom: 20px;">
           <input type="search" placeholder="Search..." name="q" >
-          <button type="submit" class="ui button" value="search"> Search </button>
+          <button type="submit" class="ui secondary button" value="search"> Search </button>
         </div>
         <!-- Quick learn button  -->
         <div class="uk-text-center" style="padding-bottom: 20px;">
           <button href="#modal-full" uk-toggle class="uk-button uk-button-text"> Quick Learn and Tips </button>
           <div id="modal-full" class="uk-modal-full" uk-modal>
             <div class="uk-modal-dialog">
-              <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+              <div class="uk-modal-close-full uk-close-large" uk-close></div>
               <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
                 <div class="uk-padding-large uk-align-center" uk-height-viewport>
-                  <h5 class="uk-text-danger">Quick Learn and Tips would tell you why Hubblelook is all you need to maintain your businesses, financial life or nurture your financial knowledge</h5>
+                  <!-- explaination -->
+                  <p class="uk-heading-primary uk-light">Hubblelook here to maintain your businesses, financial life or nurture your financial knowledge</p>
                   <ul>
-                    <h2><strong>Information:</strong></h2>
-                    <li> Hubblelook would provide you daily up to date news and knowledge about market and anything related to market.</li>
-                    <li>You Should see companies performance and people thought on them before investing on that participial company.</li>
                     
-                    <li>Hubblelook designed to take care of all fundamental needs on behalf of any kind of businesses.</li>
-                    <li>Hubblelook is the real benefit for startups or SME's since Hubblelook can take of fundamental things such as Customer care, Market Analysis, customer engagement, learning about market. </li>
-                    <li>If you are a company, you can publish official letter from the profile section.</li>
-                    <h2><strong>Tips:</strong></h2>
-                    <li><span class="uk-text-danger"># SEARCH</span> Just search you would see the result. No need to use any Hashtag </li>
-                    <li><span class="uk-text-danger">#POST</span>  Be precise before posting your micro thought </li>
-                    <li> <span class="uk-text-danger">#COMPANY</span>  As a company,  you should put as much information as possible to the profile section</li>
-                    <li><span class="uk-text-danger">#POST</span>  Initial keywords would help you to shape your though</li>
-                    <li><span class="uk-text-danger">#POST</span> Hubblelook is very easy to use due to "Initial Keywords"</li>
+                    <p class="uk-heading-primary uk-text-bold">Tips:</p>
+                    <div class="uk-text-lead">
+                      <li><span class="uk-light"># SEARCH</span> Just search you would see the result. No need to use any Hashtag </li>
+                      <li><span class="uk-light">#POST</span>  Be precise before posting your micro thought </li>
+                      <li> <span class="uk-light">#COMPANY</span>  As a company,  you should put as much information as possible to the profile section</li>
+                      <li><span class="uk-light">#POST</span>  Initial keywords would help you to shape your though</li>
+                      <li><span class="uk-light">#POST</span> Hubblelook is very easy to use due to "Initial Keywords"</li>
+                    </div>
                   </ul>
+                  <!-- explaination end here -->
                 </div>
               </div>
             </div>
@@ -59,23 +57,19 @@
   <div class="home-header">
     <div class="jumbotron uk-box-shadow-medium">
       <div class="container">
-        <div class="ui huge header" style="font-size: 4em;">Connect and communicate with the Market.<br> Market Analysis. Great customer sevice. </div>
-        <p class="lead">
+        <div class="ui huge header" style="font-size: 6em; color: #e6edff; ">Connect and communicate with the Market.<br> Market Analysis. Great customer sevice. </div>
+        <p class="uk-text-lead" style="padding-bottom: 30px;">
           Know what people thinks about your products / Studing market is easy / Market resrerch become for everyone / To make connection with market Hubblelook is all you need.
         </p>
         <!-- Explore button -->
-        <div class="row">
-          <div class="col-lg-5 offset-lg-5 col-sm-5 offset-sm-5">
-            <button class="uk-button uk-button-primary " >
-            <a style="color: white"  href="{% url 'explore' %}" >Learn more </a>
-            </button>
-          </div>
-        </div>
+        <button class="uk-button uk-align-center uk-button-danger uk-box-shadow-medium " >
+        <a style="color: white"  href="{% url 'explore' %}" >Learn more </a>
+        </button>
       </div>
     </div>
   </div>
-<!-- Post card  ------------------------------------------------------------- -->
-  <div class="row">
+  <!-- Post card  ------------------------------------------------------------- -->
+  <div class="row" style="margin-right: 10px; margin-left:10px; ">
     <div class="col-lg-3"> </div>
     <div class="col-lg-7">
       <div class="ui items">
@@ -88,11 +82,11 @@
             <div class="ui items">
               <div class="item">
                 <div class="content">
-                  <div>   
-                    <p>{{  user.username }} <span class="meta"> Ceo, Hubblelook </span>  <span class="right floated">  {{ obj.pub_time|naturaltime }} </span></p>
+                  <div>
+                    <p>{{  user.username }} <span class="meta"> CEO, Hubblelook </span>  <span class="right floated">  {{ obj.pub_time|naturaltime }} </span></p>
                     
                   </div>
-                  <p class="ui header"><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.micro_thought }}</p>
+                  <p class="uk-text-lead"><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.micro_thought }}</p>
                   <div class="extra content">
                     <span>
                       Save
@@ -105,9 +99,9 @@
             </div>
             <div class="ui section divider"></div>
           {% endfor %}
-          <!--================================================================================================================================= -->
-          <!-- card type for article  -------------------------------------------------------------------------------------------------------- -->
-          <!--================================================================================================================================= -->
+          <!--================================================================================================== -->
+          <!-- card type for article  ------------------------------------------------------------------------ -->
+          <!--=================================================================================== -->
           {% for article in article_view %} <!-- article card -->
           {% autoescape off %}
           <div class="ui items">
@@ -115,11 +109,11 @@
               <div class="content">
                 <div>
                   <span class="right floated">  {{ article.article_pub_time|naturaltime }} </span>
-                  <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
+                  <p>{{ user.username }} <span class="meta"> CEO, Hubblelook </span> </p>
                   <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px;"> <span class="meta"> ARTICLE </span></div>
                   
                 </div>
-                <a class="ui header" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
+                <a class="uk-text-lead" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
                   <span class="font-italic"> {{ article.Initial_keyword_choices }}</span> {{ article.title|title }}
                 </a>
                 <p>
@@ -146,14 +140,14 @@
       <div class="item">
         <div class="content">
           <div class="ui selection list">
-            <div class="ui horizontal tiny blue label">
+            <div class="ui horizontal large blue label">
               official letter
             </div>
-            <div class="uk-text-right">
-              <span uk-icon="more"></span>
-            </div>
+            
+            <span class="uk-align-right" uk-icon="more"></span>
+            
           </div>
-          <a class="header" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
+          <a class="uk-text-lead" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
           <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
             <span>  {{ Oletter.pub_time|naturaltime }}</span>
           </div>
@@ -171,12 +165,12 @@
         <div class="content">
           <div class="uk-text-right">
             <span uk-icon="more"></span>
-            <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
+            <p>{{ user.username }} <span class="meta"> CEO, Hubblelook </span> </p>
             <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <span>  {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div>
           </div>
           
           <div class="uk-text-center">
-            <div class="ui header">
+            <div class="uk-text-lead">
               <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
             </div>
             <p>
@@ -200,15 +194,14 @@
     {% endfor %}
   </div>
 </div>
-  <!---
-  --->
+<!---
+--->
 </div>
 </div>
 <div class="col-lg-2"> </div>
 </div>
 <!--if no post then this template will appear  ---------------------------------- -->
 <!--============================================================== -->
-
 <!------------------------------------------------------------------------>
 <!--  Footer  -->
 {% include 'sinppet/footer.html' %}
@@ -219,69 +212,62 @@
 <style type="text/css">
 body,
 html {
-  margin: 0px
 }
-
 .main-header {
-  padding-left: 30px;
-  padding-right: 30px
+padding-left: 30px;
+padding-right: 30px
 }
-
-.home-header {
-  margin-right: 40px;
-  margin-left: 40px
+.jumbotron {
+background-color: #979ba9;
 }
-
+.color {
+color:#002984;
+}
 .padding {
-  padding-top: 80px
+padding-top: 80px
 }
-
+.uk-modal-dialog {
+background-color: #979eae;
+}
+.uk-modal-close-full {
+background-color: #979eae;
+color: white;
+}
 .sub-header {
-  padding-top: 10px;
-  font-size: 16px;
-  color: #8d8d8d;
-  cursor: pointer
+padding-top: 10px;
+font-size: 16px;
+color: #8d8d8d;
+cursor: pointer
 }
-
 .sub-option {
-  padding-top: 10px
+padding-top: 10px
 }
-
 #exploreBtn {
-  margin-left: 45%
+margin-left: 45%
 }
-
 #quick-word-description {
-  padding-left: 10px
+padding-left: 10px
 }
-
 .launched-in {
-  color: #1976D2;
-  font-weight: bold
+color: #1976D2;
+font-weight: bold
 }
-
 #align-icon {
-  padding-left: 4px
+padding-left: 4px
 }
-
 #product-post-card-image {
-  width: 769px;
-  height: 270px
+width: 769px;
+height: 270px
 }
-
 .grid-image {
-  width: 150px;
-  height: 150px
+width: 150px;
+height: 150px
 }
-
 #product {
-  text-align: center
+text-align: center
 }
-
 .article-details {
-  font-size: 15px
+font-size: 15px
 }
-
-
 </style>
 {% endblock %}

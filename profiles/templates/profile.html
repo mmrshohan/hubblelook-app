@@ -5,50 +5,51 @@
   {% include 'sinppet/nav-bar.html' %}
   {% block nav %}
   {% endblock %}
-  <!-- Another model type   -->
   <!-- uikits   -->
-  <div class="jumbotron uk-box-shadow-small uk-padding uk-panel">
+  <div class="" style="padding-top: 50px; padding-bottom:100px;">
     <div class="grid">  <!-- bootstrape grid   -->
     <div class="row">
-      <div class="col-3">
+      <div class="col-lg-3">
         <img src="" width="120">
-        <h2 class="ui header">{{ edit.name }}</h2>
+        <p class="uk-heading-primary uk-text-bold">{{ edit.name }}</p>
         {% if edit.title %}
-          <div class="lead">{{ edit.title }}</div>
+          <div class="uk-text-lead">{{ edit.title }}</div>
         {% endif %}
+        <!--  url  -->
         {% if edit.url %}
-          <a href="{{ edit.url }}">{{ edit.url|urlize }}</a>
+          <a style ="color:blue;" href="{{ edit.url }}"><p class="uk-text-large" style ="color:blue;">{{ edit.url|urlize }}</p></a>
+        {% endif %}
+
+        {% if edit.Type_of_company %}
+          <p class="ui header"> Type: {{ edit.Type_of_company }}
+            <br> Headquarter: America
+            <br> Stock: NASDEQ
+          </p>
         {% endif %}
         {% if edit.additional_url %}
-          <div>
-            <p><i class="chart area icon"></i> <a>{{ edit.additional_url }}</a></p>
-          </div>
-        {% endif %}
-        {% if edit.Type_of_company %}
-          <p> Type: {{ edit.Type_of_company }}
-            <br> Headquarter: America
-          </p>
+          <p class="ui header"> Addtional link:  <a href="{{ edit.additional_url }}">{{ edit.additional_url }} </a></p>
         {% endif %}
         
       </div>
-      <div class="col-8">
+      <div class="col-lg-8">
         {% if edit.established %}
-          <h6> established: </h6>
+          <p class="ui header"> Established: </p>
         {% endif %}
         <p>{{ edit.established }} </p>
         {% autoescape off %}
-        <h2 class="ui header"> About </h2>
-        <p id="header-details">{{ edit.about_details|capfirst|truncatewords:50 }} </p>
+        <div class=" uk-heading-primary uk-text-bold"> Details of {{ edit.name }}
+        <span><i class="info circle icon"></i></span></div>
+        <p id="header-details">{{ edit.about_details|capfirst|truncatewords:100 }} </p>
       {% endautoescape %}
       
       <!-- Modal for more information
       Uikits modal
       -->
-      {% if edit.about_details|wordcount >= 51 %}
+      {% if edit.about_details|wordcount >= 101 %}
         <div>
           <a class="uk-button uk-button-text"
             uk-tooltip="title: Know more about {{ edit.name }}; pos: right"
-          href="#modal-full" uk-toggle>MORE</a>
+          href="#modal-full" uk-toggle> READ MORE</a>
         </div>
       {% endif %}
       
@@ -67,18 +68,29 @@
       </div>
     </div>
   </div>
-  <div class="col-1"></div>
+  <div class="col-lg-1"></div>
 </div>
 </div>
 </div>
+<div class="ui section divider"></div>
 <!-- end here   -->
 <!--  Profile buttons  -->
-<p style="text-align: center;">
-<button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
-<button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> products </a></button>
-<button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> article </a></button>
-<button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> official letter </a></button>
-</p>
+<div class="row">
+<div class="col-1">
+</div>
+<div class="col-10">
+
+<div style="padding-bottom: 50px;">
+  <p style="text-align: center;">
+    <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
+    <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> products </a></button>
+    <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> article </a></button>
+    <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> official letter </a></button>
+  </p>
+</div>
+</div>
+<div class="col-1"> </div>
+</div>
 <!--  Profile buttons end here  -->
 <!-- ================================================================================================-->
 <!-- Post cards =====================================================================================-->
@@ -87,9 +99,9 @@
 <div class="col-lg-3"> </div>
 <div class="col-lg-7">
 <div class="ui items">
-  <!--================================================================================================================================= -->
+  <!--=============================================================================================== -->
   <!-- card type for thoughts  -------------------------------------------------------------------------------------------------------- -->
-  <!--================================================================================================================================= -->
+  <!--==================================================================================== -->
   
   <div id="mian-container">
     {% for obj in quickword %}
@@ -106,10 +118,11 @@
                   </form>
                 </ul>
               </div>
-              <p>{{  user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
+              <p>{{  obj.user|capfirst }} <span class="meta"> Ceo, Hubblelook </span> </p>
               <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <p> {{ obj.pub_time|naturaltime }}</p> </div>
             </div>
-            <p class="ui header"><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.micro_thought }}</p>
+            <p class="uk-text-lead
+            "><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.micro_thought }}</p>
             <div class="extra content">
               <span id="keep-it">
                 Save
@@ -136,7 +149,7 @@
             <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <span>  {{ article.article_pub_time|naturaltime }}</span><span class="meta">, ARTICLE </span></div>
             
           </div>
-          <a class="ui header" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
+          <a class="uk-text-lead" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
             <span class="font-italic"> {{ article.Initial_keyword_choices }}</span> {{ article.title|title }}
           </a>
           <p>
@@ -161,24 +174,25 @@
 <!--================================================================================================================================= -->
 {% for Oletter in official_letter %} <!-- official letter  card -->
 
-<div class="item">
-  <div class="content">
-    <div class="ui selection list">
-      <div class="ui horizontal tiny blue label">
-        official letter
+      <div class="item">
+        <div class="content">
+          <div class="ui selection list">
+            <div class="ui horizontal large blue label">
+              official letter
+            </div>
+        
+              <span class="uk-align-right" uk-icon="more"></span>
+        
+          </div>
+          <a class="uk-text-lead" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
+          <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
+            <span>  {{ Oletter.pub_time|naturaltime }}</span>
+          </div>
+          <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
+        </div>
       </div>
-      <div class="uk-text-right">
-        <span uk-icon="more"></span>
-      </div>
-    </div>
-    <a class="header" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
-    <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
-      <span>  {{ Oletter.pub_time|naturaltime }}</span>
-    </div>
-    <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
-  </div>
-</div>
-<div class="ui section divider"></div>
+      <div class="ui section divider"></div>
+
 {% endfor %}
 <!--================================================================================================================ -->
 <!-- card type for products  -------------------------------------------------------------------------------------- -->
@@ -194,7 +208,7 @@
     </div>
     
     <div class="uk-text-center">
-      <div class="ui header">
+      <div class="uk-text-lead">
         <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
       </div>
       <p>
@@ -233,27 +247,25 @@
 {% block footer %}
 {% endblock %}
 <style type="text/css">
-body {
+body, html {
 margin-right: 20px;
 margin-left: 20px;
+background-color: #fcfcfc;
 }
-.grid-top {
-margin-right: 10px;
-margin-left: 10px;
-margin-top: 10px;
-margin-bottom: 30px;
-padding-top: 30px;
-padding-bottom: 40px;
-background: #58585b;
-color: #FFFFFF;
-border-radius: 0px;
-box-shadow: 0 0 2px rgba(34, 25, 25, 0.4);
+a {
+    color: #1b1b1b;
+    text-decoration: none;
 }
+a:hover {
+  color: #4183c4;
+  text-decoration: none;
+}
+
 #mian-container {
 min-height: 100vh;
 }
 #header-details {
-font-size: 15px;
+font-size: 18px;
 line-height: 22px;
 }
 #quick-word-description {
@@ -263,11 +275,11 @@ padding-bottom: 20px;
 #sub-button {
 text-decoration: none;
 color: black;
+
 }
 #space-between {
 padding-right: 5px;
 padding-left: 5px;
-padding-top: 15px;
 font-size: 14px;
 }
 .grid-padding {
@@ -284,6 +296,9 @@ margin-left: 20px;
 .card-text {
 font-size: 20px;
 padding-bottom: 15px;
+}
+.ui.message {
+background-color: #41444b;
 }
 .content {
 padding-bottom: 5px;

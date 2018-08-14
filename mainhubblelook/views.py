@@ -48,7 +48,7 @@ article form as users can post from here
 
 '''
 class Offical_Letter_Detail_View(DetailView):   # official letter details view 
-    template_name = 'official-letter.html'
+    template_name = 'official-letter-view.html'
     model = OfficalLetter
     queryset = OfficalLetter.objects.all()
     context_object_name = 'letter'

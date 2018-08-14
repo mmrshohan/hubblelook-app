@@ -11,10 +11,13 @@
         <div class="col-lg-2 col-sm-1"></div>
         <div class="col-lg-8 col-sm-10">
           {% autoescape off %}
+          <!--
           <h1 class="ui header" style='font-size: 40px; word-spacing: 8px; letter-spacing: 2px;'>
           {{ article.title|capfirst }}
           
           </h1>
+          -->
+          <p style="cursor:pointer;" class="uk-heading-primary uk-text-bold"> {{ article.title|capfirst }} </p>
           <div class="sub header"> </div>
           <div class="item">
             <div class="content">
@@ -52,6 +55,11 @@
 
   
   <style type="text/css" media="screen">
+
+  html, body {
+    margin-left: 10px;
+    margin-right:10px;
+  }
 
   .article{
   font-size: 16px;

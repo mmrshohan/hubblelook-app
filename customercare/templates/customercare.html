@@ -32,10 +32,12 @@
 			<div class="row">
 				<div class="col-lg-3"> </div>
 				<div class="col-lg-6">
-					
-					<a style="text-decoration: none; color: black;" href="{% url 'customecare-article' blog.id blog.slug %}" ><h5 style="cursor: pointer;">{{ blog.title }}</h5></a>
-					<div class="uk-text-meta"> {{ blog.topic|upper }} </div>
-					<p> by {{ blog.written_by }} </p>
+					<a style="text-decoration: none; color: black;" href="{% url 'customecare-article' blog.id blog.slug %}"> <p class="uk-text-large uk-text-bold" style="cursor: pointer;">{{ blog.title }}</p> </a>
+					<div> {{ blog.topic|upper }} </div>
+					<div style="font-size: 16px;"> {{ blog.details|capfirst|truncatewords:70 }} </div>
+					{% if blog.written_by %}
+						<p style="padding-top: 15px;" class="uk-text-meta"> Written by {{ blog.written_by }} </p>
+					{% endif %}
 					
 				</li>
 			</ul>

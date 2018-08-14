@@ -36,9 +36,9 @@ class QuickWord(models.Model):
 		(ASK, 'ASK'), 
 		(FINACIAL_MARKET, 'FINANCIAL MARKET')
 		)
-	
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, default=1)
 	pub_time = models.DateTimeField('Publish time', auto_now=True, auto_now_add=False)
-	micro_thought = models.CharField(max_length=200, blank=False, null=False) 
+	micro_thought = models.CharField(max_length=200, null=False) 
 	likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='likes')
 	topic = models.CharField(max_length=2000, null=True, blank=True)
 	Initial_keyword_choices = models.CharField(
@@ -64,7 +64,7 @@ class QuickWord(models.Model):
 
 class AddProduct(models.Model):
 	
-	
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, default=1)
 	product_tumbline = models.ImageField(null=True, blank=True)
 	slug = models.SlugField(max_length=500, null=True, blank=True)
 	product_name = models.CharField(max_length=50)
@@ -112,6 +112,7 @@ class Article(models.Model):
 	 choices=INITIAL_KEYWORD, 
 	 default=GENERAL
 	 )
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, default=1)
 	title = models.CharField(max_length=500, null=False, blank=False)
 	slug = models.SlugField(max_length=500, null=True, blank=True)
 	micro_article = RichTextField()

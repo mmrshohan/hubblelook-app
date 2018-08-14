@@ -1,19 +1,19 @@
 <!-- Anything related to investment and contribution  -->
 {% extends 'base.html' %}
 {% block body %}
-	<div class="main-container">
+	<div id="main-container">
 		<div class="row">
 			<div class="col-lg-2 col-sm-0"></div>
 			<div class="col-lg-9 col-sm-12" style="padding-top: 50px;">
-			<!-- Back to HOME button -->
+				<!-- Back to HOME button -->
 				<a href="{% url 'home' %}">
-					<button class="uk-button uk-button-secondary uk-button-small">BACK TO HOME</button>
+					<button class="uk-button uk-button-secondary uk-button-small uk-box-shadow-medium">BACK TO HOME</button>
 				</a>
-			<!-- HOME button end here -->
+				<!-- HOME button end here -->
 				<div style="padding-top: 100px;">
-					<div class="uk-heading-hero uk-text-cente uk-light">Back us, be our valueable partner</div>
+					<div class="uk-heading-hero uk-text-cente color">Back us, be our valueable partner</div>
 				</div>
-				<h5 class="uk-light" style="padding-top: 30px;"> Hubblelooks unique perspective is to create intutive market communication and analysis platform facility. Recently we have three products which are communication, analysis and customer care and near future surely we will going to increase the number of products.
+				<h5 class="color" style="padding-top: 30px;"> Hubblelooks unique perspective is to create intutive market communication and analysis platform facility. Recently we have three products which are communication, analysis and customer care and near future surely we will going to increase the number of products.
 				<br>
 				The way we are designing our products it is suitable for any market geographically which increases our profit goals. Almost everybody is somehow involving with market communication or analysis and Hubblelook is mature enough to provide their needs.
 				</h5>
@@ -23,90 +23,98 @@
 			</div>
 		</div>
 		<!--  investment details and information -->
+	
 		<div class="row">
 			<div class="col-2"></div>
-			<div class="col-7 text">
-				<div class="ui celled horizontal list uk-light">
-					<div class="item">
-						<a href="#modal-example" uk-toggle>Contact</a>
-						<!-- This is the modal -->
-						<div id="modal-example" uk-modal>
-							<div class="uk-modal-dialog uk-modal-body">
-								<h2 class="uk-modal-title">Headline</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								<p class="uk-text-right">
-									<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-									<button class="uk-button uk-button-primary" type="button">Save</button>
-								</p>
-							</div>
+			<div class="col-8 uk-text-center text uk-light">
+				<a class="link" href=""><span class="uk-heading-primary">Contact</span></a>
+				<a class="link" href="https://pasteapp.com/p/FLoKwjn1iPc"><span style="padding-left:60px;" class="uk-heading-primary">Slides</span></a>
+			</div>
+			<div class="col-2"></div>
+		</div>
+
+
+</div>
+
+			<!-- Footer -->
+			<footer class="footer">
+				
+				<div class="row">
+					<div class="col-2"></div>
+					<div class="uk-text-center col-8">
+						<div class="ui horizontal list">
+							<a class="item uk-text-secendory" href="{% url 'about' %}">ABOUT </a>
+							{% if user.is_authenticated %}
+							<a class="item" href="{% url 'explore' %}"> LEARN </a>
+							{% endif %}
+							<a class="item" href="{% url 'products' %}">PRODUCTS</a>
+							<a class="item " href="{% url 'job-view' %}">JOBS</a>
+							<a class="item " href="{% url 'Privacy-View' %}">PRIVACY AND TERMS</a>
+							<a class="item " href="{% url 'InvCon-view' %}">INVESTMENT</a>
+							<a class="item " href="{% url 'customecare-view' %}"> KNOWLEDGE </a>
+							<a class="item " href="{% url 'Contact-View' %}">CONTACT</a>
 						</div>
 					</div>
-					<div class="item"><a href="https://docs.google.com/presentation/d/1-2kqOdHiNkJ1IusINlmHI_a0um_5ujS_V9uNxd3u2Qc/edit#slide=id.p"> slides </a></div>
-					<div class="item"><a href="mmrshohan09@gmail.com"> swift-contact </a></div>
+					
+					<!--copyright code-->
+					<div class="col-2">
+						<div class="ui right floated horizontal list">
+							<div class="disabled item uk-text-muted" href="#">© Hubblelook 2018</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="col-3"></div>
-		</div>
-	</div>
-	<!-- Footer -->
-  <footer class="footer">
-    
-    <div class="row">
-      <div class="col-2"></div>
-      <div class="uk-text-center col-8">
-        <div class="ui horizontal list">
-          <a class="item uk-text-muted" href="{% url 'about' %}">ABOUT </a>
-          {% if user.is_authenticated %}
-            <a class="item uk-text-muted" href="{% url 'explore' %}"> LEARN </a>
-          {% endif %}
-          <a class="item uk-text-muted" href="{% url 'products' %}">PRODUCTS</a>
-          <a class="item uk-text-muted" href="{% url 'job-view' %}">JOBS</a>
-          <a class="item uk-text-muted" href="{% url 'Privacy-View' %}">PRIVACY AND TERMS</a>
-          <a class="item uk-text-muted" href="{% url 'InvCon-view' %}">INVESTMENT</a>
-          <a class="item uk-text-muted" href="{% url 'InvCon-view' %}">INVESTMENT</a>
-          <a class="item uk-text-muted" href="{% url 'customecare-view' %}"> KNOWLEDGE </a>
-          <a class="item uk-text-muted" href="{% url 'Contact-View' %}">CONTACT</a>
-        </div>
-      </div>
-      
-      <!--copyright code-->
-      <div class="col-2">
-        <div class="ui right floated horizontal list">
-          <div class="disabled item uk-text-muted" href="#">© Hubblelook 2018</div>
-        </div>
-      </div>
-    </div>
-    
-  </footer>
-	<!-- footer end -->
-	
-	<style type="text/css" media="screen">
-	body, html {
-		background-color: #333332;
-		margin-left:10px;
-		margin-right:10px;
-	}
-	.main-container {
-		min-height: 100%;
-	}
-	.text {
-		text-align: center;
-		padding-top: 200px;
-	}
-	.footer {
-		position: relative;
-		margin-top:40px;
-		margin-bottom: 20px;
-		margin-left: 0px;
-		margin-right: 0px;
-		}
-	  footer div a {
-		  font-weight: bold;
-		  font-family:  'Roboto', sans-serif;
 
-	  }
+				
+			</footer>
 		
-		
-	</style>
+			<!-- footer end -->
+			
+			<style type="text/css" media="screen">
+			body, html {
+				background-color: #979eae; 
+				margin-left:10px;
+				margin-right:10px;
+			}
+			#main-container {
+				min-height: 100vh;
+			}
+			.text {
 	
-{% endblock %}
+				padding-top: 200px;
+				cursor: pointer;
+			}
+			.footer {
+				position: relative;
+				margin-top:40px;
+				margin-bottom: 20px;
+				margin-left: 0px;
+				margin-right: 0px;
+				}
+			footer div a {
+				font-weight: bold;
+				font-family:  'Roboto', sans-serif;
+		
+			}
+			.color {
+				color: #41444b;
+			}
+			.ui.list>a.item {
+				color:#41444b;
+			}
+			.ui.list>a.item:hover {
+				text-decoration: none;
+			}			
+			.link {
+		
+				text-decoration: none;
+			}
+			.link:hover {
+				color:#41444b;
+				text-decoration: none;
+			}
+
+				
+				
+			</style>
+			
+		{% endblock %}

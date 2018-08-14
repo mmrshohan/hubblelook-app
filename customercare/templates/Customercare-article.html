@@ -9,14 +9,15 @@
 	{% endblock %}
 	<div id="main-container">
 		<div class="row">
-			<div class="col-1"></div>
-			<div class="col-10">
+			<div class="col-lg-2 col-sm-0"></div>
+			<div class="col-lg-8 col-sm-12">
 				{% autoescape off %}
-				<h1>{{ blogs.title|capfirst }}</h1>
+				<p style="cursor: pointer;" class="uk-text-bold uk-heading-primary">{{ blogs.title|capfirst }}</p>
+				<div class="uk-text-primary"> {{ blogs.topic|upper }} </div>
 				<p>{{ blogs.details|capfirst  }}</p>
 			{% endautoescape %}
 		</div>
-		<div class="col-1"></div>
+		<div class="col-lg-2 col-sm-0"></div>
 	</div>
 </div>
 <!--  Footer  -->
@@ -25,6 +26,10 @@
 	{% endblock %}
 
 	<style>
+	html, body {
+		margin-right: 10px;
+		margin-left: 10px;
+	}
 		#main-container {
 			min-height: 100vh;
 			padding-top: 50px;

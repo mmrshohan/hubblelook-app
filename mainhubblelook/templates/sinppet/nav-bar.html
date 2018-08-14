@@ -5,7 +5,7 @@
       <div class="meta" style="padding-left: 4px; color: #8d8d8d;">
         Alpha
       </div>
-      <div class="item uk-visible@s"><span id="logo-title"> A Market Communication and Analysis Platform </span></div>
+      <div class="item uk-visible@s"><span id="logo-title"> Connect, Communicate, and Analyse Market </span></div>
     </a>
     <div class=" right menu fitted item">
       <!-- Uikits dropdown-->
@@ -28,8 +28,7 @@
         <!-- user profile redirect option through icon -->
         <div class="item user">
           <a  href="{% url 'portfolio' user.username  %}" class="uk-text-capitalize"
-            uk-tooltip="title: Hi {{ user.username }}, this is your profile; pos: bottom"
-            href="">
+            uk-tooltip="title: Hi {{ user.username }}, this is your profile; pos: bottom">
             <b class="user-link uk-visible@s">{{ user.username|capfirst|truncatewords:1 }} </b>
             <i class="user outline icon uk-hidden@s"></i>
           </a>
@@ -109,11 +108,11 @@
     font-size: 30px;
     }
     #logo-title {
-    font-family: 'Bitter', serif;
+  
     padding-top: 2px;
     font-weight:bold;
-    width: 180px;
-    color: #707070;
+    width: 200px;
+    color: black;
     }
     #user-link {
     text-decoration: none;
