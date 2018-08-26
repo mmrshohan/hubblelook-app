@@ -10,8 +10,8 @@
           <div class="col-lg-3 col-sm-0"></div>
           <div class="col-lg-6 col-sm-12 position">
             <div class="uk-text-center">
-              <a href="{% url 'home' %}"> <p id="logo">  Hubblelook </p>
-              <p id="logo-title" class="uk-text-center"> A Market Communication and Analysis Platform </p>
+              <a class="Hubblelook" href="{% url 'home' %}"> <p id="logo">  Hubblelook </p>
+              <p id="logo-title" class="uk-text-center uk-text-lead uk-text-bold"> A Market Communication and Analysis Platform </p>
             </a>
           </div>
           <!--
@@ -40,7 +40,7 @@
     <!--===============================================================================-->
     <style>
     html, body {
-    background-color: #b0bec5;
+    background-color: #979eae;
     margin-right: 10px;
     margin-left: 10px;
     }
@@ -50,17 +50,16 @@
     #logo {
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 50px;
     color: #263238;
     
     }
     #logo-title {
-    font-family: 'Bitter', serif;
-    font-weight:bold;
     color: #263238;
-    padding-bottom:20px;
-    
-    
+    padding-bottom:20px; 
+    }
+    .Hubblelook:hover {
+      text-decoration: none;
     }
     </style>
   {% endblock %}

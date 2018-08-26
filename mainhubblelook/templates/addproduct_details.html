@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
+  <!--  Navigation bar-->
+  {% include 'sinppet/nav-bar.html' %}
+  {% block nav %}
+  {% endblock %}
 <div id="main-container">
   <div class="container">
     <div class="row">
@@ -17,7 +21,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <p class="h1"> {{ addproduct.product_name }} </p>
+          <p class="uk-heading-primary uk-text-bold"> {{ addproduct.product_name }} </p>
           <p class="display-4 title"> {{ addproduct.title }} </p>
           <p href="" id="url"><b>{{ addproduct.product_url|urlize }}</b></p>
           {% if addproduct.Prices is not None %}
@@ -33,17 +37,7 @@
     </div>
   </div>
 {% endautoescape %}
-<div class="padding container">
-  <div class="row">
-    <div class="col-12">
-      <div id="comment" class="content">
-        <i class="archive icon"></i>
-        <span class="uk-text" id="keep-it">  Save it  </span>
-       
-      </div>
-    </div>
-  </div>
-</div>
+
 </div>
 
 {% include 'sinppet/footer.html' %}

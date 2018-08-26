@@ -16,12 +16,14 @@
 				</div>
 				<div class=" uk-background-muted uk-box-shadow-medium ">
 					<div class="text-padding">
+						{% autoescape off %}
 						
 						<p class="uk-heading-primary uk-text-bold">  {{ letter.title }} </p>
 						<p>Letter provided by  <span class="uk-text-meta"> {{ letter.letter_from|upper }}</span> </p>
 						<h6> {{ letter.to_whom }} </h6>
 						<p> {{ letter.letter }} </p>
 						<p class="uk-text-meta"> Published: {{ letter.pub_time|timesince }} </p>
+						{% endautoescape %}
 					</div>
 				</div>
 			</div>

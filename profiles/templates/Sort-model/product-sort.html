@@ -21,8 +21,7 @@
     </div>
     <div class="col-lg-2 col-sm-0"></div>
   </div>
-   <!-- buttons end here -->
-
+  <!-- buttons end here -->
   <div class="row" style="padding-top:60px;">
     <div class="col-lg-3 col-sm-0"></div>
     <div class="col-lg-6 col-sm-12">
@@ -31,60 +30,58 @@
         <div class="ui itmes">
           <div class="item">
             <div class="content">
-              <div class="uk-text-right">
-                <span uk-icon="more"></span>
-                <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
-                <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <span>  {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div>
-              </div>
-              
-              <div class="uk-text-center">
-                <div class="uk-text-lead">
-                  <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
-                </div>
-                <p>
-                  {% if product.launched_time %}
-                    <span class="date"><span class="launched-in">Launched in</span> <strong> Sep 2014</strong></span>
-                    {%  endif %}
-                  </p>
-                </div>
-                
-                <div class="extra content">
-                  <span id="keep-it">
-                    Save
-                  </span>
-                  <span id="analysis"> Analysis </span>
-                  
+              <p>{{ product.user|capfirst }} <span class="meta"> CEO, Hubblelook </span>  <span class="uk-align-right" uk-icon="more"></span></p>
+              <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
+                <span> {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div>
+                <div class="uk-text-center">
+                  <div class="uk-text-lead uk-text-bold">
+                    <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
+                  </div>
+                  <p>
+                    <!-- product launch time -->
+                    {% if product.launched_time %}
+                      <span class="date"><span class="launched-in">Launched in</span> <strong> {{ product.launched_time }} </strong></span>
+                      {%  endif %}
+                    </p>
+                  </div>
+                  <div class="extra content">
+                    <span id="keep-it">
+                      Save
+                    </span>
+                    <span id="analysis"> Analysis </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="ui section divider"></div>
-          {% empty %}
-          <p class="uk-text-lead"> No product has been posted by you </p>
-        {% endfor %}
+            <div class="ui section divider"></div>
+            {% empty %}
+            <p class="uk-text-lead"> No product has been posted by you </p>
+          {% endfor %}
+        </div>
       </div>
+      <div class="col-lg-3 col-sm-0"></div>
     </div>
-    <div class="col-lg-3 col-sm-0"></div>
-  </div>
-  {% include 'sinppet/footer.html' %}
-  {% block footer %}
-  {% endblock %}
-
-  <style type="text/css" media="screen">
-  #mian-container{
+    {% include 'sinppet/footer.html' %}
+    {% block footer %}
+    {% endblock %}
+    <style type="text/css" media="screen">
+    #mian-container{
     min-height: 100vh;
-  }
+    }
+    #sub-button {
+    text-decoration: none;
+    color: black;
+    }
+    #space-between {
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 20px;
+    }
 
-  #sub-button {
-  text-decoration: none;
-  color: black;
-  }
-  #space-between {
-  padding-right: 5px;
-  padding-left: 5px;
-  padding-top: 20px;
-
-  
-  
-  </style>
-{% endblock %}
+    #product:hover {
+      text-decoration: none;
+    }
+    
+    
+    </style>
+  {% endblock %}

@@ -31,6 +31,7 @@ class Profile(models.Model):
 	url = models.URLField(max_length=200, null=True, blank=True)
 	additional_url = models.URLField(max_length=200, null=True, blank=True )
 	established = models.DateField(auto_now=False, auto_now_add=False, default=None)
+	investors = models.CharField(max_length=2000, null=True, blank=True)
 	about_details = RichTextField(null=False, blank=False, default=None)
 	Type_of_company = models.CharField(
 	 max_length=20,

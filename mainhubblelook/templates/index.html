@@ -19,7 +19,7 @@
           <input type="search" placeholder="Search..." name="q" >
           <button type="submit" class="ui secondary button" value="search"> Search </button>
         </div>
-        <!-- Quick learn button  -->
+        <!-- Quick learn button and modal -->
         <div class="uk-text-center" style="padding-bottom: 20px;">
           <button href="#modal-full" uk-toggle class="uk-button uk-button-text"> Quick Learn and Tips </button>
           <div id="modal-full" class="uk-modal-full" uk-modal>
@@ -28,7 +28,7 @@
               <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
                 <div class="uk-padding-large uk-align-center" uk-height-viewport>
                   <!-- explaination -->
-                  <p class="uk-heading-primary uk-light">Hubblelook here to maintain your businesses, financial life or nurture your financial knowledge</p>
+                  <p class="uk-heading-primary uk-light">Hubblelook here to help your businesses, financial life or nurture your financial knowledge</p>
                   <ul>
                     
                     <p class="uk-heading-primary uk-text-bold">Tips:</p>
@@ -57,10 +57,10 @@
   <div class="home-header">
     <div class="jumbotron uk-box-shadow-medium">
       <div class="container">
-        <div class="ui huge header" style="font-size: 6em; color: #e6edff; ">Connect and communicate with the Market.<br> Market Analysis. Great customer sevice. </div>
-        <p class="uk-text-lead" style="padding-bottom: 30px;">
-          Know what people thinks about your products / Studing market is easy / Market resrerch become for everyone / To make connection with market Hubblelook is all you need.
-        </p>
+        <div class="uk-heading-primary uk-text-bold" style="color: #e6edff; "> All you need to connect and communicate with the Market.<br> Market analysis. Great customer sevice. </div>
+    
+        <p class="uk-text-lead" style="padding-bottom: 30px; padding-top: 20px;">
+          Studying market becomes easier/ understand what people think about your products/ market research is for everyone.</p>
         <!-- Explore button -->
         <button class="uk-button uk-align-center uk-button-danger uk-box-shadow-medium " >
         <a style="color: white"  href="{% url 'explore' %}" >Learn more </a>
@@ -83,7 +83,7 @@
               <div class="item">
                 <div class="content">
                   <div>
-                    <p>{{  user.username }} <span class="meta"> CEO, Hubblelook </span>  <span class="right floated">  {{ obj.pub_time|naturaltime }} </span></p>
+                    <p>{{ obj.user|capfirst }} <span class="meta"> CEO, Hubblelook </span>  <span class="right floated">  {{ obj.pub_time|naturaltime }} </span></p>
                     
                   </div>
                   <p class="uk-text-lead"><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.micro_thought }}</p>
@@ -109,8 +109,8 @@
               <div class="content">
                 <div>
                   <span class="right floated">  {{ article.article_pub_time|naturaltime }} </span>
-                  <p>{{ user.username }} <span class="meta"> CEO, Hubblelook </span> </p>
-                  <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px;"> <span class="meta"> ARTICLE </span></div>
+                  <p>{{ article.user|capfirst }} <span class="meta"> CEO, Hubblelook </span> </p>
+                  <div style="padding-bottom: 5px; padding-top:0px;"> <span> ARTICLE </span></div>
                   
                 </div>
                 <a class="uk-text-lead" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
@@ -144,55 +144,52 @@
               official letter
             </div>
             
-            <span class="uk-align-right" uk-icon="more"></span>
+            <span class="uk-align-right"> {{ Oletter.pub_time|naturaltime }} </span>
             
           </div>
-          <a class="uk-text-lead" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
+          <a class="uk-text-lead letter" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
           <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
-            <span>  {{ Oletter.pub_time|naturaltime }}</span>
           </div>
           <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
         </div>
       </div>
       <div class="ui section divider"></div>
     {% endfor %}
-    <!--================================================================================================================ -->
+    <!--========================================================================================== -->
     <!-- card type for products  -------------------------------------------------------------------------------------- -->
-    <!--================================================================================================================ -->
+    <!--========================================================================================== -->
     {% for product in addproduct %} <!-- product card -->
     <div class="ui itmes">
       <div class="item">
         <div class="content">
-          <div class="uk-text-right">
-            <span uk-icon="more"></span>
-            <p>{{ user.username }} <span class="meta"> CEO, Hubblelook </span> </p>
-            <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <span>  {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div>
+          <p>{{ product.user|capfirst }} <span class="meta"> CEO, Hubblelook </span>
+          <span class="uk-align-right"> {{ product.pub_time|naturaltime }} </span>
+        </p>
+        <div style="padding-bottom: 5px; padding-top:0px; "><span>PRODUCT</span></div>
+        <div class="uk-text-center">
+          <div class="uk-text-lead uk-text-bold">
+            <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
+          </div>
+          <p>
+            {% if product.launched_time %}
+              <span class="date"><span class="launched-in">Launched in</span> <strong>{{ product.launched_time }}</strong></span>
+              {%  endif %}
+            </p>
           </div>
           
-          <div class="uk-text-center">
-            <div class="uk-text-lead">
-              <a id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
-            </div>
-            <p>
-              {% if product.launched_time %}
-                <span class="date"><span class="launched-in">Launched in</span> <strong> Sep 2014</strong></span>
-                {%  endif %}
-              </p>
-            </div>
+          <div class="extra content">
+            <span >
+              Save
+            </span>
+            <span id="analysis"> Analysis </span>
             
-            <div class="extra content">
-              <span >
-                Save
-              </span>
-              <span id="analysis"> Analysis </span>
-              
-            </div>
           </div>
         </div>
       </div>
-      <div class="ui section divider"></div>
-    {% endfor %}
-  </div>
+    </div>
+    <div class="ui section divider"></div>
+  {% endfor %}
+</div>
 </div>
 <!---
 --->
@@ -213,61 +210,67 @@
 body,
 html {
 }
-.main-header {
-padding-left: 30px;
-padding-right: 30px
-}
-.jumbotron {
-background-color: #979ba9;
-}
-.color {
-color:#002984;
-}
-.padding {
-padding-top: 80px
-}
-.uk-modal-dialog {
-background-color: #979eae;
-}
-.uk-modal-close-full {
-background-color: #979eae;
-color: white;
-}
-.sub-header {
-padding-top: 10px;
-font-size: 16px;
-color: #8d8d8d;
-cursor: pointer
-}
-.sub-option {
-padding-top: 10px
-}
-#exploreBtn {
-margin-left: 45%
-}
-#quick-word-description {
-padding-left: 10px
-}
-.launched-in {
-color: #1976D2;
-font-weight: bold
-}
-#align-icon {
-padding-left: 4px
-}
-#product-post-card-image {
-width: 769px;
-height: 270px
-}
-.grid-image {
-width: 150px;
-height: 150px
-}
-#product {
-text-align: center
-}
-.article-details {
-font-size: 15px
-}
+  .main-header {
+  padding-left: 30px;
+  padding-right: 30px
+  }
+  .jumbotron {
+  background-color: #979ba9;
+  }
+  .color {
+  color:#002984;
+  }
+  .padding {
+  padding-top: 80px
+  }
+  .uk-modal-dialog {
+  background-color: #979eae;
+  }
+  .uk-modal-close-full {
+  background-color: #979eae;
+  color: white;
+  }
+  .sub-header {
+  padding-top: 10px;
+  font-size: 16px;
+  color: #8d8d8d;
+  cursor: pointer
+  }
+  .sub-option {
+  padding-top: 10px
+  }
+  #exploreBtn {
+  margin-left: 45%
+  }
+  #quick-word-description {
+  padding-left: 10px
+  }
+  .launched-in {
+  color: #1976D2;
+  font-weight: bold
+  }
+  #align-icon {
+  padding-left: 4px
+  }
+  #product-post-card-image {
+  width: 769px;
+  height: 270px
+  }
+  .grid-image {
+  width: 150px;
+  height: 150px
+  }
+  #product {
+  text-align: center
+  }
+  #product:hover {
+  text-decoration: none;
+  }
+  .article-details {
+  font-size: 15px
+  }
+  .letter:hover {
+  text-decoration: none;
+  }
 </style>
 {% endblock %}
