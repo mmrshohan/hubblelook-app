@@ -15,8 +15,9 @@
     <div class="row">
       <div class="col-lg-2"></div>
       <div class=" col-lg-8">
-        <div class="ui fluid action input" style="padding-bottom: 20px;">
-          <input type="search" placeholder="Search..." name="q" >
+        <!-- Main search bar  -->
+        <div class="ui fluid action input" style="padding-bottom: 20px; padding-top:50px;">
+          <input type="search" placeholder="Search anything about market, economy and more" name="q" >
           <button type="submit" class="ui secondary button" value="search"> Search </button>
         </div>
         <!-- Quick learn button and modal -->
@@ -28,16 +29,17 @@
               <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
                 <div class="uk-padding-large uk-align-center" uk-height-viewport>
                   <!-- explaination -->
-                  <p class="uk-heading-primary uk-light">Hubblelook here to help your businesses, financial life or nurture your financial knowledge</p>
+                  <p class="uk-heading-primary uk-text-bold"> Know all tricks and tips about Hubblelook to make your life easier and simpler</p>
                   <ul>
                     
                     <p class="uk-heading-primary uk-text-bold">Tips:</p>
                     <div class="uk-text-lead">
-                      <li><span class="uk-light"># SEARCH</span> Just search you would see the result. No need to use any Hashtag </li>
-                      <li><span class="uk-light">#POST</span>  Be precise before posting your micro thought </li>
-                      <li> <span class="uk-light">#COMPANY</span>  As a company,  you should put as much information as possible to the profile section</li>
-                      <li><span class="uk-light">#POST</span>  Initial keywords would help you to shape your though</li>
-                      <li><span class="uk-light">#POST</span> Hubblelook is very easy to use due to "Initial Keywords"</li>
+                      <li ><span># SEARCH</span> Just search to see the result. No need to use any Hashtag </li>
+                      <li ><span># SEARCH</span> To get specific search result, use our default "initial Keywords" </li>
+                      <li ><span>#POST</span>  Be precise before posting your micro thoughts or micro article </li>
+                      <li > <span>#COMPANY</span>  As a company, you should put as much information as possible into your profile section</li>
+                      <li ><span>#POST</span>  Initial keywords would help you to shape your thoughs</li>
+                      <li ><span>#POST</span> Hubblelook is very easy to use due to "Initial Keywords" facility</li>
                     </div>
                   </ul>
                   <!-- explaination end here -->
@@ -57,13 +59,13 @@
   <div class="home-header">
     <div class="jumbotron uk-box-shadow-medium">
       <div class="container">
-        <div class="uk-heading-primary uk-text-bold" style="color: #e6edff; "> All you need to connect and communicate with the Market.<br> Market analysis. Great customer sevice. </div>
+        <div class="uk-heading-primary uk-text-bold" style="color: #e6edff; padding-top: 50px; "> All you need to connect and communicate with the Market.<br> Know the market. Market analysis for everyone. Engage with your customer. </div>
     
-        <p class="uk-text-lead" style="padding-bottom: 30px; padding-top: 20px;">
-          Studying market becomes easier/ understand what people think about your products/ market research is for everyone.</p>
+        <p class="uk-text-lead uk-light" style="padding-bottom: 30px; padding-top: 30px;">
+          Communicate market from every perspective/ Studying market becomes easier/ Understand what people think about your products.</p>
         <!-- Explore button -->
         <button class="uk-button uk-align-center uk-button-danger uk-box-shadow-medium " >
-        <a style="color: white"  href="{% url 'explore' %}" >Learn more </a>
+        <a style="color: white;"  href="{% url 'explore' %}" >Learn more </a>
         </button>
       </div>
     </div>
@@ -215,7 +217,7 @@ html {
   padding-right: 30px
   }
   .jumbotron {
-  background-color: #979ba9;
+  background-color: #272329; #979ba9   /* Background color for Jumbotron */
   }
   .color {
   color:#002984;
@@ -224,10 +226,10 @@ html {
   padding-top: 80px
   }
   .uk-modal-dialog {
-  background-color: #979eae;
+  background-color: #e6edff;
   }
   .uk-modal-close-full {
-  background-color: #979eae;
+  background-color: #e6edff;   /* another proposed color #979eae */
   color: white;
   }
   .sub-header {
@@ -263,6 +265,14 @@ html {
   #product {
   text-align: center
   }
+  .uk-button-danger {
+    background-color: #c66a53;
+  }
+  .uk-button-danger:hover {
+    background-color: #c66a53;
+  }
+  
+
   #product:hover {
   text-decoration: none;
   }

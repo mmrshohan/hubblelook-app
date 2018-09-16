@@ -17,16 +17,16 @@
         {% endif %}
         <!--  url  -->
         {% if edit.url %}
-          <a style ="color:blue;" href="{{ edit.url }}"><p class="uk-text-large" style ="color:blue;">{{ edit.url|urlize }}</p></a>
+          <a  href="{{ edit.url }}"><p class="uk-text-large">{{ edit.url|urlize }}</p></a>
         {% endif %}
-        {% if edit.Type_of_company %}
-          <p class="ui header"> Type: {{ edit.Type_of_company }}
-            <br> Headquarter: America
-            <br> Stock: NASDEQ
+        {% if edit.Type_of_company %}    <!--  Type of a company  -->
+          <p class="uk-text-lead"> Type: {{ edit.Type_of_company }}
+            <br> Headquarter: {{ edit.Headquarter }}
+            <br> Stock: {{ edit.stock_market }}
           </p>
         {% endif %}
         {% if edit.additional_url %}
-          <p class="ui header"> Addtional link:  <a href="{{ edit.additional_url }}">{{ edit.additional_url }} </a></p>
+          <p class="lead"> Secondary: <a href="{{ edit.additional_url }}">{{ edit.additional_url }} </a></p>
         {% endif %}
         
       </div>
@@ -39,7 +39,7 @@
         {{ edit.investors|capfirst }}
         {% autoescape off %}
         <div class=" uk-heading-primary uk-text-bold"> Details of {{ edit.name }}
-          <span><i class="info circle icon"></i></span></div>
+        </div>
           <p id="header-details">{{ edit.about_details|capfirst|truncatewords:100 }} </p>
         {% endautoescape %}
         
@@ -82,10 +82,10 @@
 <div class="col-10">
   <div style="padding-bottom: 50px;">
     <p style="text-align: center;">
-      <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
-      <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> products </a></button>
-      <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> articles </a></button>
-      <button id="space-between"class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> official letter </a></button>
+      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
+      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> products </a></button>
+      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> articles </a></button>
+      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> official letter </a></button>
     </p>
   </div>
 </div>
@@ -112,10 +112,12 @@
                 <span class="right floated" uk-icon="more"></span>
                 <div uk-dropdown>
                   <ul class="uk-nav uk-dropdown-nav">
+                    <!-- delete view -->
                     <form action="{% url 'micro-thoughts-delete' obj.id %}" method="post">{% csrf_token %}
-                      <p>Are you sure you want to delete "{{ object }}"?</p>
+                      <p>Are you sure you want to delete?</p>
                       <input type="submit" value="Confirm"/>
                     </form>
+                    <!---->
                   </ul>
                 </div>
                 <p>{{  obj.user|capfirst }} <span class="meta"> Ceo, Hubblelook </span> </p>
@@ -249,14 +251,12 @@ margin-right: 20px;
 margin-left: 20px;
 background-color: #fcfcfc;
 }
-a {
-color: #1b1b1b;
-text-decoration: none;
-}
+
 a:hover {
 color: #4183c4;
 text-decoration: none;
 }
+
 #mian-container {
 min-height: 100vh;
 }
