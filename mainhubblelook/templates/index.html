@@ -16,13 +16,16 @@
       <div class="col-lg-2"></div>
       <div class=" col-lg-8">
         <!-- Main search bar  -->
-        <div class="ui fluid action input" style="padding-bottom: 20px; padding-top:50px;">
-          <input type="search" placeholder="Search anything about market, economy and more" name="q" >
-          <button type="submit" class="ui secondary button" value="search"> Search </button>
+        <div style="padding-bottom: 20px; padding-top:50px; padding-left: 4px; padding-right: 4px;">
+          <input  type="search" placeholder="Search anything about market, economy and more" name="q" >
+          <div class="uk-text-center">
+            <button style="margin-top: 20px;" type="submit" class="ui large button uk-box-shadow-medium" value="search"> Search </button>
+            <button style="margin-top: 20px;" href="#modal-full" uk-toggle class="ui large button uk-box-shadow-medium"> Quick Learn and Tips </button>
+          </div>
         </div>
         <!-- Quick learn button and modal -->
         <div class="uk-text-center" style="padding-bottom: 20px;">
-          <button href="#modal-full" uk-toggle class="uk-button uk-button-text"> Quick Learn and Tips </button>
+          
           <div id="modal-full" class="uk-modal-full" uk-modal>
             <div class="uk-modal-dialog">
               <div class="uk-modal-close-full uk-close-large" uk-close></div>
@@ -60,9 +63,9 @@
     <div class="jumbotron uk-box-shadow-medium">
       <div class="container">
         <div class="uk-heading-primary uk-text-bold" style="color: #e6edff; padding-top: 50px; "> All you need to connect and communicate with the Market.<br> Know the market. Market analysis for everyone. Engage with your customer. </div>
-    
+        
         <p class="uk-text-lead uk-light" style="padding-bottom: 30px; padding-top: 30px;">
-          Communicate market from every perspective/ Studying market becomes easier/ Understand what people think about your products.</p>
+        Communicate market from every perspective/ Studying market becomes easier/ Understand what people think about your products.</p>
         <!-- Explore button -->
         <button class="uk-button uk-align-center uk-button-danger uk-box-shadow-medium " >
         <a style="color: white;"  href="{% url 'explore' %}" >Learn more </a>
@@ -212,75 +215,96 @@
 body,
 html {
 }
-  .main-header {
-  padding-left: 30px;
-  padding-right: 30px
-  }
-  .jumbotron {
-  background-color: #272329; #979ba9   /* Background color for Jumbotron */
-  }
-  .color {
-  color:#002984;
-  }
-  .padding {
-  padding-top: 80px
-  }
-  .uk-modal-dialog {
-  background-color: #e6edff;
-  }
-  .uk-modal-close-full {
-  background-color: #e6edff;   /* another proposed color #979eae */
-  color: white;
-  }
-  .sub-header {
-  padding-top: 10px;
-  font-size: 16px;
-  color: #8d8d8d;
-  cursor: pointer
-  }
-  .sub-option {
-  padding-top: 10px
-  }
-  #exploreBtn {
-  margin-left: 45%
-  }
-  #quick-word-description {
-  padding-left: 10px
-  }
-  .launched-in {
-  color: #1976D2;
-  font-weight: bold
-  }
-  #align-icon {
-  padding-left: 4px
-  }
-  #product-post-card-image {
-  width: 769px;
-  height: 270px
-  }
-  .grid-image {
-  width: 150px;
-  height: 150px
-  }
-  #product {
-  text-align: center
-  }
-  .uk-button-danger {
-    background-color: #c66a53;
-  }
-  .uk-button-danger:hover {
-    background-color: #c66a53;
-  }
-  
+.main-header {
+padding-left: 30px;
+padding-right: 30px
+}
+.jumbotron {
+background-color: #272329; #979ba9   /* Background color for Jumbotron */
+}
+.color {
+color:#002984;
+}
+.padding {
+padding-top: 80px
+}
+.uk-modal-dialog {
+background-color: #e6edff;
+}
+.ui.secondary.button{
+  background-color: #16171b;
+}
+.uk-modal-close-full {
+background-color: #e6edff;   /* another proposed color #979eae */
+color: white;
+}
+.sub-header {
+padding-top: 10px;
+font-size: 16px;
+color: #8d8d8d;
+cursor: pointer
+}
+.sub-option {
+padding-top: 10px
+}
+#exploreBtn {
+margin-left: 45%
+}
+#quick-word-description {
+padding-left: 10px
+}
+.launched-in {
+color: #1976D2;
+font-weight: bold
+}
+#align-icon {
+padding-left: 4px
+}
+#product-post-card-image {
+width: 769px;
+height: 270px
+}
+.grid-image {
+width: 150px;
+height: 150px
+}
+#product {
+text-align: center
+}
+.uk-button-danger {
+background-color: #c66a53;
+}
+.uk-button-danger:hover {
+background-color: #c66a53;
+}
 
-  #product:hover {
-  text-decoration: none;
-  }
-  .article-details {
-  font-size: 15px
-  }
-  .letter:hover {
-  text-decoration: none;
-  }
+#product:hover {
+text-decoration: none;
+}
+.article-details {
+font-size: 15px
+}
+.letter:hover {
+text-decoration: none;
+}
+input[type="search"] {
+border-radius: 2px;
+color: grey;
+background-color: #fff;
+border:1px solid #aaa;
+cursor: text;
+height: 50px;
+width: 100%;
+font-size: 18px;
+padding-left: 5px;
+
+}
+input[type="search"]:hover {
+border-color: black;
+
+}
+input[type="search"]:focus {
+border-color: black;
+}
 </style>
 {% endblock %}

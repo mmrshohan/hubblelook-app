@@ -8,10 +8,10 @@
       <div class="container padding">
         <div class="row">
           <div class="col-lg-3 col-sm-0"></div>
-          <div class="col-lg-6 col-sm-12 position">
+          <div class="col-lg-7 col-sm-12 position">
             <div class="uk-text-center">
               <a class="Hubblelook" href="{% url 'home' %}"> <p id="logo">  Hubblelook </p>
-              <p id="logo-title" class="uk-text-center uk-text-lead uk-text-bold"> A Market Communication and Analysis Platform </p>
+              <p id="logo-title" class="uk-text-center uk-text-lead "> A Market Communication and Analysis Platform </p>
             </a>
           </div>
           <!--
@@ -32,7 +32,7 @@
               <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
             </form>
           </div>
-          <div class="col-lg-3 col-sm-0"></div>
+          <div class="col-lg-2 col-sm-0"></div>
         </div>
       </div>
     </div>
@@ -61,6 +61,24 @@
     .Hubblelook:hover {
       text-decoration: none;
     }
+
+    input[type="text"], [type="password"] {
+        font-size: 16px !important;
+    line-height: 22px !important;
+    letter-spacing: normal !important;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    color: rgb(72, 72, 72) !important;
+    background-color: rgb(255, 255, 255) !important;
+    margin-bottom: 8px !important;
+    position: relative !important;
+    z-index: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: rgb(235, 235, 235) !important;
+    border-radius: 2px !important;
+}
     </style>
   {% endblock %}
 {% endblock %}
