@@ -75,19 +75,21 @@
 </div>
 <div class="ui section divider"></div>
 <!-- end here   -->
+
+
 <!--  Profile buttons  -->
 <div class="row">
-<div class="col-1">
-</div>
-<div class="col-10">
-  <div style="padding-bottom: 50px;">
-    <p style="text-align: center;">
-      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
-      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> products </a></button>
-      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> articles </a></button>
-      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> official letter </a></button>
-    </p>
-  </div>
+ <div class="col-1">
+ </div>
+  <div class="col-10">
+    <div style="padding-bottom: 50px;">
+      <p style="text-align: center;">
+        <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
+        <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> products </a></button>
+        <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> articles </a></button>
+        <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> official letter </a></button>
+      </p>
+    </div>
 </div>
 <div class="col-1"> </div>
 </div>
@@ -113,9 +115,8 @@
                 <div uk-dropdown>
                   <ul class="uk-nav uk-dropdown-nav">
                     <!-- delete view -->
-                    <form action="{% url 'micro-thoughts-delete' obj.id %}" method="post">{% csrf_token %}
-                      <p>Are you sure you want to delete?</p>
-                      <input type="submit" value="Confirm"/>
+                    <form action="{% url 'micro-thoughts-delete' user.username obj.id %}" method="post">{% csrf_token %}
+                      <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
                     </form>
                     <!---->
                   </ul>

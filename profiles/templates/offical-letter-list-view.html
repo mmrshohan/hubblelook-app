@@ -11,7 +11,8 @@
     <div class="col-lg-3 col-sm-0"></div>
     <div class="col-lg-6 col-sm-12" style="padding-top: 50px;">
       <a href="{% url 'offical-letter-form' user.username %}">
-      <button class="fluid ui button">POST OFFICIAL LETTER HERE</button>
+        <!-- official letter post button  -->
+      <button class="fluid ui primary button">POST OFFICIAL LETTER HERE</button>
     </a>
     </div>
     <div class="col-lg-3 col-sm-0"></div>
@@ -24,13 +25,16 @@
           <div class="ui divided items">
             <div class="item">
               <div class="content">
+                {% autoescape off %}
                 <a style="text-decoration: none; color: black;" class="header" href="{% url 'offical-letter-details-view' user.username letter.id letter.slug %}">{{ letter.title }}</a>
                 <div class="meta">
                   <span class="cinema"> {{ letter.pub_time|timesince }}</span>
                 </div>
+
                 <div class="description">
                   <p>{{ letter.letter|truncatewords:60 }}</p>
                 </div>
+                {% endautoescape %}
               </div>
             </div>
             <!-- delete and update button  -->

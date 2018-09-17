@@ -61,7 +61,7 @@ class MicroThoughtsDeleteView(DeleteView):
     model = QuickWord
     form_class = Quick_word_form
     template_name = 'profile.html'
-    success_url = reverse_lazy('portfolio')
+    success_url = '/'
 
 #Add product update UpdateView                   addProduct Update view 
 class AddProductUpdateView(UpdateView):

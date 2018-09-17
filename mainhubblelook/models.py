@@ -36,7 +36,7 @@ class QuickWord(models.Model):
 		(ASK, 'ASK'), 
 		(FINACIAL_MARKET, 'FINANCIAL MARKET')
 		)
-	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, default=1)
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 	pub_time = models.DateTimeField('Publish time', auto_now=True, auto_now_add=False)
 	micro_thought = models.CharField(max_length=200, null=False) 
 	likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='likes')

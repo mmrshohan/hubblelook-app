@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from django.urls import reverse, reverse_lazy
 from django.db.models import Q  # Q lookup for Search
 from django.views.generic.base import ContextMixin, RedirectView
@@ -30,12 +31,14 @@ class QuickWordView(ListView):
             add_product = add_product.filter(Q(product_name__icontains=query) | Q(Prices__icontains=query) | Q(details__icontains=query)
                 | Q(title__icontains=query)| Q(launched_time__icontains=query) | Q(topic__icontains=query) )
             official_letter = official_letter.filter(Q(title__icontains=query)| Q(pub_time__icontains=query) |Q(letter__icontains=query))
+        elif query != query:
+            raise messages.info(request, 'not match search result found')
 
         context['addproduct'] = add_product
         context['article_view'] = article
         context['official_letter'] = official_letter
         context['quickword'] = thought
-        
+   
         return context
 
 
@@ -57,7 +60,7 @@ class Offical_Letter_Detail_View(DetailView):   # official letter details view
 class QuickWordForm(CreateView):     # Microthought form view 
     form_class = Quick_word_form
     template_name = 'forms/quickword.html'
-    success_url = '/home/'
+    success_url = '/'
 
 
 class AddproductForm(CreateView):   #product form view 

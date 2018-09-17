@@ -161,3 +161,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, "static")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'

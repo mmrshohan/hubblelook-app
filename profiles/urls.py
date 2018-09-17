@@ -30,6 +30,8 @@ urlpatterns = [
     path('official_letter/delete/<int:pk>', Offical_Letter_Delete_View.as_view(), name='offical-letter-delete-view'),
 
     path('<username>/micro-thoughts/', MicroThoughtsSortView.as_view(), name='Micro-thought-sort'),
+    #Micro thought delete view
+    path('<username>/micro-thoughts/delete/<int:pk>', MicroThoughtsDeleteView.as_view(), name='micro-thoughts-delete'),
     path('<username>/products/', ProductSortView.as_view(), name='Product-sort'),
     path('<username>/articles/', ArticleSortView.as_view(), name='Article-sort'),
     #edit profile update 
