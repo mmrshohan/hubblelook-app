@@ -102,7 +102,6 @@
 <!--=============================================================================================== -->
 <!-- card type for thoughts  -------------------------------------------------------------------------------------------------------- -->
 <!--==================================================================================== -->
-
 <div id="mian-container">
   {% for obj in quickword %}
     <div class="ui items">
@@ -153,11 +152,11 @@
                   <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
                 </form>
                 <!---->
-                 <!-- article update view -->
+                <!-- article update view -->
                 <form action="{% url 'article-update' article.id %}" method="post">{% csrf_token %}
                   <input class="uk-button uk-button-link" type="submit" value="Edit your article"/>
                 </form>
-                  <!---->
+                <!---->
               </ul>
             </div>
             <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
@@ -233,7 +232,7 @@
     
   </p>
   <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
-    <span> {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div> 
+    <span> {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div>
     <div class="uk-text-center">
       <div class="uk-text-lead uk-text-bold">
         <a style="color:#4183c4;" id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
