@@ -66,12 +66,12 @@ class QuickWordForm(CreateView):     # Microthought form view
 class AddproductForm(CreateView):   #product form view 
     form_class = Add_product_view
     template_name = 'forms/addproduct_form.html'
-    success_url = '/home/'
+    success_url = '/'
 
 class Article_form(CreateView):    #Article form view 
     form_class = Article_form
     template_name = 'forms/article-form.html'
-    success_url = '/home/'
+    success_url = '/'
 
 
 

@@ -63,19 +63,19 @@ class MicroThoughtsDeleteView(DeleteView):
     template_name = 'profile.html'
     success_url = '/'
 
-#Add product update UpdateView                   addProduct Update view 
+#Add product update UpdateView                   Product Update view 
 class AddProductUpdateView(UpdateView):
     model = AddProduct
     form_class = Add_product_view
     template_name = 'forms/addproduct_form.html'
-    success_url = '/portfolio/'
+    success_url = '/'
 
-#Add prodcuct delete View                        addproduct  delete view 
+#Add prodcuct delete View                        product  delete view 
 class AddProductDeleteView(DeleteView):
     model = AddProduct
     form_class = Add_product_view
     template_name = 'profile.html'
-    success_url = reverse_lazy('portfolio')
+    success_url = "/"
 
 
 #Add product update UpdateView                   Article update view
@@ -83,14 +83,14 @@ class ArticleUpdateView(UpdateView):
     model = Article
     form_class = Article_form
     template_name = 'forms/article-form.html'
-    success_url = '/portfolio/'
+    success_url = '/'
 
 #Add prodcuct delete View                        Article delete view
 class ArticleDeleteView(DeleteView):
     model = Article
     form_class = Article_form
     template_name = 'profile.html'
-    success_url = reverse_lazy('portfolio')
+    success_url = "/"
 
 
 class Offical_Letter_View(ListView):                    # Official letter list view 
@@ -124,7 +124,7 @@ class Offical_Letter_Delete_View(DeleteView):      # official letter delete view
     model = OfficalLetter
     form_class = Official_Letter_Form
     template_name = 'offical-letter-list-view.html'
-    success_url = reverse_lazy( 'offical-letter-view')
+    success_url = "/"
 
 
 

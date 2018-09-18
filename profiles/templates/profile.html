@@ -20,76 +20,74 @@
           <a  href="{{ edit.url }}"><p class="uk-text-large">{{ edit.url|urlize }}</p></a>
         {% endif %}
         {% if edit.Type_of_company %}    <!--  Type of a company  -->
-          <p class="uk-text-lead"> Type: {{ edit.Type_of_company }}
-            <br> Headquarter: {{ edit.Headquarter }}
-            <br> Stock: {{ edit.stock_market }}
-          </p>
-        {% endif %}
-        {% if edit.additional_url %}
-          <p class="lead"> Secondary: <a href="{{ edit.additional_url }}">{{ edit.additional_url }} </a></p>
-        {% endif %}
-        
-      </div>
-      <div class="col-lg-8">
-        {% if edit.established %}
-          <p class="ui header"> Established </p>   
+        <p class="uk-text-lead"> Type: {{ edit.Type_of_company }}
+          <br> Headquarter: {{ edit.Headquarter }}
+          <br> Stock: {{ edit.stock_market }}
+        </p>
+      {% endif %}
+      {% if edit.additional_url %}
+        <p class="lead"> Secondary: <a href="{{ edit.additional_url }}">{{ edit.additional_url }} </a></p>
+      {% endif %}
+      
+    </div>
+    <div class="col-lg-8">
+      {% if edit.established %}
+        <p class="ui header"> Established </p>
         <p>{{ edit.established }} </p>
-        {% endif %}
-        <p class="ui header"> Investments</p>
-        {{ edit.investors|capfirst }}
-        {% autoescape off %}
-        <div class=" uk-heading-primary uk-text-bold"> Details of {{ edit.name }}
-        </div>
-          <p id="header-details">{{ edit.about_details|capfirst|truncatewords:100 }} </p>
-        {% endautoescape %}
-        
-        <!-- Modal for more information
-        Uikits modal
-        -->
-        {% if edit.about_details|wordcount >= 101 %}
-          <div>
-            <a class="uk-button uk-button-text"
-              uk-tooltip="title: Know more about {{ edit.name }}; pos: right"
-            href="#modal-full" uk-toggle> READ MORE</a>
-          </div>
-        {% endif %}
-        
-        <div id="modal-full" class="uk-modal-full" uk-modal>
-          <div class="uk-modal-dialog">
-            <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-            <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
-              <div class="uk-padding-large uk-align-center" uk-height-viewport>
-                {% autoescape off %}
-                <h1>{{ edit.name }}</h1>
-                <p>{{ edit.about_details|capfirst  }}
-                </p>
-              {% endautoescape %}
-            </div>
-          </div>
+      {% endif %}
+      <p class="ui header"> Investments</p>
+      {{ edit.investors|capfirst }}
+      {% autoescape off %}
+      <div class=" uk-heading-primary uk-text-bold"> Details of {{ edit.name }}
+      </div>
+      <p id="header-details">{{ edit.about_details|capfirst|truncatewords:100 }} </p>
+    {% endautoescape %}
+    
+    <!-- Modal for more information
+    Uikits modal
+    -->
+    {% if edit.about_details|wordcount >= 101 %}
+      <div>
+        <a class="uk-button uk-button-text"
+          uk-tooltip="title: Know more about {{ edit.name }}; pos: right"
+        href="#modal-full" uk-toggle> READ MORE</a>
+      </div>
+    {% endif %}
+    
+    <div id="modal-full" class="uk-modal-full" uk-modal>
+      <div class="uk-modal-dialog">
+        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+        <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+          <div class="uk-padding-large uk-align-center" uk-height-viewport>
+            {% autoescape off %}
+            <h1>{{ edit.name }}</h1>
+            <p>{{ edit.about_details|capfirst  }}
+            </p>
+          {% endautoescape %}
         </div>
       </div>
     </div>
-    <div class="col-lg-1"></div>
   </div>
+</div>
+<div class="col-lg-1"></div>
+</div>
 </div>
 </div>
 <div class="ui section divider"></div>
 <!-- end here   -->
-
-
 <!--  Profile buttons  -->
 <div class="row">
- <div class="col-1">
- </div>
-  <div class="col-10">
-    <div style="padding-bottom: 50px;">
-      <p style="text-align: center;">
-        <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
-        <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> products </a></button>
-        <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> articles </a></button>
-        <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> official letter </a></button>
-      </p>
-    </div>
+<div class="col-1">
+</div>
+<div class="col-10">
+<div style="padding-bottom: 50px;">
+<p style="text-align: center;">
+  <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
+  <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> products </a></button>
+  <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> articles </a></button>
+  <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> official letter </a></button>
+</p>
+</div>
 </div>
 <div class="col-1"> </div>
 </div>
@@ -100,124 +98,32 @@
 <div class="row">
 <div class="col-lg-3"> </div>
 <div class="col-lg-7">
-  <div class="ui items">
-    <!--=============================================================================================== -->
-    <!-- card type for thoughts  -------------------------------------------------------------------------------------------------------- -->
-    <!--==================================================================================== -->
-    
-    <div id="mian-container">
-      {% for obj in quickword %}
-        <div class="ui items">
-          <div class="item">
-            <div class="content">
-              <div>
-                <span class="right floated" uk-icon="more"></span>
-                <div uk-dropdown>
-                  <ul class="uk-nav uk-dropdown-nav">
-                    <!-- delete view -->
-                    <form action="{% url 'micro-thoughts-delete' user.username obj.id %}" method="post">{% csrf_token %}
-                      <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
-                    </form>
-                    <!---->
-                  </ul>
-                </div>
-                <p>{{  obj.user|capfirst }} <span class="meta"> Ceo, Hubblelook </span> </p>
-                <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <p> {{ obj.pub_time|naturaltime }}</p> </div>
-              </div>
-              <p class="uk-text-lead
-                "><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.micro_thought }}</p>
-                <div class="extra content">
-                  <span id="keep-it">
-                    Save
-                  </span>
-                  <span id="analysis"> Analysis </span>
-                  
-                </div>
-              </div>
+<div class="ui items">
+<!--=============================================================================================== -->
+<!-- card type for thoughts  -------------------------------------------------------------------------------------------------------- -->
+<!--==================================================================================== -->
+
+<div id="mian-container">
+  {% for obj in quickword %}
+    <div class="ui items">
+      <div class="item">
+        <div class="content">
+          <div>
+            <span class="right floated" uk-icon="more"></span>
+            <div uk-dropdown>
+              <ul class="uk-nav uk-dropdown-nav">
+                <!-- delete view -->
+                <form action="{% url 'micro-thoughts-delete' user.username obj.id %}" method="post">{% csrf_token %}
+                  <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
+                </form>
+                <!---->
+              </ul>
             </div>
+            <p>{{  obj.user|capfirst }} <span class="meta"> Ceo, Hubblelook </span> </p>
+            <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <p> {{ obj.pub_time|naturaltime }}</p> </div>
           </div>
-          <div class="ui section divider"></div>
-        {% endfor %}
-        <!--================================================================================================================================= -->
-        <!-- card type for article  -------------------------------------------------------------------------------------------------------- -->
-        <!--================================================================================================================================= -->
-        {% for article in article_view %} <!-- article card -->
-        {% autoescape off %}
-        <div class="ui items">
-          <div class="item">
-            <div class="content">
-              <div>
-                <span class="right floated" uk-icon="more"></span>
-                <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
-                <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <span>  {{ article.article_pub_time|naturaltime }}</span><span class="meta">, ARTICLE </span></div>
-                
-              </div>
-              <a class="uk-text-lead" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
-                <span class="font-italic"> {{ article.Initial_keyword_choices }}</span> {{ article.title|title }}
-              </a>
-              <p>
-                {{ article.micro_article|capfirst|truncatewords:50 }}
-              </p>
-              
-              <div class="extra content">
-                <span id="keep-it">
-                  Save
-                </span>
-                <span id="analysis"> Analysis </span>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="ui section divider"></div>
-      {% endautoescape %}
-    {% endfor %}
-    <!--================================================================================================================================= -->
-    <!-- card type for officila letter  (Oletter stand for official letter)-------------------------------------------------------------- -->
-    <!--================================================================================================================================= -->
-    {% for Oletter in official_letter %} <!-- official letter  card -->
-    <div class="item">
-      <div class="content">
-        <div class="ui selection list">
-          <div class="ui horizontal large blue label">
-            official letter
-          </div>
-          
-          <span class="uk-align-right" uk-icon="more"></span>
-          
-        </div>
-        <a class="uk-text-lead" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
-        <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
-          <span>  {{ Oletter.pub_time|naturaltime }}</span>
-        </div>
-        <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
-      </div>
-    </div>
-    <div class="ui section divider"></div>
-  {% endfor %}
-  <!--================================================================================================================ -->
-  <!-- card type for products  -------------------------------------------------------------------------------------- -->
-  <!--================================================================================================================ -->
-  {% for product in addproduct %} <!-- product card -->
-  <div class="ui itmes">
-    <div class="item">
-      <div class="content">
-        <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span>  <span class="uk-align-right" uk-icon="more"></span></p>
-        <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
-          <span> {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div>
-          
-          
-          <div class="uk-text-center">
-            <div class="uk-text-lead uk-text-bold">
-              <a style="color:#4183c4;" id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
-            </div>
-            <p>
-              {% if product.launched_time %}
-                <span class="date"><span class="launched-in">Launched in</span> <strong>{{ product.launched_time }}</strong></span>
-                {%  endif %}
-              </p>
-            </div>
-            
+          <p class="uk-text-lead
+            "><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.micro_thought }}</p>
             <div class="extra content">
               <span id="keep-it">
                 Save
@@ -230,9 +136,130 @@
       </div>
       <div class="ui section divider"></div>
     {% endfor %}
+    <!--================================================================================================================================= -->
+    <!-- card type for article  -------------------------------------------------------------------------------------------------------- -->
+    <!--================================================================================================================================= -->
+    {% for article in article_view %} <!-- article card -->
+    {% autoescape off %}
+    <div class="ui items">
+      <div class="item">
+        <div class="content">
+          <div>
+            <span class="right floated" uk-icon="more"></span>
+            <div uk-dropdown>
+              <ul class="uk-nav uk-dropdown-nav">
+                <!-- article delete view -->
+                <form action="{% url 'article-delete' article.id %}" method="post">{% csrf_token %}
+                  <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
+                </form>
+                <!---->
+                 <!-- article update view -->
+                <form action="{% url 'article-update' article.id %}" method="post">{% csrf_token %}
+                  <input class="uk-button uk-button-link" type="submit" value="Edit your article"/>
+                </form>
+                  <!---->
+              </ul>
+            </div>
+            <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
+            <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <span>  {{ article.article_pub_time|naturaltime }}</span><span class="meta">, ARTICLE </span></div>
+            
+          </div>
+          <a class="uk-text-lead" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
+            <span class="font-italic"> {{ article.Initial_keyword_choices }}</span> {{ article.title|title }}
+          </a>
+          <p>
+            {{ article.micro_article|capfirst|truncatewords:50 }}
+          </p>
+          
+          <div class="extra content">
+            <span id="keep-it">
+              Save
+            </span>
+            <span id="analysis"> Analysis </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui section divider"></div>
+  {% endautoescape %}
+{% endfor %}
+<!--================================================================================================================================= -->
+<!-- card type for officila letter  (Oletter stand for official letter)-------------------------------------------------------------- -->
+<!--================================================================================================================================= -->
+{% for Oletter in official_letter %} <!-- official letter  card -->
+<div class="item">
+  <div class="content">
+    <div class="ui selection list">
+      <div class="ui horizontal large blue label">
+        official letter
+      </div>
+      
+      <span class="uk-align-right" uk-icon="more"></span>
+      
+    </div>
+    <a class="uk-text-lead" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
+    <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
+      <span>  {{ Oletter.pub_time|naturaltime }}</span>
+    </div>
+    <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
   </div>
-  <!---
-  --->
+</div>
+<div class="ui section divider"></div>
+{% endfor %}
+<!--================================================================================================================ -->
+<!-- card type for products  -------------------------------------------------------------------------------------- -->
+<!--================================================================================================================ -->
+{% for product in addproduct %} <!-- product card -->
+<div class="ui itmes">
+<div class="item">
+  <div class="content">
+    <span class="uk-align-right" uk-icon="more"></span>
+    <div uk-dropdown>
+      <ul class="uk-nav uk-dropdown-nav">
+        <!-- product delete view -->
+        <form action="{% url 'Add-product-delete' product.id %}" method="post">{% csrf_token %}
+          <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
+        </form>
+        <!---->
+        <!-- product update view -->
+        <form action="{% url 'Add-product-update' product.id %}" method="post">{% csrf_token %}
+          <input class="uk-button uk-button-link" type="submit" value="Edit your product details"/>
+        </form>
+        <!---->
+      </ul>
+    </div>
+    <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span>
+    
+  </p>
+  <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
+    <span> {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div> 
+    <div class="uk-text-center">
+      <div class="uk-text-lead uk-text-bold">
+        <a style="color:#4183c4;" id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
+      </div>
+      <p>
+        {% if product.launched_time %}
+          <span class="date"><span class="launched-in">Launched in</span> <strong>{{ product.launched_time }}</strong></span>
+          {%  endif %}
+        </p>
+      </div>
+      
+      <div class="extra content">
+        <span id="keep-it">
+          Save
+        </span>
+        <span id="analysis"> Analysis </span>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui section divider"></div>
+{% endfor %}
+</div>
+<!---
+--->
 </div>
 </div>
 <div class="col-lg-2"> </div>
@@ -252,12 +279,10 @@ margin-right: 20px;
 margin-left: 20px;
 background-color: #fcfcfc;
 }
-
 a:hover {
 color: #4183c4;
 text-decoration: none;
 }
-
 #mian-container {
 min-height: 100vh;
 }

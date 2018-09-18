@@ -64,7 +64,7 @@ class QuickWord(models.Model):
 
 class AddProduct(models.Model):
 	
-	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, default=1)
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 	product_tumbline = models.ImageField(null=True, blank=True)
 	slug = models.SlugField(max_length=500, null=True, blank=True)
 	product_name = models.CharField(max_length=50)
@@ -112,7 +112,7 @@ class Article(models.Model):
 	 choices=INITIAL_KEYWORD, 
 	 default=GENERAL
 	 )
-	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, default=1)
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
 	title = models.CharField(max_length=500, null=False, blank=False)
 	slug = models.SlugField(max_length=500, null=True, blank=True)
 	micro_article = RichTextField()
