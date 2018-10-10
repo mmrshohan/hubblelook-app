@@ -100,6 +100,13 @@ class ContactView(CreateView):
     success_url = '/Contact-View/'
 
 
+# All Templates All Templates All Templates All Templates  
+
+ #Why Hubblelook template view.
+class WhyHubblelookView(TemplateView):
+
+    template_name= "why-hubblelook.html"
+
 
   #learn more template view      
 class ExploreView(TemplateView):

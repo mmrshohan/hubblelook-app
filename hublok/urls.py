@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from mainhubblelook.views import ( ExploreView, 
  AboutView, 
+ WhyHubblelookView,
  InvConView, 
  ContactView, 
  ProductView,
@@ -37,10 +38,11 @@ urlpatterns = [
 
     #footer URL 
     path('learn/', ExploreView.as_view(), name='explore'),
+    path('why-hubblelook/', WhyHubblelookView.as_view(), name='why-hubblelook'),
     path('about/', AboutView.as_view(), name='about'),
     path('products/', ProductView.as_view(), name='products'),
-    path('privacy_and_terms/', PrivacyAndTermsView.as_view(), name='Privacy-View'),
-    path('investment_and_contribution/', InvConView.as_view(), name='InvCon-view'),
+    path('privacy-and-terms/', PrivacyAndTermsView.as_view(), name='Privacy-View'),
+    path('investment-and-contribution/', InvConView.as_view(), name='InvCon-view'),
     path('contact/', ContactView.as_view(), name='Contact-View'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

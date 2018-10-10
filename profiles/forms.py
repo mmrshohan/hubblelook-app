@@ -12,6 +12,8 @@ class Edit_Profile_Form(forms.ModelForm):
 		 'title',
 		  'url',
 		   'Type_of_company',
+		   'Headquarter',
+		   'stock_market',
 		    'established',
 		     'about_details' ]
 

@@ -10,13 +10,11 @@
           <div class="col-lg-3 col-sm-0"></div>
           <div class="col-lg-7 col-sm-12 position">
             <div class="uk-text-center">
-              <a class="Hubblelook" href="{% url 'home' %}"> <p id="logo">  Hubblelook </p>
+              <a uk-tooltip="Go to Hubblelook home" class="Hubblelook" href="{% url 'home' %}"> <p id="logo">  Hubblelook </p>
               <p id="logo-title" class="uk-text-center uk-text-lead "> A Market Communication and Analysis Platform </p>
             </a>
           </div>
-          <!--
-          <h5>{% trans "Sign In Here" %}</h5>
-          -->
+          <!--<h5>{% trans "Sign In Here" %}</h5>-->
           <form class="login" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
             {{ form|crispy }}
@@ -24,12 +22,12 @@
               <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
             
-            <button class="ui button" type="submit">{% trans "Sign In" %}</button>
+            <button class="uk-button uk-button-secondary" type="submit">{% trans "Sign In" %}</button>
             
-            <p>{% blocktrans %}If you have not created an account yet, then please
+            <p style="padding-top: 30px;" >{% blocktrans %}If you have not created an account yet, then please
               <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
               
-              <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+              <a class="uk-text-bold button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
             </form>
           </div>
           <div class="col-lg-2 col-sm-0"></div>
@@ -40,9 +38,9 @@
     <!--===============================================================================-->
     <style>
     html, body {
-    background-color: #979eae;
-    margin-right: 10px;
-    margin-left: 10px;
+    background-color:#f9f8f4;
+    margin-right: 6px;
+    margin-left: 6px;
     }
     .position{
     padding-top: 100px;
@@ -63,22 +61,25 @@
     }
 
     input[type="text"], [type="password"] {
-        font-size: 16px !important;
+    font-size: 16px !important;
     line-height: 22px !important;
     letter-spacing: normal !important;
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
     color: rgb(72, 72, 72) !important;
-    background-color: rgb(255, 255, 255) !important;
     margin-bottom: 8px !important;
     position: relative !important;
     z-index: 0 !important;
     display: block !important;
     width: 100% !important;
+    height: 55px;
     border-width: 1px !important;
     border-style: solid !important;
     border-color: rgb(235, 235, 235) !important;
     border-radius: 2px !important;
+    background-color: #e0e0e0;
 }
     </style>
   {% endblock %}
 {% endblock %}
+
+background-color: rgb(255, 255, 255) !important;

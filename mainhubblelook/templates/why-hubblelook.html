@@ -1,0 +1,117 @@
+<!---- This the home page of Hubblelook ---->
+<!-- base.html contains all CDN -->
+{% extends 'base.html' %}
+{% block body %}
+	{% load humanize %}
+	<!--  Navigation bar-->
+	{% include 'sinppet/nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<!--  Navigation bar end-->
+	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-10" uk-scrollspy="target: > div, h1; cls:uk-animation-fade; delay: 100">
+			<h1 style="margin-top: 60px;" class="uk-heading-hero  uk-text-bold"> I'm a general person </h1>
+			<div class="uk-text-lead  sub-header">
+				<ul>
+					<li>Read news</li>
+					<li>Ask Questions</li>
+					<li>Watch and read reviews about product and more</li>
+					<li>know what people think about today's market or economics</li>
+					<li>Make yourself up-to-date about daily market</li>
+					<li>Make better financial decision and more</li>
+				</ul>
+			</div>
+			<h1 style="margin-top: 110px;" class="uk-heading-hero  uk-text-bold"> I'm a student </h1>
+			<div class="uk-text-lead  sub-header">
+				<ul>
+					<li>Read news</li>
+					<li>Ask Questions</li>
+					<li>Explore market more intuitively</li>
+					<li>Do basic to advance study on anything about market or economics</li>
+					<li>Nurture and enhance your knowledge about market or economics every day</li>
+					<li>Help yourself to build new things and get advocacy</li>
+					<li>Understand global market, local market and more</li>
+				</ul>
+				
+			</div>
+			<h1 style="margin-top: 110px;" class="uk-heading-hero uk-text-bold"> I'm an entrepreneur/ Startup/ Market analyst </h1>
+			<div class="uk-text-lead  sub-header">
+				<ul>
+					<li>Explain your product</li>
+					<li>Ask Questions</li>
+					<li>know what people think about your product</li>
+					<li>Hubblelook would provide you all necessary tools and information to do the market analysis so now you can focus more on your product and business</li>
+					<li>Provide best customer service</li>
+					<li>Share your posts in three ways and cpnnect with your customers in every possible way.</li>
+					<li>Explore what's happening around you and more</li>
+				</ul>
+			</div>
+			<h1  style="margin-top: 110px;" class="uk-heading-hero uk-text-bold"> I'm a business </h1>
+			<div class="uk-text-lead sub-header">
+				<ul>
+					<li>Provide best customer care</li>
+					<li>Ask Questions</li>
+					<li>Intense analysis market</li>
+					<li>Make better business decision</li>
+					<li>Inspire yourself with better ideas</li>
+					<li>Generate novel ideas</li>
+					<li>Track your business</li>
+					<li>Engage with your customer profoundly</li>
+					<li>Gain local market knowledge and more</li>
+				</ul>
+			</div>
+			<h1 style="margin-top: 110px;" class="uk-heading-hero uk-text-bold"> I'm a Market enthusiast </h1>
+			<div style="margin-bottom: 80px;" class="uk-text-lead  sub-header">
+				<ul>
+					<li>Review product</li>
+					<li>Ask Questions</li>
+					<li>Write articles</li>
+					<li>know what other people think about the market</li>
+					<li>Follow other courious people</li>
+					<li>read daily news and more</li>
+				</ul>
+			</div>
+			<div class="ui huge message">
+				<div class="header">
+					It does not matter how you want to connect with the market, In Hubblelook you can do it without having any changes. Just select what kind of account you are opening when you are signing up. 
+					<br>
+					Hubblelook offers two kinds of account which are personal and business account, just to give you a clear and relevant user profile section.
+					
+				</div>
+			</div>
+			<div class="col-1"></div>
+		</div>
+	</div>
+	<!--  Footer  -->
+	{% include 'sinppet/footer.html' %}
+	{% block footer %}
+	{% endblock %}
+	<style type="text/css" media="screen">
+	html, body {
+		background-color: #f9f8f4;
+	}
+	h1{
+		color: white;
+		background-color: #323232;
+		display: inline-block;
+	}
+	h1::selection {
+		color: white;
+		background-color: #323232;
+	}
+	div::selection {
+		color: white;
+		background-color: #323232;
+	}
+	.sub-header {
+		margin-top: 40px;
+	}
+	h1, div {
+		cursor: pointer;
+		}
+	</style>
+	
+	
+	
+{% endblock %}
