@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from ckeditor.fields import RichTextField #Ckeditor for edit 
+from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
@@ -21,11 +22,8 @@ class Profile(models.Model):
 		)
 	Type_of_account = models. NullBooleanField('Personal account', help_text="by default this is Business account")
 	user_photo = models.ImageField(upload_to='user_image', blank=True)
-	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	occupation = models.CharField(max_length=400, null=False)
-	#followers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='followers', blank=True)
-	#following = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='following', blank=True)
-	#activated = models.BooleanField(default=False)
 	name = models.CharField(max_length=200, null=False, blank=False, default=None)
 	title = models.CharField(max_length=100, null=True, blank=True)
 	url = models.URLField(max_length=200, null=True, blank=True)
@@ -33,7 +31,7 @@ class Profile(models.Model):
 	Headquarter = models.CharField(max_length=1000, null=True, blank=True)
 	stock_market = models.CharField(max_length=200, null=True, blank=True)
 	established = models.DateField(auto_now=False, auto_now_add=False, default=None)
-	investors = models.CharField(max_length=2000, null=True, blank=True)
+	investors = RichTextField(null=True, blank=True)
 	about_details = RichTextField(null=False, blank=False, default=None)
 	Type_of_company = models.CharField(
 	 max_length=20,

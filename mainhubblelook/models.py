@@ -15,6 +15,7 @@ change in here'''
 
 
 
+
 class QuickWord(models.Model):
 	I_THINK = 'I think'
 	GOOD_PART = 'Good part'

@@ -1,17 +1,13 @@
 {% extends 'base.html' %}
 {% block body %}
 	<!-- Navigation bar-->
-	{% include 'sinppet/nav-bar.html' %}
+	{% include 'sinppet/second-nav-bar.html' %}
 	{% block nav %}
 	{% endblock %}
 	<!-- sementic ui -->
 	<div id="wrapper">
-		<!-- Search bar -->
-		
-		
-		<div style="padding-bottom: 30px; padding-top: 50px;" class="uk-heading-primary uk-text-bold uk-text-center"> Search anything about Hubblelook </div>
-		
-		
+		<!-- Search bar -->	
+		<div style="padding-bottom: 30px; padding-top: 50px;" class="uk-heading-primary uk-text-bold uk-text-center"> Search anything about Hubblelook </div>	
 		<form action="" method="GET">
 			{% csrf_token %}
 			<div class="row">

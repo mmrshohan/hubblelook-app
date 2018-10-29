@@ -16,6 +16,8 @@ from .forms import Edit_Profile_Form, Official_Letter_Form
 from mainhubblelook.forms import Quick_word_form, Add_product_view, Article_form
 
 
+user = get_user_model
+
 
 class ProfileView(ListView):
 

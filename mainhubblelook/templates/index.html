@@ -49,11 +49,13 @@
 </form>
   <!--==================================================================================================== -->
   <!-- Jumbotorn header  --------------------------------------------------------------------------------- -->
-  <!--==================================================================================================== -->
+
 <div class="home-header">
   <div class="jumbotron uk-box-shadow-medium">
     <div class="container">
-      <div class="uk-heading-primary uk-text-bold" style="color: #e6edff; padding-top: 50px; "> All you need to connect and communicate with the Market.<br> Know the market. Market analysis for everyone. Engage with your customer. </div>
+      <div class="uk-heading-primary uk-text-bold" style="color: #e6edff; padding-top: 50px; "> 
+       Know the market. Market analysis for everyone. Engage with your customer.
+      <br> All you need to connect and communicate with the Market. </div>
       
       <p class="uk-text-lead uk-light" style="padding-bottom: 30px; padding-top: 30px;">
       Communicate market from every perspective/ Studying market becomes easier/ Understand what people think about your products.</p>
@@ -149,17 +151,16 @@
       <div class="item">
         <div class="content">
           <div class="ui selection list">
-            <div class="ui horizontal large blue label">
-              official letter
-            </div>
-            
+        <a class="ui large blue image label">     
+          Official letter
+          <div class="detail">from {{ user.username|capfirst }}</div>
+        </a>   
             <span class="uk-align-right"> {{ Oletter.pub_time|naturaltime }} </span>
-            
           </div>
           <a class="uk-text-lead letter" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
           <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
           </div>
-          <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
+          <p> by <span class="meta">  {{ Oletter.letter_from }}</span> </p>
         </div>
       </div>
       <div class="ui section divider"></div>

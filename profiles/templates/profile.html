@@ -2,7 +2,7 @@
 {% block body %}
   {% load humanize %}
   
-  {% include 'sinppet/nav-bar.html' %}
+  {% include 'sinppet/second-nav-bar.html' %}
   {% block nav %}
   {% endblock %}
   <!-- uikits   -->
@@ -10,7 +10,7 @@
     <div class="grid">  <!-- bootstrape grid   -->
     <div class="row">
       <div class="col-lg-3">
-        <img src="" width="120">
+        <img class="ui medium circular image" src="{{ edit.user_photo.url }}" />
         <p class="uk-heading-primary uk-text-bold">{{ edit.name }}</p>
         {% if edit.title %}
           <div class="uk-text-lead">{{ edit.title }}</div>
@@ -26,7 +26,7 @@
         </p>
       {% endif %}
       {% if edit.additional_url %}
-        <p class="lead"> Secondary: <a href="{{ edit.additional_url }}">{{ edit.additional_url }} </a></p>
+        <p class="lead"> Additional: <a href="{{ edit.additional_url }}">{{ edit.additional_url }} </a></p>
       {% endif %}
       
     </div>
@@ -35,22 +35,45 @@
         <p class="ui header"> Established </p>
         <p>{{ edit.established }} </p>
       {% endif %}
+      <!--  Investment Information  -->
       <p class="ui header"> Investments</p>
-      {{ edit.investors|capfirst }}
+      {% autoescape off %}
+      {{ edit.investors|capfirst|truncatewords:50 }}
+      {% endautoescape %}
+
+    {% if edit.investors|wordcount >= 201 %}
+      <div>
+        <a class="uk-text-meta"
+        href="#modal-full" uk-toggle> MORE ABOUT INVESTMENT</a>
+      </div>
+    {% endif %}
+
+  <div id="modal-full" class="uk-modal-full" uk-modal>
+      <div class="uk-modal-dialog">
+        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+        <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+          <div class="uk-padding-large uk-align-center" uk-height-viewport>
+            {% autoescape off %}
+      <p class="ui header"> Investments</p>
+            <p>{{ edit.investors|capfirst  }}
+            </p>
+          {% endautoescape %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  Investment information until here -->
+
       {% autoescape off %}
       <div class=" uk-heading-primary uk-text-bold"> Details of {{ edit.name }}
       </div>
       <p id="header-details">{{ edit.about_details|capfirst|truncatewords:100 }} </p>
     {% endautoescape %}
     
-    <!-- Modal for more information
-    Uikits modal
-    -->
+    <!-- Company Information -->
     {% if edit.about_details|wordcount >= 101 %}
       <div>
-        <a class="uk-button uk-button-text"
-          uk-tooltip="title: Know more about {{ edit.name }}; pos: right"
-        href="#modal-full" uk-toggle> READ MORE</a>
+        <a class="uk-text-meta" uk-tooltip="title: Know more about {{ edit.name }}; pos: right" href="#modal-full" uk-toggle> READ MORE</a>
       </div>
     {% endif %}
     
@@ -68,41 +91,42 @@
       </div>
     </div>
   </div>
+ <!-- Company Information until here -->
 </div>
 <div class="col-lg-1"></div>
 </div>
 </div>
 </div>
 <div class="ui section divider"></div>
-<!-- end here   -->
+<!-- profile section end here   -->
 <!--  Profile buttons  -->
 <div class="row">
 <div class="col-1">
 </div>
 <div class="col-10">
-<div style="padding-bottom: 50px;">
-<p style="text-align: center;">
-  <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
-  <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> products </a></button>
-  <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> articles </a></button>
-  <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> official letter </a></button>
-</p>
-</div>
+  <div style="padding-bottom: 50px;">
+    <p style="text-align: center;" class="uk-text-bold">
+      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button"> Tags </a></button>
+      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
+      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> Products </a></button>
+      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> Articles </a></button>
+      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> Official letter </a></button>
+    </p>
+  </div>
 </div>
 <div class="col-1"> </div>
 </div>
 <!--  Profile buttons end here  -->
-<!-- ================================================================================================-->
 <!-- Post cards =====================================================================================-->
-<!-- ================================================================================================-->
 <div class="row">
 <div class="col-lg-3"> </div>
 <div class="col-lg-7">
 <div class="ui items">
 <!--=============================================================================================== -->
-<!-- card type for thoughts  -------------------------------------------------------------------------------------------------------- -->
-<!--==================================================================================== -->
+<!-- card type for thoughts  ---------------------------------------------------------------------- -->
+<img class="ui medium circular image" src="{{ edit.user_photo.url }}" >
 <div id="mian-container">
+  {% block microthought %}
   {% for obj in quickword %}
     <div class="ui items">
       <div class="item">
@@ -135,9 +159,10 @@
       </div>
       <div class="ui section divider"></div>
     {% endfor %}
-    <!--================================================================================================================================= -->
-    <!-- card type for article  -------------------------------------------------------------------------------------------------------- -->
-    <!--================================================================================================================================= -->
+    {% endblock %}
+    <!--=================================================================================================== -->
+    <!-- card type for article  ---------------------------------------------------------------------------- -->
+    {% block articles %}
     {% for article in article_view %} <!-- article card -->
     {% autoescape off %}
     <div class="ui items">
@@ -183,9 +208,11 @@
     <div class="ui section divider"></div>
   {% endautoescape %}
 {% endfor %}
-<!--================================================================================================================================= -->
-<!-- card type for officila letter  (Oletter stand for official letter)-------------------------------------------------------------- -->
-<!--================================================================================================================================= -->
+{% endblock %}
+<!--==========+=========================================================================================== -->
+<!-- card type for officila letter  (Oletter stand for official letter)----------------------------------- -->
+
+{% block offical %}
 {% for Oletter in official_letter %} <!-- official letter  card -->
 <div class="item">
   <div class="content">
@@ -206,9 +233,10 @@
 </div>
 <div class="ui section divider"></div>
 {% endfor %}
-<!--================================================================================================================ -->
-<!-- card type for products  -------------------------------------------------------------------------------------- -->
-<!--================================================================================================================ -->
+{% endblock %}
+<!--======================================================================================================== -->
+<!-- card type for products  ------------------------------------------------------------------------------- -->
+{% block product %}
 {% for product in addproduct %} <!-- product card -->
 <div class="ui itmes">
 <div class="item">
@@ -256,6 +284,7 @@
 </div>
 <div class="ui section divider"></div>
 {% endfor %}
+{% endblock %}
 </div>
 <!---
 --->
@@ -264,10 +293,9 @@
 <div class="col-lg-2"> </div>
 </div>
 <!--  enddemo  -->
-<!--================================================================================================================================= -->
-<!--if no post then this template will appear  -------------------------------------------------------------------------------------- -->
-<!--================================================================================================================================= -->
-<!--  endif  -->
+<!--===================================================================================================== -->
+<!--if no post then this template will appear  ---------------------------------------------------------- -->
+
 <!--footer -->
 {% include 'sinppet/footer.html' %}
 {% block footer %}
