@@ -6,8 +6,8 @@
 	{% endblock %}
 	<!-- sementic ui -->
 	<div id="wrapper">
-		<!-- Search bar -->	
-		<div style="padding-bottom: 30px; padding-top: 50px;" class="uk-heading-primary uk-text-bold uk-text-center"> Search anything about Hubblelook </div>	
+		<!-- Search bar -->
+		<div style="padding-bottom: 30px; padding-top: 50px;" class="uk-heading-primary uk-text-bold uk-text-center"> Search anything about Hubblelook </div>
 		<form action="" method="GET">
 			{% csrf_token %}
 			<div class="row">
@@ -21,6 +21,14 @@
 			<div class="col-lg-2 col-sm-0"></div>
 		</div>
 	</form>
+	<!-- FAQ button  -->
+	<div class="row" style="padding-top:50px;">
+		<div class="col-lg-2 col-sm-0"> </div>
+		<div class="col-lg-8 col-sm-12">
+			<a href="{% url 'customercare:faq-page-view' %}"><button class="ui blue basic button">FAQ</button></a>
+		</div>
+		<div class="col-lg-2 col-sm-0"></div>
+	</div>
 	<!-- Customer care blog post -->
 	{% for blog in blogs %}
 		{% autoescape off %}
@@ -28,7 +36,7 @@
 			<div class="row">
 				<div class="col-lg-3"> </div>
 				<div class="col-lg-6">
-					<a style="text-decoration: none; color: black;" href="{% url 'customecare-article' blog.id blog.slug %}"> <p class="uk-text-large uk-text-bold" style="cursor: pointer;">{{ blog.title }}</p> </a>
+					<a style="text-decoration: none; color: black;" href="{% url 'customercare:customecare-article' blog.id blog.slug %}"> <p class="uk-text-large uk-text-bold" style="cursor: pointer;">{{ blog.title }}</p> </a>
 					<div> {{ blog.topic|upper }} </div>
 					<div style="font-size: 16px;"> {{ blog.details|capfirst|truncatewords:70 }} </div>
 					{% if blog.written_by %}

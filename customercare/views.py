@@ -39,6 +39,10 @@ def CustomerCareArticle(request, id, slug):
     }
     return render(request, 'Customercare-article.html', context)
 
+#F.A.Q page view
+class FAQPageView(TemplateView):
+	template_name = 'faq.html'
+
 
 
 

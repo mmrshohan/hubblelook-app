@@ -5,82 +5,91 @@
   {% include 'sinppet/second-nav-bar.html' %}
   {% block nav %}
   {% endblock %}
-<div id="main-container">
-  <div class="container">
-    <div class="row">
-      {% autoescape off %}
-      <div class="col-12">
-        <!-- product image -->
-        <img class="ui huge centered image" src="{% static '14_illinois.jpg' %}">
-        <!-- end image section -->
-      </div>
-    </div>
-  </div>
-  <!-- features and other option code -->
-  <div class="padding about-details ">
+  <div id="main-container">
     <div class="container">
       <div class="row">
+        {% autoescape off %}
         <div class="col-12">
-          <p class="uk-heading-primary uk-text-bold"> {{ addproduct.product_name }} </p>
-          <p class="display-4 title"> {{ addproduct.title }} </p>
-          <p href="" id="url"><b>{{ addproduct.product_url|urlize }}</b></p>
-          {% if addproduct.Prices is not None %}
-            <h2 class="ui sub header">Price</h2>
-            <span>{{ addproduct.Prices }}</span>
-          {% endif %}
-          <p class="about-details">
-            {{ addproduct.about_details }}
-          </p>
-          <div> {{ addproduct.details }}</div>
+          <!-- product image -->
+          <img class="ui huge centered image" src="{% static '14_illinois.jpg' %}">
+          <!-- end image section -->
         </div>
       </div>
     </div>
-  </div>
-{% endautoescape %}
-
+    <!-- features and other option code -->
+    <div class="padding about-details ">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p class="uk-heading-primary uk-text-bold"> {{ addproduct.product_name }} </p>
+            <p class="uk-text-lead"> {{ addproduct.product_title }} </p>
+            <p href="" id="url"><b>{{ addproduct.product_url|urlize }}</b></p>
+            {% if posts.Prices is not None %}
+              <h2 class="ui sub header">Price</h2>
+              <span>{{ addproduct.Prices }}</span>
+            {% endif %}
+            <p class="about-details">
+              {{ addproduct.about_details }}
+            </p>
+            <div> {{ addproduct.product_details }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endautoescape %}
 </div>
-
 {% include 'sinppet/footer.html' %}
 {% block footer %}
 {% endblock %}
+
 <style type="text/css">
 #main-container {
   min-height: 100vh;
   padding-top: 50px;
 }
+
 body, html {
-background: #FAFAFA;
+  background: #FAFAFA;
 }
+
 .margin-top {
-margin-top: 80px;
+  margin-top: 80px;
 }
+
 .title {
-font-size: 30px;
-padding-top: 10px;
+  font-size: 30px;
+  padding-top: 10px;
 }
+
 .about-details {
-font-size: 16px;
-line-height: 30px;
+  font-size: 16px;
+  line-height: 30px;
 }
+
 #about-centre {
-padding-left: 40px;
+  padding-left: 40px;
 }
+
 #url {
-color: #f0504b;
-padding-top: 30px;
-font-size:15px;
+  color: #f0504b;
+  padding-top: 30px;
+  font-size: 15px;
 }
+
 #features {
-padding-top: 80px;
+  padding-top: 80px;
 }
+
 #obj-padding {
-padding-left: 20px;
+  padding-left: 20px;
 }
+
 .options {
-font-size: 20px;
+  font-size: 20px;
 }
+
 .padding {
-padding-top: 30px;
+  padding-top: 30px;
 }
 </style>
 {% endblock %}

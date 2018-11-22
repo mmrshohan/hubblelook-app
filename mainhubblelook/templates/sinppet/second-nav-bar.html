@@ -11,7 +11,6 @@
       <!-- Uikits dropdown-->
       <!-- User can post three kind
       of post from here-->
-      
       <div>
         <i class="pencil alternate icon uk-hidden@s"></i>
         <i class="pencil alternate icon uk-visible@s"></i>
@@ -19,8 +18,8 @@
       </div>
       <div uk-dropdown>
         <ul class="uk-nav uk-dropdown-nav">
-          <li><a style="font-size: 15px; padding-bottom:8px;" href="{% url 'quick-word' %}"> Post Your Micro Thought </a></li>
-          <li><a style="font-size: 15px; padding-bottom:8px;" href="{% url 'article-form'  %}"> Post Your Micro Article </a></li>
+          <li><a style="font-size: 15px; padding-bottom:8px;" href="{% url 'quick-word' %}"> Post Your Thought </a></li>
+          <li><a style="font-size: 15px; padding-bottom:8px;" href="{% url 'article-form'  %}"> Post Your ☺️☺️Article </a></li>
           <li><a style="font-size: 15px; padding-bottom:8px;" href="{% url 'add-product-form'  %}"> Add a Product </a></li>
         </ul>
       </div>
@@ -28,7 +27,7 @@
       {% if user.is_authenticated %}
         <!-- user profile redirect option through icon -->
         <div class="item user">
-          <a  href="{% url 'portfolio' user.username  %}" class="uk-text-capitalize"
+          <a  href="{% url 'profiles:portfolio' user.username  %}" class="uk-text-capitalize"
             uk-tooltip="title: Hi {{ user.username }}, this is your profile; pos: bottom">
             <b class="user-link uk-visible@s">{{ user.username|capfirst|truncatewords:1 }}</b>
             <i class="user outline icon uk-hidden@s"></i>

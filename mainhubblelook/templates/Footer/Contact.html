@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block body %}
+	{% load crispy_forms_tags %}
+	<!-- Navigation bar-->
+	{% include 'sinppet/second-nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<div style="min-height: 100%">
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-11">
+				<h1 class="ui huge header" style="padding-top: 50px; padding-left: 10px; padding-right: 10px;"> Hi Hubblers, if you need to talk to us, our doors are always open for you </h1>
+			</div>
+			<div class="col-lg-1"></div>
+		</div>
+		
+		<div class="row" style="padding-bottom: 60px;">
+			<div class="col-lg-1 col-sm-0 "></div>
+			<div class="col-lg-5 col-sm-12">
+				<!-- info for the customers to use our knowlegde section  -->
+				<!-- Sementic ui messeging tools  -->
+				<div class="info" style = 'padding-top: 80px; padding-left: 10px; padding-right:10px;'>
+					<div class="ui info message">
+						<i class="close icon"></i>
+						<p>
+							Our <a id="knowledge" href="{% url 'customercare:customecare-view' %}"><b>knowledge</b></a> center might help you to explore Hubblelook
+							and get your questions answer.
+						</p>
+					</div>
+				</div>
+				<div style = 'padding-top: 30px; padding-left: 10px; padding-right:10px;'>
+					<form action="" method="post">
+						{% csrf_token %}
+						{{ form|crispy }}
+						<input class="uk-button uk-button-secondary uk-box-shadow-large" type="submit" value="Send" />
+					</form>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="uk-text-center" style = 'padding-top: 80px'>
+				<div class="ui large header uk-text-bold">General Inquiries</div>
+				<h1 class="mail"> mmrshohan09@gmail.com </h1>
+			</div>
+			</div>
+		</div>
+		
+	</div>
+	<!-- footer  'sinppet/footer.html' -->
+	{% include 'sinppet/footer.html' %}
+	{% block footer %}
+	{% endblock %}
+	
+	<script>
+		// close the info tab
+		// Sementiv ui
+		$('.message .close')
+	.on('click', function() {
+	$(this)
+	.closest('.message')
+	.transition('fade')
+	;
+	})
+	;
+	</script>
+	<style type="text/css" media="screen">
+	html, body{
+
+	}
+	.info {
+		padding-top: 20px;
+	}
+	#knowledge {
+		text-decoration: none;
+		color: none;
+		}
+
+   .mail:hover{
+   	color: #a09e9e;
+   	cursor: pointer;
+	transition: all 200ms ease;
+
+	}	
+	</style>
+   
+	
+	
+{% endblock %}

@@ -15,6 +15,7 @@
 					{{ form.media }}
 					{{ form|crispy }}
 					
+					
 					<input class="ui button" type="submit" value="Post" />
 				</form>
 			</div>
@@ -25,6 +26,14 @@
 	{% include 'sinppet/footer.html' %}
 	{% block footer %}
 	{% endblock %}
+
+	<script>
+    var editor = new Jodit("#editor", {
+      height: 400,
+    "disablePlugins": "color,font,table,tableKeyboardNavigation,media"
+    });
+
+</script>
 	
 	<style>
 	html, body {

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block body %}
+	{% load humanize %}
+	{% include 'sinppet/nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<!-- officla letter view -->
+	<div style="min-height: 100vh">
+		<div class="row border">
+			<div class="col-lg-2 col-sm-0"></div>
+			<div class="col-lg-8 col-sm-12">
+				<div class="ui breadcrumb">
+					<a href="" class="section uk-text-large">Official Letters</a>
+					<div class="divider"> / </div>
+					<div class="active section uk-text-large">Details</div>
+				</div>
+				<div class=" uk-background-muted uk-box-shadow-medium ">
+					<div class="text-padding">
+						{% autoescape off %}
+						
+						<p class="uk-heading-primary uk-text-bold">  {{ official_letter.title }} </p>
+						<p>Letter provided by  <span class="uk-text-meta"> {{ official_letter.letter_from|upper }}</span> </p>
+						<h6> {{ letter.to_whom }} </h6>
+						<p> {{ official_letter.letter }} </p>
+						<p class="uk-text-meta"> Published: {{ official_letter.pub_time|timesince }} </p>
+						{% endautoescape %}
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-2 col-sm-0"></div>
+		</div>
+	</div>
+	<!--  Footer  -->
+	{% include 'sinppet/footer.html' %}
+	{% block footer %}
+	{% endblock %}
+	<style type="text/css" media="screen">
+	body, html {
+		background-color: #ffffff;
+		margin-right: 10px;
+		margin-left:10px;
+	}
+	.breadcrumb {
+		background-color: transparent;
+	}
+	.border {
+		padding-top: 50px;
+		padding-bottom: 50px;
+		min-height: 100%;
+	}
+	.text-padding {
+		padding: 20px 20px 50px 50px;
+	}
+		
+	</style>
+{% endblock %}

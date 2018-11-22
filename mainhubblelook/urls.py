@@ -13,11 +13,10 @@ from mainhubblelook.views import ( QuickWordView,
 
 urlpatterns = [
     path('', QuickWordView.as_view(), name='home'), 
-     # official letter detials view
-    path('official-letter/details/<int:pk>', Offical_Letter_Detail_View.as_view(), name='offical-letter-details-view'),
-    # article and add_product detials view
+    # official letter detials view
+    path('official-letter-details/<int:id>/<slug:slug>', views.Offical_Letter_Detail_View, name='letter-details'),
+    # article detials view
     path('article-details/<int:id>/<slug:slug>', views.article_detials, name='details'),
-    #path('article_details/<int:pk>', ArticleDetailsView.as_view(), name='details'), # article details page view
     #product page view
     path('product-details/<int:id>/<slug:slug>', views.Product_detials_View, name='add-product-view'),    
     # form view 

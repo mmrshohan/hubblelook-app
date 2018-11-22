@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Profile, OfficalLetter
+from .models import Profile, Team
 
 
 
@@ -17,7 +17,10 @@ class Edit_Profile_Form(forms.ModelForm):
 		    'established',
 		     'about_details' ]
 
-class Official_Letter_Form(forms.ModelForm):
+
+
+
+class TeamForm(forms.ModelForm):
 	class Meta:
-		model = OfficalLetter
-		fields = ['title', 'to_whom', 'letter', 'letter_from' ]
+		model = Team
+		fields = ['user', 'description', 'team']

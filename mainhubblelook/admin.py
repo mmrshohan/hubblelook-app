@@ -1,8 +1,6 @@
 from django.contrib import admin
-from .models import QuickWord, AddProduct, Article, UserContactForm
+from .models import UserContactForm, MainModel, OfficalLetter
 
-
-admin.site.register(QuickWord) 
-admin.site.register(AddProduct)
-admin.site.register(Article)
+admin.site.register(MainModel) 
+admin.site.register(OfficalLetter)
 admin.site.register(UserContactForm)

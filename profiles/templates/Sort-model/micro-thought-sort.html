@@ -17,8 +17,8 @@
   <div class="row">
     <div class="col-lg-2 col-sm-0"></div>
     <div class="col-lg-8 col-sm-12 uk-text-center">
-      <button id="space-between"class="uk-button uk-button-text uk-text-capitalize uk-text-lead "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> products </a> </button>
-      <button id="space-between"class="uk-button uk-button-text uk-text-capitalize uk-text-lead "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> articles </a> </button>
+      <button id="space-between"class="uk-button uk-button-text uk-text-capitalize uk-text-lead "><a id="sub-button" href="{% url 'profiles:Product-sort' user.username %}"> products </a> </button>
+      <button id="space-between"class="uk-button uk-button-text uk-text-capitalize uk-text-lead "><a id="sub-button" href="{% url 'profiles:Article-sort' user.username %}"> articles </a> </button>
     </div>
     <div class="col-lg-2 col-sm-0"></div>
   </div>
@@ -34,7 +34,7 @@
                   <span class="right floated" uk-icon="more"></span>
                   <div uk-dropdown>
                     <ul class="uk-nav uk-dropdown-nav">
-                      <form action="{% url 'micro-thoughts-delete' obj.id %}" method="post">{% csrf_token %}
+                      <form action="{% url 'profiles:micro-thoughts-delete' obj.id %}" method="post">{% csrf_token %}
                         <p>Are you sure you want to delete "{{ object }}"?</p>
                         <input type="submit" value="Confirm"/>
                       </form>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+	<!--  Navigation bar-->
+	{% load crispy_forms_tags %}
+	{% include 'sinppet/nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+	<div id="main-container">
+		<div class="row">
+			<div class="col-lg-3 col-sm-0"> </div>
+			<div class="col-lg-7 col-sm-12">
+				<form style="padding-top: 100px;" method="post" action="">
+					{% csrf_token %}
+					<label for="id_description">Description:</label>
+					<input type="text" name="description" maxlength="1200" class="textinput textInput form-control" id="id_description">	
+					<label for="id_team">Team:</label>
+					<textarea id="editor" name="team"></textarea>
+					<div style="padding-top: 30px">
+					<input class="ui secondary large button" type="submit" value="Post" />
+					</div>
+				</form>
+			</div>
+			<div class="col-lg-2 col-sm-0"></div>
+		</div>
+	</div>
+	<!--  Footer  -->
+	{% include 'sinppet/footer.html' %}
+	{% block footer %}
+	{% endblock %}
+	<script>
+		var editor = new Jodit('#editor', {
+		    height: 500
+		});
+	</script>
+	
+	<style>
+	html, body {
+		margin-left:10px;
+		margin-right: 10px;
+	}
+	#main-container {
+		min-height: 100vh;
+	}
+	</style>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block body %}
+	{% load humanize %}
+	<!-- Navigation bar -->
+	{% include 'sinppet/second-nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<div class="row">
+		<div class="col-lg-2 col-sm-0"></div>
+		<div class="col-lg-8 col-sm-12" style="padding-top: 100px;">
+			<div class="uk-text-center">
+				<a href="{% url 'profiles:team-form' user.username %}"> <button class="ui gery basic button">Talk about your team</button></a>
+				{% if team.team %}
+				<a href="{% url 'profiles:team-form-update' user.username team.id %}"> <button class="ui gery basic button">Edit your team </button></a>
+				{% endif %}
+				<a href="{% url 'profiles:team-form-delete' user.username team.id %}"><button class="ui red basic button">Delete your team information</button></a>
+				<div class="ui section divider"></div>
+			</div>
+			{% if team.team is None %}
+				<p class="uk-text-lead uk-text-center" style="padding-top: 30px;">You have not talk about your team!</p>
+			{% endif %}
+			{% autoescape off %}
+			<p style="margin-top:50px;" class="uk-text-bold uk-heading-primary"> {{ team.description }} </p>
+			<p style="margin-top:60px;" class="" style=""> {{ team.team }}  </p>
+		{% endautoescape %}
+	</div>
+	<div class="col-lg-2 col-sm-0"></div>
+</div>
+
+<!---------------------------------------------------------->
+<style>
+body, html {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+</style>
+{% endblock %}

@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-lg-3 col-sm-0"></div>
     <div class="col-lg-6 col-sm-12" style="padding-top: 50px;">
-      <a href="{% url 'offical-letter-form' user.username %}">
+      <a href="{% url 'profiles:create-official-letter' user.username %}">
         <!-- official letter post button  -->
       <button class="fluid ui primary button">POST OFFICIAL LETTER HERE</button>
     </a>
@@ -27,7 +27,7 @@
             <div class="item">
               <div class="content">
                 {% autoescape off %}
-                <a style="text-decoration: none; color: black;" class="header" href="{% url 'offical-letter-details-view' user.username letter.id letter.slug %}">{{ letter.title }}</a>
+                <a style="text-decoration: none; color: black;" class="header" href="{% url 'letter-details' letter.id letter.slug %}">{{ letter.title }}</a>
                 <div class="meta">
                   <span class="cinema"> {{ letter.pub_time|timesince }}</span>
                 </div>
@@ -40,8 +40,8 @@
             </div>
             <!-- delete and update button  -->
             <div class='action-button'>
-              <button class="ui button" ><a href="{% url 'offical-letter-update-view' letter.id %}"> update  </a></button>
-              <form action="{% url 'offical-letter-delete-view' letter.id %}" method="post">
+              <button class="ui button" ><a href=""> update  </a></button>
+              <form action="" method="post">
                 {% csrf_token %}
                 <button class="ui button" type= "submit" > delete </button>
               </form>

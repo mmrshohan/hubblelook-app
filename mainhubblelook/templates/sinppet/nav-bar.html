@@ -20,8 +20,8 @@
         </div>
         <div uk-dropdown>
           <ul class="uk-nav uk-dropdown-nav">
-            <li><a style="font-size: 15px; padding-bottom:8px;" href="{% url 'quick-word' %}"> Post Your Micro Thought </a></li>
-            <li><a style="font-size: 15px; padding-bottom:8px;" href="{% url 'article-form'  %}"> Post Your Micro Article </a></li>
+            <li><a style="font-size: 15px; padding-bottom:8px;" href="{% url 'quick-word' %}"> Post Your Thought </a></li>
+            <li><a style="font-size: 15px; padding-bottom:8px;" href="{% url 'article-form'  %}"> Post Your Article </a></li>
             <li><a style="font-size: 15px; padding-bottom:8px;" href="{% url 'add-product-form'  %}"> Add a Product </a></li>
           </ul>
         </div>
@@ -29,7 +29,7 @@
         {% if user.is_authenticated %}
           <!-- user profile redirect option through icon -->
           <div class="item user">
-            <a  href="{% url 'portfolio' user.username  %}" class="uk-text-capitalize"
+            <a  href="{% url 'profiles:portfolio' user.username  %}" class="uk-text-capitalize"
               uk-tooltip="title: Hi {{ user.username }}, this is your profile; pos: bottom">
               <b class="user-link uk-visible@s">{{ user.username|capfirst|truncatewords:1 }}</b>
               <i class="user outline icon uk-hidden@s"></i>
@@ -81,9 +81,8 @@
             </div>
             <!--Tagged button -->
             <div class="item">
-              <i class="tags icon uk-visible@s"></i>
-              <a class="uk-visible@s">Tags </a>
-              <i class="uk-hidden@s tags icon"></i>
+              <i class="tags icon"></i>
+              <a class="">Tags </a>
             </div>
           </div>
           {%  endif %}
@@ -91,8 +90,7 @@
             <div class="item">
               <a class="" href="{% url 'account_login' %}">Sign-in</a>
               {%  else %}
-              <a style="text-decoration: none; color: black;" class="uk-link-text uk-text-capitalize uk-visible@s" href="{% url 'account_logout' %}">Sign out</a>
-              <a style="text-decoration: none; color: black;" href="{% url 'account_logout' %}"><i class="sign out alternate icon uk-hidden@s"></i></a>
+              <a style="text-decoration: none; color: black;" class="uk-link-text uk-text-capitalize" href="{% url 'account_logout' %}">Sign out</a>
             </div>
             
             {%  endif %}

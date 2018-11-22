@@ -5,72 +5,66 @@
   {% include 'sinppet/second-nav-bar.html' %}
   {% block nav %}
   {% endblock %}
- 
-    <div id="main-container">
-      <div style="padding-top: 60px;" class="row">
-        <div class="col-lg-2 col-sm-1"></div>
-        <div class="col-lg-8 col-sm-10">
-          {% autoescape off %}
-          <!--
-          <h1 class="ui header" style='font-size: 40px; word-spacing: 8px; letter-spacing: 2px;'>
-          {{ article.title|capfirst }}
-          
-          </h1>
-          -->
-          <p style="cursor:pointer;" class="uk-heading-primary uk-text-bold"> {{ article.title|capfirst }} </p>
-          <div class="sub header"> </div>
-          <div class="item">
-            <div class="content">
-              <div class="uk-text-meta"> {{ article.micro_article|wordcount }} words </div>
-            </div>
-          </div>
-          
-          <!-- horizental list -->
-          <div class="ui very relaxed horizontal list">
-            <div class="item">
-              <img class="ui avatar image" src="/images/avatar/small/daniel.jpg">
-              <div class="content">
-                <a class="header">{{ user.username }}</a>
-              </div>
-            </div>
-          </div>
-          <!--  list end here -->
-          <p class='article'>
-            {{ article.micro_article|capfirst }}
-          </p>
-          {% endautoescape %}
-        </div>
-        <div class="col-lg-2 col-sm-1"></div>
-      </div>
-    </div>
-    
   
+  <div id="main-container">
+    <div style="padding-top: 60px;" class="row">
+      <div class="col-lg-2 col-sm-1"></div>
+      <div class="col-lg-8 col-sm-10">
+        {% autoescape off %}
+        <!--
+        <h1 class="ui header" style='font-size: 40px; word-spacing: 8px; letter-spacing: 2px;'>
+        {{ article.title|capfirst }}
+        
+        </h1>
+        -->
+        <p class="uk-text-lead"> {{ article.Initial_keyword_for_articles }} </p>
+        <p style="cursor:pointer;" class="uk-heading-primary uk-text-bold"> {{ article.article_title|capfirst }} </p>
+        <div class="sub header"> </div>
+        <div class="item">
+          <div class="content">
+            <div class="uk-text-meta"> {{ article.micro_article|wordcount }} words </div>
+          </div>
+        </div>
+        
+        <!-- horizental list -->
+        <div class="ui very relaxed horizontal list">
+          <div class="item">
+            <img class="ui avatar image" src="/images/avatar/small/daniel.jpg">
+            <div class="content">
+              <a class="header">{{ article.user }}</a>
+            </div>
+          </div>
+        </div>
+        <!--  list end here -->
+        <p class='article'>
+          {{ article.micro_article|capfirst }}
+        </p>
+      {% endautoescape %}
+      <div class="ui section divider"></div>
+    </div>
+    <div class="col-lg-2 col-sm-1"></div>
+  </div>
+</div>
 
 
-
-  <!--  Footer  -->
+<!--  Footer  -->
 {% include 'sinppet/footer.html' %}
 {% block footer %}
 {% endblock %}
 
-  
-  <style type="text/css" media="screen">
+<style type="text/css" media="screen">
+html, body {
+margin-left: 10px;
+margin-right:10px;
+}
+.article{
+font-size: 16px;
+line-height: 30px;
 
-  html, body {
-    margin-left: 10px;
-    margin-right:10px;
-  }
+}
+#main-container{
+min-height: 100%;
+}
 
-  .article{
-  font-size: 16px;
-  line-height: 30px;
-  
-  }
-  #main-container{
-    min-height: 100%;
-  }
-
- 
-
-  </style>
+</style>
 {% endblock %}

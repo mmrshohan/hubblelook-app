@@ -1,97 +1,66 @@
 {% extends 'base.html' %}
 {% block body %}
-  {% load humanize %}
-  
-  {% include 'sinppet/second-nav-bar.html' %}
-  {% block nav %}
-  {% endblock %}
-  <!-- uikits   -->
-  <div class="" style="padding-top: 50px; padding-bottom:100px;">
-    <div class="grid">  <!-- bootstrape grid   -->
-    <div class="row">
-      <div class="col-lg-3">
-        <img class="ui medium circular image" src="{{ edit.user_photo.url }}" />
-        <p class="uk-heading-primary uk-text-bold">{{ edit.name }}</p>
-        {% if edit.title %}
-          <div class="uk-text-lead">{{ edit.title }}</div>
-        {% endif %}
-        <!--  url  -->
-        {% if edit.url %}
-          <a  href="{{ edit.url }}"><p class="uk-text-large">{{ edit.url|urlize }}</p></a>
-        {% endif %}
-        {% if edit.Type_of_company %}    <!--  Type of a company  -->
-        <p class="uk-text-lead"> Type: {{ edit.Type_of_company }}
-          <br> Headquarter: {{ edit.Headquarter }}
-          <br> Stock: {{ edit.stock_market }}
-        </p>
-      {% endif %}
-      {% if edit.additional_url %}
-        <p class="lead"> Additional: <a href="{{ edit.additional_url }}">{{ edit.additional_url }} </a></p>
-      {% endif %}
-      
-    </div>
-    <div class="col-lg-8">
-      {% if edit.established %}
-        <p class="ui header"> Established </p>
-        <p>{{ edit.established }} </p>
-      {% endif %}
-      <!--  Investment Information  -->
-      <p class="ui header"> Investments</p>
-      {% autoescape off %}
-      {{ edit.investors|capfirst|truncatewords:50 }}
-      {% endautoescape %}
-
-    {% if edit.investors|wordcount >= 201 %}
-      <div>
-        <a class="uk-text-meta"
-        href="#modal-full" uk-toggle> MORE ABOUT INVESTMENT</a>
-      </div>
-    {% endif %}
-
-  <div id="modal-full" class="uk-modal-full" uk-modal>
-      <div class="uk-modal-dialog">
-        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-        <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
-          <div class="uk-padding-large uk-align-center" uk-height-viewport>
-            {% autoescape off %}
-      <p class="ui header"> Investments</p>
-            <p>{{ edit.investors|capfirst  }}
-            </p>
-          {% endautoescape %}
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--  Investment information until here -->
-
-      {% autoescape off %}
-      <div class=" uk-heading-primary uk-text-bold"> Details of {{ edit.name }}
-      </div>
-      <p id="header-details">{{ edit.about_details|capfirst|truncatewords:100 }} </p>
-    {% endautoescape %}
-    
-    <!-- Company Information -->
-    {% if edit.about_details|wordcount >= 101 %}
-      <div>
-        <a class="uk-text-meta" uk-tooltip="title: Know more about {{ edit.name }}; pos: right" href="#modal-full" uk-toggle> READ MORE</a>
-      </div>
-    {% endif %}
-    
-    <div id="modal-full" class="uk-modal-full" uk-modal>
-      <div class="uk-modal-dialog">
-        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-        <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
-          <div class="uk-padding-large uk-align-center" uk-height-viewport>
-            {% autoescape off %}
-            <h1>{{ edit.name }}</h1>
-            <p>{{ edit.about_details|capfirst  }}
-            </p>
-          {% endautoescape %}
-        </div>
-      </div>
-    </div>
-  </div>
- <!-- Company Information until here -->
+	{% load humanize %}
+	<!-- Navigation bar -->
+	{% include 'sinppet/second-nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<!-- uikits.com   ---------->
+	<div class="" style="padding-top: 50px; padding-bottom:100px;">
+		<div class="grid">  <!-- bootstrape grid   -->
+		<div class="row">
+			<div class="col-lg-3">
+				<img class="ui medium circular image" src="{{ edit.user_photo.url }}" />
+				<p class="uk-heading-primary uk-text-bold">{{ edit.name }}</p>
+				{% if edit.title %}
+					<div class="uk-text-lead">{{ edit.title }}</div>
+				{% endif %}
+				<!--  url and additional url  -->
+				{% if edit.url %}
+					<div style="padding-top: 20px; padding-bottom: 20px;">
+						<a  href="{{ edit.url }}"><p class="uk-text-large">{{ edit.url|urlize }} {% if edit.additional_url %}  <b> & </b> 
+					    <a href="{{ edit.additional_url }}">{{ edit.additional_url }} </a> {% endif %} </p></a>
+					</div>
+				{% endif %}
+				<!--  Type of a company  -->
+				{% if edit.Type_of_company %}    
+				<p class="lead"> Type: {{ edit.Type_of_company }}
+					<br> Headquarter: {{ edit.Headquarter }}
+					<br> Stock: {{ edit.stock_market }}
+				</p>
+			{% endif %}
+		</div>
+		<!-- another grid -->
+		<div class="col-lg-8">
+			{% if edit.established %}
+				<p class="ui header"> Founded in: </p>
+				<p class="lead">{{ edit.established }} </p>
+			{% endif %}
+			{% autoescape off %}
+			<div class=" uk-heading-primary uk-text-bold"> Details of {{ edit.name }}
+			</div>
+			<p id="header-details">{{ edit.about_details|capfirst|truncatewords:100 }} </p>
+		{% endautoescape %}
+		<!-- Company Information -->
+		{% if edit.about_details|wordcount >= 101 %}
+			<div>
+				<a class="uk-text-meta" uk-tooltip="title: Know more about {{ edit.name }}; pos: right" href="#modal-full" uk-toggle> READ MORE</a>
+			</div>
+		{% endif %}
+		<div id="modal-full" class="uk-modal-full" uk-modal>
+			<div class="uk-modal-dialog">
+				<button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+				<div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+					<div class="uk-padding-large uk-align-center" uk-height-viewport>
+						{% autoescape off %}
+						<h1>{{ edit.name }}</h1>
+						<p style="color: black;">{{ edit.about_details|capfirst }}</p>
+					{% endautoescape %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Company Information until here -->
 </div>
 <div class="col-lg-1"></div>
 </div>
@@ -101,266 +70,230 @@
 <!-- profile section end here   -->
 <!--  Profile buttons  -->
 <div class="row">
-<div class="col-1">
+	<div class="col-1">
+	</div>
+	<div class="col-10">
+		<div style="padding-bottom: 50px;">
+			<p style="text-align: center;" class="uk-text-bold">
+				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button"> Tags </a></button>
+				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a href="{% url 'profiles:team-page' user.username %}" id="sub-button"> Team </a></button>
+				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'profiles:Micro-thought-sort' user.username %}"> Thoughts </a></button>
+				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'profiles:Product-sort' user.username %}"> Products </a></button>
+				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'profiles:Article-sort' user.username %}"> Articles </a></button>
+				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'profiles:letter-list-view' user.username %}"> Official letter </a></button>
+			</p>
+		</div>
+	</div>
+	<div class="col-1"> </div>
 </div>
-<div class="col-10">
-  <div style="padding-bottom: 50px;">
-    <p style="text-align: center;" class="uk-text-bold">
-      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button"> Tags </a></button>
-      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Micro-thought-sort' user.username %}"> Thoughts </a></button>
-      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Product-sort' user.username %}"> Products </a></button>
-      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'Article-sort' user.username %}"> Articles </a></button>
-      <button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'offical-letter-view' user.username %}"> Official letter </a></button>
-    </p>
-  </div>
-</div>
-<div class="col-1"> </div>
-</div>
-<!--  Profile buttons end here  -->
-<!-- Post cards =====================================================================================-->
-<div class="row">
-<div class="col-lg-3"> </div>
-<div class="col-lg-7">
-<div class="ui items">
-<!--=============================================================================================== -->
-<!-- card type for thoughts  ---------------------------------------------------------------------- -->
-<img class="ui medium circular image" src="{{ edit.user_photo.url }}" >
-<div id="mian-container">
-  {% block microthought %}
-  {% for obj in quickword %}
-    <div class="ui items">
-      <div class="item">
-        <div class="content">
-          <div>
-            <span class="right floated" uk-icon="more"></span>
-            <div uk-dropdown>
-              <ul class="uk-nav uk-dropdown-nav">
-                <!-- delete view -->
-                <form action="{% url 'micro-thoughts-delete' user.username obj.id %}" method="post">{% csrf_token %}
-                  <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
-                </form>
-                <!---->
-              </ul>
-            </div>
-            <p>{{  obj.user|capfirst }} <span class="meta"> Ceo, Hubblelook </span> </p>
-            <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <p> {{ obj.pub_time|naturaltime }}</p> </div>
-          </div>
-          <p class="uk-text-lead
-            "><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.micro_thought }}</p>
-            <div class="extra content">
-              <span id="keep-it">
-                Save
-              </span>
-              <span id="analysis"> Analysis </span>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="ui section divider"></div>
-    {% endfor %}
-    {% endblock %}
-    <!--=================================================================================================== -->
-    <!-- card type for article  ---------------------------------------------------------------------------- -->
-    {% block articles %}
-    {% for article in article_view %} <!-- article card -->
-    {% autoescape off %}
-    <div class="ui items">
-      <div class="item">
-        <div class="content">
-          <div>
-            <span class="right floated" uk-icon="more"></span>
-            <div uk-dropdown>
-              <ul class="uk-nav uk-dropdown-nav">
-                <!-- article delete view -->
-                <form action="{% url 'article-delete' article.id %}" method="post">{% csrf_token %}
-                  <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
-                </form>
-                <!---->
-                <!-- article update view -->
-                <form action="{% url 'article-update' article.id %}" method="post">{% csrf_token %}
-                  <input class="uk-button uk-button-link" type="submit" value="Edit your article"/>
-                </form>
-                <!---->
-              </ul>
-            </div>
-            <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
-            <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <span>  {{ article.article_pub_time|naturaltime }}</span><span class="meta">, ARTICLE </span></div>
-            
-          </div>
-          <a class="uk-text-lead" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
-            <span class="font-italic"> {{ article.Initial_keyword_choices }}</span> {{ article.title|title }}
-          </a>
-          <p>
-            {{ article.micro_article|capfirst|truncatewords:50 }}
-          </p>
-          
-          <div class="extra content">
-            <span id="keep-it">
-              Save
-            </span>
-            <span id="analysis"> Analysis </span>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="ui section divider"></div>
-  {% endautoescape %}
-{% endfor %}
-{% endblock %}
-<!--==========+=========================================================================================== -->
-<!-- card type for officila letter  (Oletter stand for official letter)----------------------------------- -->
+<!--Post templates  -->
 
-{% block offical %}
-{% for Oletter in official_letter %} <!-- official letter  card -->
-<div class="item">
-  <div class="content">
-    <div class="ui selection list">
-      <div class="ui horizontal large blue label">
-        official letter
-      </div>
+<!--Post templates  -->
+<div class="row" style="margin-right: 10px; margin-left:10px; ">
+  <!--  Grid from Boothstrape -->
+  <div class="col-lg-3"> </div>
+  <div class="col-lg-7">
+    <div style="padding-top: 30px;">
+      {% for post in posts %}
+        {% if post.micro_thought %}
+          <div class="ui items">
+            <div class="item">
+              <div class="content">
+                <div>
+                  <p>{{ post.user|capfirst }} <span class="meta"> CEO, Hubblelook </span>
+                  <span class="right floated">{{ post.pub_time|naturaltime }} </span></p>
+                </div>
+                <!-- Templates for Microthoughts -->
+                <p class="uk-text-lead"><span class="ui big label" > {{ post.Initial_keyword_for_thoughts }}  </span> {{ post.micro_thought }}</p>
+                <!-- end templates -->
+                <div class="extra content">
+                  <span> Save</span>
+                  <span > Analysis </span>
+                  <span> Share</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui section divider"></div>
+        {% endif %}
+        <!-- Templates for Article -->
+        {% if post.micro_article %}
+          <div class="ui items">
+            <div class="item">
+              <div class="content">
+                <p>{{ post.user|capfirst }} <span class="meta"> CEO, Hubblelook </span> <span class="right floated">{{ post.pub_time|naturaltime }} </span> <span class="uk-text-meta"> , Article </span> </p>
+                <a class="uk-text-lead" href="{% url 'details' post.id post.slug %}" style="text-decoration: none;
+                  cursor: pointer;" >
+                  {% autoescape off %}
+                  <p><span class="ui big label"> {{ post.Initial_keyword_for_articles }} </span> {{ post.article_title|title }} </p> </a>
+                {% endautoescape %}
+                <div class="extra content">
+                  <span> Save</span>
+                  <span > Analysis </span>
+                  <span> Share</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui section divider"></div>
+        {% endif %}
+        <!-- end templates -->
+
+        <!-- Templates for Product -->
+        {% if post.product_name %}
+          <div class="ui items">
+            <div class="item">
+              <div class="content">
+                <p>{{ post.user|capfirst }} <span class="meta"> CEO, Hubblelook </span>
+                <span class="right floated">{{ post.pub_time|naturaltime }} </span></p>
+                <div style="padding-bottom: 5px; padding-top:0px; "><span>PRODUCT</span></div>
+                <div class="uk-text-center">
+                    <a id="product" href="{% url 'add-product-view' post.id post.slug %}">
+                      <p class="uk-text-lead uk-text-bold">{{ post.product_name|title  }}</p></a> 
+                  <p>
+                    {% if post.launched_time %}
+                      <span class="date"><span class="launched-in">Launched in</span> <strong>{{ post.launched_time }}</strong></span>
+                      {%  endif %}
+                    </p>
+                  </div>
+                  <div class="extra content">
+                    <span> Save</span>
+                    <span id="analysis"> Analysis </span>
+                    <span> Share</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+  <!-- Templates for Product -->
+
+
+            <div class="ui section divider"></div>
+          {% endif %}
+        {% endfor %}
+        <!----- official letter  card ---->
       
-      <span class="uk-align-right" uk-icon="more"></span>
-      
-    </div>
-    <a class="uk-text-lead" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
-    <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
-      <span>  {{ Oletter.pub_time|naturaltime }}</span>
-    </div>
-    <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
-  </div>
-</div>
-<div class="ui section divider"></div>
-{% endfor %}
-{% endblock %}
-<!--======================================================================================================== -->
-<!-- card type for products  ------------------------------------------------------------------------------- -->
-{% block product %}
-{% for product in addproduct %} <!-- product card -->
-<div class="ui itmes">
-<div class="item">
-  <div class="content">
-    <span class="uk-align-right" uk-icon="more"></span>
-    <div uk-dropdown>
-      <ul class="uk-nav uk-dropdown-nav">
-        <!-- product delete view -->
-        <form action="{% url 'Add-product-delete' product.id %}" method="post">{% csrf_token %}
-          <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
-        </form>
-        <!---->
-        <!-- product update view -->
-        <form action="{% url 'Add-product-update' product.id %}" method="post">{% csrf_token %}
-          <input class="uk-button uk-button-link" type="submit" value="Edit your product details"/>
-        </form>
-        <!---->
-      </ul>
-    </div>
-    <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span>
+        {% for letter in official_letter %}
+          <div class="item">
+            <div class="content">
+            
+              <div class="ui selection list">
+                <a class="ui blue image label">
+                  Official letter
+                  <div class="detail">from {{ user.username|capfirst }}</div>
+                </a>
+                <span class="uk-align-right"> {{ letter.pub_time|naturaltime }} </span>
+              </div>
+
+              <a class="uk-text-lead letter" href="{% url 'letter-details' letter.id letter.slug %}"> {{ letter.title }}</a>
+              <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
+              </div>
+              <p> by <span class="meta">  {{ letter.letter_from }}</span> </p>
+                  <div class="extra content">
+                    <span> Save</span>
+                    <span id="analysis"> Analysis </span>
+                    <span> Share</span>
+                  </div>
+            </div>
+          </div>
+          <div class="ui section divider"></div>
     
-  </p>
-  <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
-    <span> {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div>
-    <div class="uk-text-center">
-      <div class="uk-text-lead uk-text-bold">
-        <a style="color:#4183c4;" id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
+        {% endfor %}
       </div>
-      <p>
-        {% if product.launched_time %}
-          <span class="date"><span class="launched-in">Launched in</span> <strong>{{ product.launched_time }}</strong></span>
-          {%  endif %}
-        </p>
-      </div>
-      
-      <div class="extra content">
-        <span id="keep-it">
-          Save
-        </span>
-        <span id="analysis"> Analysis </span>
-        
-      </div>
+      <div class="col-lg-2"> </div>
     </div>
   </div>
-</div>
-<div class="ui section divider"></div>
-{% endfor %}
-{% endblock %}
-</div>
-<!---
---->
-</div>
-</div>
-<div class="col-lg-2"> </div>
-</div>
-<!--  enddemo  -->
-<!--===================================================================================================== -->
-<!--if no post then this template will appear  ---------------------------------------------------------- -->
+<!-- end templates -->
 
+
+
+
+
+
+
+
+<!------------------------------ -->
 <!--footer -->
 {% include 'sinppet/footer.html' %}
 {% block footer %}
 {% endblock %}
-<style type="text/css">
-body, html {
-margin-right: 10px;
-margin-left: 10px;
-background-color: #fcfcfc;
-}
-a:hover {
-color: #4183c4;
-text-decoration: none;
-}
-#mian-container {
-min-height: 100vh;
-}
-#header-details {
-font-size: 18px;
-line-height: 22px;
-}
-#quick-word-description {
-padding-left: 10px;
-padding-bottom: 20px;
-}
-#sub-button {
-text-decoration: none;
-color: black;
-}
-#space-between {
-padding-right: 5px;
-padding-left: 5px;
-font-size: 14px;
-}
-.grid-padding {
-padding-left: 20px;
-}
-.profile-header-button {
-padding-top: 40px;
-padding-bottom: 20px;
-}
-#follow-button {
-margin-top: 20px;
-margin-left: 20px;
-}
-.card-text {
-font-size: 20px;
-padding-bottom: 15px;
-}
-.ui.message {
-background-color: #41444b;
-}
-.content {
-padding-bottom: 5px;
-}
-.card {
-padding-left: 10px;
-}
-#analysis:hover {
-color: black;
-cursor: pointer;
-}
-#keep-it:hover {
-cursor: pointer;
-color: black;
-}
-</style>
+
+		<style type="text/css">
+		body, html {
+			margin-right: 10px;
+			margin-left: 10px;
+			background-color: #fcfcfc;
+		}
+
+		a:hover {
+			color: #4183c4;
+			text-decoration: none;
+		}
+
+		#mian-container {
+			min-height: 100vh;
+		}
+
+		#header-details {
+			font-size: 18px;
+			line-height: 22px;
+		}
+
+		#quick-word-description {
+			padding-left: 10px;
+			padding-bottom: 20px;
+		}
+
+		#sub-button {
+			text-decoration: none;
+			color: black;
+		}
+
+		#space-between {
+			padding-right: 5px;
+			padding-left: 5px;
+			font-size: 14px;
+		}
+
+		.grid-padding {
+			padding-left: 20px;
+		}
+
+		.profile-header-button {
+			padding-top: 40px;
+			padding-bottom: 20px;
+		}
+
+		#follow-button {
+			margin-top: 20px;
+			margin-left: 20px;
+		}
+
+		.card-text {
+			font-size: 20px;
+			padding-bottom: 15px;
+		}
+
+		.ui.message {
+			background-color: #41444b;
+		}
+
+		.content {
+			padding-bottom: 5px;
+		}
+
+		.card {
+			padding-left: 10px;
+		}
+
+		#analysis:hover {
+			color: black;
+			cursor: pointer;
+		}
+
+		#keep-it:hover {
+			cursor: pointer;
+			color: black;
+		}
+
+		</style>
 {% endblock %}

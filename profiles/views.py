@@ -10,10 +10,14 @@ from django.views.generic import ListView, TemplateView
 from django.views.generic.base import ContextMixin
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from mainhubblelook.models import QuickWord, AddProduct, Article
-from profiles.models import Profile, OfficalLetter
-from .forms import Edit_Profile_Form, Official_Letter_Form
-from mainhubblelook.forms import Quick_word_form, Add_product_view, Article_form
+# Models from Mianhubblelook app
+from mainhubblelook.models import MainModel, OfficalLetter
+# froms Mianhubblelook app
+from mainhubblelook.forms import Official_Letter_Form
+
+from profiles.models import Profile, Team
+from .forms import Edit_Profile_Form, TeamForm
+from mainhubblelook.forms import Quick_word_form, Add_product_view, Article_form  
 
 
 user = get_user_model
@@ -22,16 +26,14 @@ user = get_user_model
 class ProfileView(ListView):
 
     template_name = "profile.html"
-    queryset = QuickWord.objects.all()
-    context_object_name = 'quickword'
+    queryset = MainModel.objects.all()
+    context_object_name = 'posts'
 
 
     def get_context_data(self, **Kwargs):
         context = super(ProfileView, self).get_context_data(**Kwargs)
-        context['addproduct'] = AddProduct.objects.all()
-        context['article_view'] = Article.objects.all()
-        context['edit'] = Profile.objects.all().last()
         context['official_letter'] = OfficalLetter.objects.all()
+        context['edit'] = Profile.objects.all().first()
         return context
 
 
@@ -41,40 +43,30 @@ class ProfileCreateView(CreateView):         #Profile create view
     template_name = "edit-profile.html"
     success_url = '/portfolio/'
 
-'''
-class ProfileUpdateView(UpdateView):
-    model = Profile
-    form_class = Edit_Profile_Form
-    template_name = "edit-profile.html"
-    success_url = "/portfolio"
-
-'''
-
-
 #Micro Thoughts update view                     microthought update view
 class MicroThoughtsUpdateView(UpdateView):
-    model = QuickWord
+    model = MainModel
     form_class = Quick_word_form
     template_name = 'forms/quickword.html'
     success_url = '/'
 #Micro Thoughts delete View                     microthought delete view
 
 class MicroThoughtsDeleteView(DeleteView):
-    model = QuickWord
+    model = MainModel
     form_class = Quick_word_form
     template_name = 'profile.html'
     success_url = '/'
 
 #Add product update UpdateView                   Product Update view 
 class AddProductUpdateView(UpdateView):
-    model = AddProduct
+    model = MainModel
     form_class = Add_product_view
     template_name = 'forms/addproduct_form.html'
     success_url = '/'
 
 #Add prodcuct delete View                        product  delete view 
 class AddProductDeleteView(DeleteView):
-    model = AddProduct
+    model = MainModel
     form_class = Add_product_view
     template_name = 'profile.html'
     success_url = "/"
@@ -82,18 +74,19 @@ class AddProductDeleteView(DeleteView):
 
 #Add product update UpdateView                   Article update view
 class ArticleUpdateView(UpdateView):
-    model = Article
+    model = MainModel
     form_class = Article_form
     template_name = 'forms/article-form.html'
     success_url = '/'
 
 #Add prodcuct delete View                        Article delete view
 class ArticleDeleteView(DeleteView):
-    model = Article
+    model = MainModel
     form_class = Article_form
     template_name = 'profile.html'
-    success_url = "/"
+    success_url = reverse_lazy('profiles:portfolio')
 
+# Views for Official letter 
 
 class Offical_Letter_View(ListView):                    # Official letter list view 
     template_name = 'offical-letter-list-view.html'
@@ -101,26 +94,19 @@ class Offical_Letter_View(ListView):                    # Official letter list v
     context_object_name = 'letter_list'
 
 
-# Product page view 
-def Offical_Letter_Detail_View(request, id, slug, username):       #official letter details view 
-    letter = OfficalLetter.objects.get(id=id)
-    context = {
-    'letter': letter,
-    }
-    return render(request, 'official-letter-view.html', context)    
 
 class Offical_Letter_Create_View(CreateView):          # official letter create view 
     form_class = Official_Letter_Form
     model = OfficalLetter
     template_name = "official-letter-form.html"
-    success_url = "/offical-letter-view/"
+    success_url = "/"
 
 
 class Offical_Letter_Update_View(UpdateView):         # official letter update view
     model = OfficalLetter
     form_class = Official_Letter_Form
     template_name = 'official-letter-form.html'
-    success_url = "/offical-letter-view/"
+    success_url = "/"
 
 class Offical_Letter_Delete_View(DeleteView):      # official letter delete view
     model = OfficalLetter
@@ -129,34 +115,53 @@ class Offical_Letter_Delete_View(DeleteView):      # official letter delete view
     success_url = "/"
 
 
-
-
-
 '''
 sort views are created to see how many post has been
 posted by that user in details 
 '''
 class MicroThoughtsSortView(ListView):
     template_name= "Sort-model/micro-thought-sort.html"
-    queryset = QuickWord.objects.all()
-    context_object_name = 'quickword'
+    queryset = MainModel.objects.all()
+    context_object_name = 'posts'
 
 
 class ProductSortView(ListView):
     template_name= "Sort-model/product-sort.html"
-    queryset = AddProduct.objects.all()
-    context_object_name = 'addproduct'
+    queryset = MainModel.objects.all()
+    context_object_name = 'posts'
 
 class ArticleSortView(ListView):
     template_name= "Sort-model/article-sort.html"
-    queryset = Article.objects.all()
-    context_object_name = 'article_view'
+    queryset = MainModel.objects.all()
+    context_object_name = 'posts'
 
 
+class TeamPageView(TemplateView):
+
+    template_name = "team.html"
 
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['team'] = Team.objects.all().first()
+        return context
 
 
+class Team_Create_View(CreateView):         
+    form_class = TeamForm
+    model = Team
+    template_name = "team-form.html"
+    success_url = "/"
 
 
-	
+class Team_Update_View(UpdateView):
+    model = Team
+    form_class = TeamForm
+    template_name = 'team-form.html'
+    success_url = "/"
+
+class Team_Delete_View(DeleteView):      # official letter delete view
+    model = Team
+    form_class = TeamForm
+    template_name = 'team.html'
+    success_url = "/"

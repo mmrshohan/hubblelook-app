@@ -1,78 +1,79 @@
 {% extends 'base.html' %}
 {% block body %}
-  {% load crispy_forms_tags %}
-  {% include 'sinppet/nav-bar.html' %}
-  {% block nav %}
-  {% endblock %}
-  {% load static %}
+{% load crispy_forms_tags %}
+{% include 'sinppet/nav-bar.html' %}
+{% block nav %}
+{% endblock %}
+{% load static %}
   <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
   <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+  <!--Jodit text editor -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.39/jodit.min.js"></script>
   <!--Article form using django crispy form -->
   <div id="main-container">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-sm-0"></div>
-        <div class="col-lg-6 col-sm-12">
+        <div class="col-lg-7 col-sm-12">
           <div style="padding-bottom: 30px;" class="uk-heading-primary uk-text-bold">
             Write a micro article here
           </div>
           <form action="" method="post">
-
-
-            {% csrf_token %}
-            
-            {{ form.media }}
-            {{ form|crispy }}
-
-                  
-            <input id="submit" class="ui secondary button " type="submit" value="Post" />
-          </form>
-        </div>
-        <div class="col-lg-3 col-sm-0"></div>
+            {% csrf_token %}    
+            <label for="id_article_title" class="control-label ">Article title</label>
+            <input type="text" name="article_title" maxlength="500" class="textinput textInput form-control" id="id_article_title">
+            <label for="id_micro_article" class="control-label ">
+              Micro article
+            </label>
+            <input type="text" id="editor" name="micro_article">
+            <label for="id_Initial_keyword_for_articles" class="control-label ">Initial keyword for articles</label>
+            <select name="Initial_keyword_for_articles" class="select form-control" id="id_Initial_keyword_for_articles"> <option value="">---------</option> <option value="General" selected="">GENERAL</option> <option value="Product">PRODUCT</option> <option value="Economics">ECONOMICS</option> <option value="Market">MARKET</option> <option value="Financial market">FINANCIAL MARKET</option>
+          </select>
+          <label for="id_topic" class="control-label "> Topic </label>
+          <input type="text" name="topic" maxlength="2000" class="textinput textInput form-control" id="id_topic">
+  
+          <input id="submit" class="ui secondary button " type="submit" value="Post" />
+        </form>
       </div>
+      <div class="col-lg-2 col-sm-0"></div>
     </div>
   </div>
-  <!--  Footer  -->
-  {% include 'sinppet/footer.html' %}
-  {% block footer %}
-  {% endblock %}
+</div>
+<!--  Footer  -->
+{% include 'sinppet/footer.html' %}
+{% block footer %}
+{% endblock %}
+
+
+<script>
+
+    var editor = new Jodit("#editor", {
+      height: 400,
+    "disablePlugins": "color,font,table,tableKeyboardNavigation,media"
+    });
+
+</script>
 
   <style>
-  html, body {
-   background-color: #ffffff;
-   margin-right: 10px;
-   margin-left: 10px;
-  }
-  #main-container {
-  min-height: 100%;
-  }
-  .article-title {
-  padding-bottom: 10px;
-  }
-  #submit {
-  margin-top: 25px;
-  }
+
+            html, body {
+              background-color: #ffffff;
+              margin-right: 10px;
+              margin-left: 10px;
+            }
+
+            #main-container {
+              min-height: 100%;
+            }
+
+            .article-title {
+              padding-bottom: 10px;
+            }
+
+            #submit {
+              margin-top: 25px;
+            }
+
   </style>
 {% endblock %}
-var quill = new Quill('#editor', {
-modules: {
-toolbar: [
-[{ header: [1, 2, false] }],
-['bold', 'italic', 'underline'],
-['image', 'code-block']
-]
-},
-placeholder: 'Compose an epic...',
-theme: 'snow'  // or 'bubble'
-});
-
-var form = document.querySelector('form');
-form.onsubmit = function() {
-// Populate hidden form on submit
-var about = document.querySelector('input[name=description]');
-//get JSON from quill editor
-var jsonData = quill.getContents();
-//access "insert" data from the JSON
-about.value = jsonData.ops[0].insert;
-console.log("Submitted", $(form).serialize(), $(form).serializeArray());
-};

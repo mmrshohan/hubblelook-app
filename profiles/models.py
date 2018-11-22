@@ -22,7 +22,7 @@ class Profile(models.Model):
 		)
 	Type_of_account = models. NullBooleanField('Personal account', help_text="by default this is Business account")
 	user_photo = models.ImageField(upload_to='user_image', blank=True)
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
 	occupation = models.CharField(max_length=400, null=False)
 	name = models.CharField(max_length=200, null=False, blank=False, default=None)
 	title = models.CharField(max_length=100, null=True, blank=True)
@@ -46,27 +46,12 @@ class Profile(models.Model):
 
 		
 
-class OfficalLetter(models.Model):
-	title = models.CharField(max_length=1000, null=False, blank=False)
-	slug = models.SlugField(max_length=1000, null=True, blank=True)
-	to_whom = models.CharField(max_length=300, null=True, blank=True)
-	letter = RichTextField()
-	pub_time = models.DateTimeField('Publish time', auto_now=True)
-	letter_from = models.CharField(max_length=500, null=True, blank=True)
+class Team(models.Model):
+	description = models.CharField(max_length=1200, null=True, blank=True) 
+	team = models.TextField(null=True, blank=True)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-	#def get_absolute_url(self):
-	#	return reverse('offical-letter-view', kwargs={'username': self.username})
 
-	def __str__(self):
-		return self.title
-
-	class Meta:
-		ordering = ['-pub_time']
-
-@receiver(pre_save, sender=OfficalLetter)
-def pre_save_slug(sender, **kwargs):
-	slug = slugify(kwargs['instance'].title)
-	kwargs['instance'].slug = slug
 
 
 

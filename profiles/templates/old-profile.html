@@ -1,0 +1,177 @@
+
+<!--  Profile buttons end here  -->
+<!-- Post cards =====================================================================================-->
+<div class="row">
+<div class="col-lg-3"> </div>
+<div class="col-lg-7">
+<div class="ui items">
+<!--=============================================================================================== -->
+<!-- card type for thoughts  ---------------------------------------------------------------------- -->
+<img class="ui medium circular image" src="{{ edit.user_photo.url }}" >
+<div id="mian-container">
+  {% block microthought %}
+  {% for obj in quickword %}
+    <div class="ui items">
+      <div class="item">
+        <div class="content">
+          <div>
+            <span class="right floated" uk-icon="more"></span>
+            <div uk-dropdown>
+              <ul class="uk-nav uk-dropdown-nav">
+                <!-- delete view -->
+                <form action="{% url 'micro-thoughts-delete' user.username obj.id %}" method="post">{% csrf_token %}
+                  <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
+                </form>
+                <!---->
+              </ul>
+            </div>
+            <p>{{  obj.user|capfirst }} <span class="meta"> Ceo, Hubblelook </span> </p>
+            <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <p> {{ obj.pub_time|naturaltime }}</p> </div>
+          </div>
+          <p class="uk-text-lead
+            "><span class="font-italic" > {{ obj.Initial_keyword_choices }}  </span> {{ obj.micro_thought }}</p>
+            <div class="extra content">
+              <span id="keep-it">
+                Save
+              </span>
+              <span id="analysis"> Analysis </span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui section divider"></div>
+    {% endfor %}
+    {% endblock %}
+    <!--=================================================================================================== -->
+    <!-- card type for article  ---------------------------------------------------------------------------- -->
+    {% block articles %}
+    {% for article in article_view %} <!-- article card -->
+    {% autoescape off %}
+    <div class="ui items">
+      <div class="item">
+        <div class="content">
+          <div>
+            <span class="right floated" uk-icon="more"></span>
+            <div uk-dropdown>
+              <ul class="uk-nav uk-dropdown-nav">
+                <!-- article delete view -->
+                <form action="{% url 'article-delete' article.id %}" method="post">{% csrf_token %}
+                  <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
+                </form>
+                <!---->
+                <!-- article update view -->
+                <form action="{% url 'article-update' article.id %}" method="post">{% csrf_token %}
+                  <input class="uk-button uk-button-link" type="submit" value="Edit your article"/>
+                </form>
+                <!---->
+              </ul>
+            </div>
+            <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span> </p>
+            <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; "> <span>  {{ article.article_pub_time|naturaltime }}</span><span class="meta">, ARTICLE </span></div>
+            
+          </div>
+          <a class="uk-text-lead" href="{% url 'details' article.id article.slug %}" style="text-decoration: none; cursor: pointer;" >
+            <span class="font-italic"> {{ article.Initial_keyword_choices }}</span> {{ article.title|title }}
+          </a>
+          <p>
+            {{ article.micro_article|capfirst|truncatewords:50 }}
+          </p>
+          
+          <div class="extra content">
+            <span id="keep-it">
+              Save
+            </span>
+            <span id="analysis"> Analysis </span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui section divider"></div>
+  {% endautoescape %}
+{% endfor %}
+{% endblock %}
+<!--==========+=========================================================================================== -->
+<!-- card type for officila letter  (Oletter stand for official letter)----------------------------------- -->
+
+{% block offical %}
+{% for Oletter in official_letter %} <!-- official letter  card -->
+<div class="item">
+  <div class="content">
+    <div class="ui selection list">
+      <div class="ui horizontal large blue label">
+        official letter
+      </div>
+      
+      <span class="uk-align-right" uk-icon="more"></span>
+      
+    </div>
+    <a class="uk-text-lead" href="{% url 'offical-letter-details-view' Oletter.id %}"> {{ Oletter.title }}</a>
+    <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
+      <span>  {{ Oletter.pub_time|naturaltime }}</span>
+    </div>
+    <p> From <span class="meta">  {{ Oletter.letter_from }}</span> </p>
+  </div>
+</div>
+<div class="ui section divider"></div>
+{% endfor %}
+{% endblock %}
+<!--======================================================================================================== -->
+<!-- card type for products  ------------------------------------------------------------------------------- -->
+{% block product %}
+{% for product in addproduct %} <!-- product card -->
+<div class="ui itmes">
+<div class="item">
+  <div class="content">
+    <span class="uk-align-right" uk-icon="more"></span>
+    <div uk-dropdown>
+      <ul class="uk-nav uk-dropdown-nav">
+        <!-- product delete view -->
+        <form action="{% url 'Add-product-delete' product.id %}" method="post">{% csrf_token %}
+          <input class="uk-button uk-button-link" type="submit" value="Delete this"/>
+        </form>
+        <!---->
+        <!-- product update view -->
+        <form action="{% url 'Add-product-update' product.id %}" method="post">{% csrf_token %}
+          <input class="uk-button uk-button-link" type="submit" value="Edit your product details"/>
+        </form>
+        <!---->
+      </ul>
+    </div>
+    <p>{{ user.username }} <span class="meta"> Ceo, Hubblelook </span>
+    
+  </p>
+  <div class="uk-text-meta" style="padding-bottom: 5px; padding-top:0px; ">
+    <span> {{ product.pub_time|naturaltime }}</span><span class="meta">, PRODUCT </span></div>
+    <div class="uk-text-center">
+      <div class="uk-text-lead uk-text-bold">
+        <a style="color:#4183c4;" id="product" href="{% url 'add-product-view' product.id product.slug %}">{{ product.product_name|title  }}</a>
+      </div>
+      <p>
+        {% if product.launched_time %}
+          <span class="date"><span class="launched-in">Launched in</span> <strong>{{ product.launched_time }}</strong></span>
+          {%  endif %}
+        </p>
+      </div>
+      
+      <div class="extra content">
+        <span id="keep-it">
+          Save
+        </span>
+        <span id="analysis"> Analysis </span>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui section divider"></div>
+{% endfor %}
+{% endblock %}
+</div>
+<!---
+--->
+</div>
+</div>
+<div class="col-lg-2"> </div>
+</div>

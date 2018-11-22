@@ -32,8 +32,8 @@ urlpatterns = [
     path('', include('mainhubblelook.urls')),
     path('accounts/', include('allauth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('profile/', include('profiles.urls')),
-    path('knowledge/', include('customercare.urls')),   # Customer support page
+    path('profile/', include('profiles.urls', namespace='profile')),
+    path('knowledge/', include('customercare.urls', namespace='knowledge')),   # Customer support page
     path('jobs/', include('jobs.urls')),
 
     #footer URL 

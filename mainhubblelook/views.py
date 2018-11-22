@@ -6,39 +6,30 @@ from django.db.models import Q  # Q lookup for Search
 from django.views.generic.base import ContextMixin, RedirectView
 from django.views.generic import ListView, TemplateView, DetailView, UpdateView, DeleteView
 from django.views.generic.edit import CreateView, FormView
-from .models import QuickWord, AddProduct, Article, UserContactForm
-from profiles.models import Profile, OfficalLetter
-from .forms import Quick_word_form, Add_product_view, Article_form, Contact_form
+from .models import MainModel, UserContactForm, OfficalLetter
+from profiles.models import Profile
+from .forms import Quick_word_form, Add_product_view, Article_form, Contact_form, Official_Letter_Form
 
 
 # template view 
 class QuickWordView(ListView):
 
     template_name = "index.html"
-    queryset = QuickWord.objects.all()
-    context_object_name = 'quickword'
+    queryset = MainModel.objects.all()
+    context_object_name = 'posts'
 
     def get_context_data(self, **Kwargs):
         context = super(QuickWordView, self).get_context_data(**Kwargs)
-        thought = QuickWord.objects.all()
-        add_product = AddProduct.objects.all()
-        article = Article.objects.all()
         official_letter = OfficalLetter.objects.all()
         query = self.request.GET.get('q')
         if query:
-            thought = thought.filter(Q(micro_thought__icontains=query)| Q(Initial_keyword_choices__icontains=query))
-            article = article.filter(Q(title__icontains=query) | Q(micro_article__icontains=query) | Q(Initial_keyword_choices__icontains=query))
             add_product = add_product.filter(Q(product_name__icontains=query) | Q(Prices__icontains=query) | Q(details__icontains=query)
                 | Q(title__icontains=query)| Q(launched_time__icontains=query) | Q(topic__icontains=query) )
             official_letter = official_letter.filter(Q(title__icontains=query)| Q(pub_time__icontains=query) |Q(letter__icontains=query))
         elif query != query:
             raise messages.info(request, 'not match search result found')
 
-        context['addproduct'] = add_product
-        context['article_view'] = article
         context['official_letter'] = official_letter
-        context['quickword'] = thought
-   
         return context
 
 
@@ -50,11 +41,14 @@ Addproduct form as users can post from here
 article form as users can post from here
 
 '''
-class Offical_Letter_Detail_View(DetailView):   # official letter details view 
-    template_name = 'official-letter-view.html'
-    model = OfficalLetter
-    queryset = OfficalLetter.objects.all()
-    context_object_name = 'letter'
+
+# Product page view 
+def Offical_Letter_Detail_View(request, id, slug):
+    letter = OfficalLetter.objects.get(id=id)
+    context = {
+    'official_letter': letter,
+    }
+    return render(request, 'official-letter-view.html', context)
 
 
 class QuickWordForm(CreateView):     # Microthought form view 
@@ -77,7 +71,7 @@ class Article_form(CreateView):    #Article form view
 
 # Product page view 
 def Product_detials_View(request, id, slug):
-    product = AddProduct.objects.get(id=id)
+    product = MainModel.objects.get(id=id)
     context = {
     'addproduct': product,
     }
@@ -85,7 +79,8 @@ def Product_detials_View(request, id, slug):
     
 # article page view
 def article_detials(request, id, slug):
-    article = Article.objects.get(id=id)
+    
+    article = MainModel.objects.get(id=id)
     context = {
     'article': article,
     }
@@ -95,46 +90,44 @@ def article_detials(request, id, slug):
 
 #Contact View with form for customers 
 class ContactView(CreateView):
-    template_name= "Contact.html"
+    template_name= "footer/Contact.html"
     form_class = Contact_form
     success_url = '/Contact-View/'
 
 
-# All Templates All Templates All Templates All Templates  
-
  #Why Hubblelook template view.
 class WhyHubblelookView(TemplateView):
-
+    
     template_name= "why-hubblelook.html"
 
 
   #learn more template view      
 class ExploreView(TemplateView):
 
-	template_name= "explore.html"
+	template_name= "footer/explore.html"
 
  #about template view.
 class AboutView(TemplateView):
 
-	template_name= "about.html"
+	template_name= "footer/about.html"
 
 
   #learn more template view      
 class ProductView(TemplateView):
 
-    template_name= "products.html"
+    template_name= "footer/products.html"
 
  # Investment and contribution page View
 class InvConView(TemplateView):
 
-    template_name= "investmentandcontribution.html"
+    template_name= "footer/investmentandcontribution.html"
 
 
 
  #about template view.
 class PrivacyAndTermsView(TemplateView):
 
-    template_name= "Privacy-and-terms.html"
+    template_name= "footer/Privacy-and-terms.html"
 
 
 
