@@ -46,13 +46,9 @@ INSTALLED_APPS = [
     'profiles',
     'jobs',
 
-
     # third party apps 
     'ckeditor',
     'crispy_forms',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
 
 ]
 
@@ -100,7 +96,7 @@ AUTHENTICATION_BACKENDS = (
 #Django All-auth configer
 ACCOUNT_EMAIL_REQUIRED =False
 LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = '/home'
+LOGOUT_REDIRECT_URL = 'home'
 ACCOUNT_SESSION_REMEMBER =True
 ACCOUNT_USERNAME_REQUIRED =True
 ACCOUNT_EMAIL_REQUIRED =False

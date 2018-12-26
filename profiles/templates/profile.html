@@ -5,90 +5,82 @@
 	{% include 'sinppet/second-nav-bar.html' %}
 	{% block nav %}
 	{% endblock %}
-	<!-- uikits.com   ---------->
-	<div class="" style="padding-top: 50px; padding-bottom:100px;">
-		<div class="grid">  <!-- bootstrape grid   -->
-		<div class="row">
-			<div class="col-lg-3">
-				<img class="ui medium circular image" src="{{ edit.user_photo.url }}" />
-				<p class="uk-heading-primary uk-text-bold">{{ edit.name }}</p>
-				{% if edit.title %}
-					<div class="uk-text-lead">{{ edit.title }}</div>
-				{% endif %}
-				<!--  url and additional url  -->
-				{% if edit.url %}
-					<div style="padding-top: 20px; padding-bottom: 20px;">
-						<a  href="{{ edit.url }}"><p class="uk-text-large">{{ edit.url|urlize }} {% if edit.additional_url %}  <b> & </b> 
-					    <a href="{{ edit.additional_url }}">{{ edit.additional_url }} </a> {% endif %} </p></a>
+
+<!-- Cdn for material design  ---------->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<!-- Cdn end  ---------->
+
+
+<!-- uikits.com   ---------->
+<div class="" style="padding-top: 50px; padding-bottom:100px;">
+	<div class="grid">  <!-- bootstrape grid   -->
+	<div class="row">
+		<div class="col-lg-2"></div>
+		<!-- another grid with profile details -->
+		<div class="col-lg-8">
+			<!-- user avater/ profile picture -->
+			<img class="ui medium circular image" src="{{ edit.user_photo.url }}" />
+			<p class="uk-heading-primary uk-text-bold">{{ edit.name }}</p>
+			{% if edit.title %}
+				<div class="uk-text-lead">{{ edit.title }}</div>
+			{% endif %}
+			<!--  url and additional url  -->
+			{% if edit.url %}
+				<div style="padding-top: 20px; padding-bottom: 20px;" >
+					<a href="{{ edit.url }}"><p class="uk-text-large">{{ edit.url|urlize }} {% if edit.additional_url %} 
+					<b> / </b>
+						<a href="{{ edit.additional_url }}">{{ edit.additional_url }} </a> {% endif %} </p></a>
 					</div>
 				{% endif %}
 				<!--  Type of a company  -->
-				{% if edit.Type_of_company %}    
-				<p class="lead"> Type: {{ edit.Type_of_company }}
-					<br> Headquarter: {{ edit.Headquarter }}
-					<br> Stock: {{ edit.stock_market }}
-				</p>
-			{% endif %}
-		</div>
-		<!-- another grid -->
-		<div class="col-lg-8">
-			{% if edit.established %}
-				<p class="ui header"> Founded in: </p>
-				<p class="lead">{{ edit.established }} </p>
-			{% endif %}
-			{% autoescape off %}
-			<div class=" uk-heading-primary uk-text-bold"> Details of {{ edit.name }}
+				{% if edit.Type_of_company %}
+					<p class="uk-text-lead"> Type: {{ edit.Type_of_company }}
+						<br> Headquarter: {{ edit.Headquarter }}
+						<br> Stock: {{ edit.stock_market }}
+					</p>
+				{% endif %}
+				{% if edit.established %}
+					<p class="ui header"> Founded in: </p>
+					<p class="uk-text-lead">{{ edit.established }} </p>
+				{% endif %}
+				<!-- About team and Investment button -->
+				<button class="ui linkedin button"> Follow </button>
+				<button class="ui linkedin button">About</button>
+				<a href="{% url 'profiles:team-page' user.username %}"><button class="ui linkedin button">Team</button></a>
+				<button class="ui linkedin button">Investment</button>
+				<!-- Setting button -->
+				<a id="sub-button" href="{% url 'profiles:settings' user.username %}"> <button class="circular ui icon button"><i class="icon settings"></i></button></a>
+				<!-- Company Information until here -->
 			</div>
-			<p id="header-details">{{ edit.about_details|capfirst|truncatewords:100 }} </p>
-		{% endautoescape %}
-		<!-- Company Information -->
-		{% if edit.about_details|wordcount >= 101 %}
-			<div>
-				<a class="uk-text-meta" uk-tooltip="title: Know more about {{ edit.name }}; pos: right" href="#modal-full" uk-toggle> READ MORE</a>
-			</div>
-		{% endif %}
-		<div id="modal-full" class="uk-modal-full" uk-modal>
-			<div class="uk-modal-dialog">
-				<button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-				<div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
-					<div class="uk-padding-large uk-align-center" uk-height-viewport>
-						{% autoescape off %}
-						<h1>{{ edit.name }}</h1>
-						<p style="color: black;">{{ edit.about_details|capfirst }}</p>
-					{% endautoescape %}
-				</div>
-			</div>
+			<div class="col-2"></div>
 		</div>
 	</div>
-	<!-- Company Information until here -->
-</div>
-<div class="col-lg-1"></div>
-</div>
-</div>
 </div>
 <div class="ui section divider"></div>
 <!-- profile section end here   -->
-<!--  Profile buttons  -->
+<!--  Profile post segment buttions and more  -->
+
 <div class="row">
-	<div class="col-1">
-	</div>
+	<div class="col-1"></div>
 	<div class="col-10">
 		<div style="padding-bottom: 50px;">
 			<p style="text-align: center;" class="uk-text-bold">
-				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button"> Tags </a></button>
-				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a href="{% url 'profiles:team-page' user.username %}" id="sub-button"> Team </a></button>
-				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'profiles:Micro-thought-sort' user.username %}"> Thoughts </a></button>
-				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'profiles:Product-sort' user.username %}"> Products </a></button>
-				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'profiles:Article-sort' user.username %}"> Articles </a></button>
-				<button id="space-between" class="uk-button uk-button-text uk-text-capitalize "><a id="sub-button" href="{% url 'profiles:letter-list-view' user.username %}"> Official letter </a></button>
+				<!-- Flat button from material design -->		
+				<button id="space-between" type="button" class="mdl-button mdl-js-button"><a id="sub-button" href="{% url 'profiles:customer-care' user.username %}"> Customer care </a></button>		
+				<button id="space-between" type="button" class="mdl-button mdl-js-button"><a id="sub-button" href="{% url 'profiles:Micro-thought-sort' user.username %}"> Thoughts </a></button>
+				<button id="space-between" type="button" class="mdl-button mdl-js-button"><a id="sub-button" href="{% url 'profiles:Product-sort' user.username %}"> Products </a></button>
+				<button id="space-between" type="button" class="mdl-button mdl-js-button"><a id="sub-button" href="{% url 'profiles:Article-sort' user.username %}"> Articles </a></button>
+				<button id="space-between" type="button" class="mdl-button mdl-js-button"><a id="sub-button" href="{% url 'profiles:letter-list-view' user.username %}"> Official letter </a></button>
 			</p>
 		</div>
 	</div>
 	<div class="col-1"> </div>
 </div>
-<!--Post templates  -->
 
-<!--Post templates  -->
+
+<!-- templates for thought, blog and product  -->
 <div class="row" style="margin-right: 10px; margin-left:10px; ">
   <!--  Grid from Boothstrape -->
   <div class="col-lg-3"> </div>
@@ -98,18 +90,25 @@
         {% if post.micro_thought %}
           <div class="ui items">
             <div class="item">
-              <div class="content">
-                <div>
-                  <p>{{ post.user|capfirst }} <span class="meta"> CEO, Hubblelook </span>
-                  <span class="right floated">{{ post.pub_time|naturaltime }} </span></p>
-                </div>
-                <!-- Templates for Microthoughts -->
-                <p class="uk-text-lead"><span class="ui big label" > {{ post.Initial_keyword_for_thoughts }}  </span> {{ post.micro_thought }}</p>
+              <div class="content">  
+                <!-- posts details information such as user avater, time, edit option and more-->
+                  {{ post.user|capfirst }} <span class="meta"> CEO, Hubblelook </span>
+                  <span class="uk-text-meta">,{{ post.pub_time|naturaltime }} </span>
+                  <span uk-icon="more" class="right floated"></span>
+				<div uk-dropdown>
+				    <ul class="uk-nav uk-dropdown-nav">
+				        <li><a href="#">Edit</a></li>
+				        <li><a href="#">Delete</a></li>
+				        <li><a href="#">Report</a></li>
+				    </ul>
+				</div>	
+          		 <!-- posts details information such as user avater, time, edit option and more end here-->
+                <p class="uk-text-lead"><span class="ui big label" > {{ post.Initial_keyword_for_thoughts }} </span> {{ post.micro_thought }}</p>
                 <!-- end templates -->
                 <div class="extra content">
                   <span> Save</span>
-                  <span > Analysis </span>
                   <span> Share</span>
+                  <span> Replies </span>
                 </div>
               </div>
             </div>
@@ -121,16 +120,26 @@
           <div class="ui items">
             <div class="item">
               <div class="content">
-                <p>{{ post.user|capfirst }} <span class="meta"> CEO, Hubblelook </span> <span class="right floated">{{ post.pub_time|naturaltime }} </span> <span class="uk-text-meta"> , Article </span> </p>
-                <a class="uk-text-lead" href="{% url 'details' post.id post.slug %}" style="text-decoration: none;
+              	<!-- posts details information such as user avater, time, edit option and more-->
+                {{ post.user|capfirst }} <span class="meta"> CEO, Hubblelook </span> <span class="uk-text-meta"> , Article </span><span class="uk-text-meta">, {{ post.pub_time|naturaltime }} </span><span uk-icon="more" class="right floated"></span>
+				<div uk-dropdown>
+				    <ul class="uk-nav uk-dropdown-nav">
+				        <li><a href="#">Edit</a></li>
+				        <li><a href="#">Delete</a></li>
+				        <li><a href="#">Report</a></li>
+				    </ul>
+				</div>	
+				<!-- posts details information such as user avater, time, edit option and more end here-->
+              
+                <a href="{% url 'details' post.id post.slug %}" style="text-decoration: none;
                   cursor: pointer;" >
                   {% autoescape off %}
-                  <p><span class="ui big label"> {{ post.Initial_keyword_for_articles }} </span> {{ post.article_title|title }} </p> </a>
+                  <p class="uk-text-lead"><span class="ui big label"> {{ post.Initial_keyword_for_articles }} </span> {{ post.article_title|title }} </p> </a>
                 {% endautoescape %}
                 <div class="extra content">
                   <span> Save</span>
-                  <span > Analysis </span>
                   <span> Share</span>
+                  <span> Replies </span>
                 </div>
               </div>
             </div>
@@ -144,8 +153,18 @@
           <div class="ui items">
             <div class="item">
               <div class="content">
-                <p>{{ post.user|capfirst }} <span class="meta"> CEO, Hubblelook </span>
-                <span class="right floated">{{ post.pub_time|naturaltime }} </span></p>
+              	<!-- posts details information such as user avater, time, edit option and more-->
+                {{ post.user|capfirst }} <span class="meta"> CEO, Hubblelook </span>
+                <span class="uk-text-meta">,{{ post.pub_time|naturaltime }} </span>
+                <span uk-icon="more" class="right floated"></span>
+				<div uk-dropdown>
+				    <ul class="uk-nav uk-dropdown-nav">
+				        <li><a href="#">Edit</a></li>
+				        <li><a href="#">Delete</a></li>
+				        <li><a href="#">Report</a></li>
+				    </ul>
+				</div>	
+				<!-- posts details information such as user avater, time, edit option and more end here-->
                 <div style="padding-bottom: 5px; padding-top:0px; "><span>PRODUCT</span></div>
                 <div class="uk-text-center">
                     <a id="product" href="{% url 'add-product-view' post.id post.slug %}">
@@ -158,8 +177,8 @@
                   </div>
                   <div class="extra content">
                     <span> Save</span>
-                    <span id="analysis"> Analysis </span>
                     <span> Share</span>
+                    <span> Replies </span>
                   </div>
                 </div>
               </div>
@@ -190,8 +209,8 @@
               <p> by <span class="meta">  {{ letter.letter_from }}</span> </p>
                   <div class="extra content">
                     <span> Save</span>
-                    <span id="analysis"> Analysis </span>
                     <span> Share</span>
+                    <span> Replies </span>
                   </div>
             </div>
           </div>
@@ -221,7 +240,7 @@
 		body, html {
 			margin-right: 10px;
 			margin-left: 10px;
-			background-color: #fcfcfc;
+			background-color: #fafafa;
 		}
 
 		a:hover {
@@ -244,8 +263,9 @@
 		}
 
 		#sub-button {
-			text-decoration: none;
 			color: black;
+			font-weight: bold;
+			text-decoration: none;
 		}
 
 		#space-between {

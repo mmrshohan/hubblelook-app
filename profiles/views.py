@@ -43,6 +43,8 @@ class ProfileCreateView(CreateView):         #Profile create view
     template_name = "edit-profile.html"
     success_url = '/portfolio/'
 
+# ---------  thought update and delete view ---------------------
+
 #Micro Thoughts update view                     microthought update view
 class MicroThoughtsUpdateView(UpdateView):
     model = MainModel
@@ -57,19 +59,27 @@ class MicroThoughtsDeleteView(DeleteView):
     template_name = 'profile.html'
     success_url = '/'
 
-#Add product update UpdateView                   Product Update view 
+# ---------  thought update and delete view end here ---------------------
+
+
+
+# ---------  product update and delete view ---------------------
+
+                                              #Product Update view 
 class AddProductUpdateView(UpdateView):
     model = MainModel
     form_class = Add_product_view
     template_name = 'forms/addproduct_form.html'
     success_url = '/'
 
-#Add prodcuct delete View                        product  delete view 
+                                              #product  delete view 
 class AddProductDeleteView(DeleteView):
     model = MainModel
     form_class = Add_product_view
     template_name = 'profile.html'
     success_url = "/"
+
+# ---------  product update and delete view end here ---------------------
 
 
 #Add product update UpdateView                   Article update view
@@ -86,14 +96,12 @@ class ArticleDeleteView(DeleteView):
     template_name = 'profile.html'
     success_url = reverse_lazy('profiles:portfolio')
 
-# Views for Official letter 
+# ---------  All views for official letter ---------------------
 
 class Offical_Letter_View(ListView):                    # Official letter list view 
     template_name = 'offical-letter-list-view.html'
     queryset = OfficalLetter.objects.all()
     context_object_name = 'letter_list'
-
-
 
 class Offical_Letter_Create_View(CreateView):          # official letter create view 
     form_class = Official_Letter_Form
@@ -114,11 +122,11 @@ class Offical_Letter_Delete_View(DeleteView):      # official letter delete view
     template_name = 'offical-letter-list-view.html'
     success_url = "/"
 
+# ---------  All views for official letter end here ---------------------
 
-'''
-sort views are created to see how many post has been
-posted by that user in details 
-'''
+
+
+# ---------  post's sort view ---------------------
 class MicroThoughtsSortView(ListView):
     template_name= "Sort-model/micro-thought-sort.html"
     queryset = MainModel.objects.all()
@@ -135,7 +143,9 @@ class ArticleSortView(ListView):
     queryset = MainModel.objects.all()
     context_object_name = 'posts'
 
+# ---------  post's sort view end here ---------------------
 
+# ---------  Team page create and edit view ------------
 class TeamPageView(TemplateView):
 
     template_name = "team.html"
@@ -146,22 +156,28 @@ class TeamPageView(TemplateView):
         context['team'] = Team.objects.all().first()
         return context
 
-
 class Team_Create_View(CreateView):         
     form_class = TeamForm
     model = Team
-    template_name = "team-form.html"
+    template_name = "team/team-form.html"
     success_url = "/"
-
 
 class Team_Update_View(UpdateView):
     model = Team
     form_class = TeamForm
-    template_name = 'team-form.html'
+    template_name = 'team/team-form.html'
     success_url = "/"
 
-class Team_Delete_View(DeleteView):      # official letter delete view
+class Team_Delete_View(DeleteView):
     model = Team
     form_class = TeamForm
-    template_name = 'team.html'
+    template_name = 'team/team.html'
     success_url = "/"
+
+#-------  Team view end here ---------------
+
+class Customer_Care_View(TemplateView):
+    template_name = 'customer-care.html'
+
+class Settings_View(TemplateView):
+    template_name = 'settings.html'

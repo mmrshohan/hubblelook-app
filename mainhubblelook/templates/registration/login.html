@@ -1,8 +1,7 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block body %}
   {% load i18n %}
-  {% load account socialaccount %}
   {% block content %}
     <div style="min-height: 100vh;">
       <div class="container padding">
@@ -15,19 +14,19 @@
             </a>
           </div>
           <!--<h5>{% trans "Sign In Here" %}</h5>-->
-          <form class="login" method="POST" action="{% url 'account_login' %}">
+          <form class="login" method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             {{ form|crispy }}
             {% if redirect_field_value %}
               <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
             
-            <button class="uk-button uk-button-secondary" type="submit">{% trans "Sign In" %}</button>
+            <button class="ui secondary button" type="submit">{% trans "Sign In" %}</button>
             
             <p style="padding-top: 30px;" >{% blocktrans %}If you have not created an account yet, then please
-              <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+              <a href="">sign up</a> first.{% endblocktrans %}</p>
               
-              <a class="uk-text-bold button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+              <a class="uk-text-bold button secondaryAction" href="">{% trans "Forgot Password?" %}</a>
             </form>
           </div>
           <div class="col-lg-2 col-sm-0"></div>
@@ -82,4 +81,3 @@
   {% endblock %}
 {% endblock %}
 
-background-color: rgb(255, 255, 255) !important;

@@ -88,9 +88,9 @@
           {%  endif %}
           {% if not user.is_authenticated %}
             <div class="item">
-              <a class="" href="{% url 'account_login' %}">Sign-in</a>
+              <a class="" href="{% url 'login' %}">Sign-in</a>
               {%  else %}
-              <a style="text-decoration: none; color: black;" class="uk-link-text uk-text-capitalize" href="{% url 'account_logout' %}">Sign out</a>
+              <a style="text-decoration: none; color: black;" class="uk-link-text uk-text-capitalize" href="{% url 'logout' %}">Sign out</a>
             </div>
             
             {%  endif %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+	{% load humanize %}
+	<!-- Navigation bar -->
+	{% include 'sinppet/second-nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<div class="row" style="padding-top: 60px;">
+		<div class="col-2"></div>
+		<div class="col-8">
+			<button class="ui blue button"> Customer care posted by you </button>
+			<!-- remove this "Customer care posted by people" button if this is business account -->
+			<button class="ui blue button"> Customer care posted by people  </button>
+		</div>
+		<div class="col-2"></div>
+	</div>
+{% endblock %}

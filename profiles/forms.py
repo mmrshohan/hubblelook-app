@@ -2,7 +2,7 @@ from django import forms
 from .models import Profile, Team
 
 
-
+# user profile create/update form 
 class Edit_Profile_Form(forms.ModelForm):
 	class Meta:
 		model = Profile
@@ -19,7 +19,7 @@ class Edit_Profile_Form(forms.ModelForm):
 
 
 
-
+# team form
 class TeamForm(forms.ModelForm):
 	class Meta:
 		model = Team

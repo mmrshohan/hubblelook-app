@@ -51,6 +51,15 @@ class Team(models.Model):
 	team = models.TextField(null=True, blank=True)
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 
+class About(models.Model):
+	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+	about_this_company = models.TextField(null=True, blank=True)
+
+
+class Investment(models.Model):
+	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+	investment = models.TextField(null=True, blank=True)
+
 
 
 

@@ -8,70 +8,72 @@
 	{% block nav %}
 	{% endblock %}
 	<!--  Navigation bar end-->
-	<div class="row">
-		<div class="col-1"></div>
-		<div class="col-10" uk-scrollspy="target: > div, h1; cls:uk-animation-fade; delay: 100">
-			<h1 style="margin-top: 60px;" class="uk-heading-hero  "> I'm a general person </h1>
-			<div class="uk-text-lead  sub-header">
-				<p class="ui large header"> Read news/ Ask Questions/ Watch and read reviews about product and more/ know what people think about today's market or economics/ Make yourself up-to-date about daily market/ Make better financial decision and more  </p>
+
+	<div class="row" style="padding-left: 10px; padding-right: 10px;">
+		<div class="col-lg-2 col-sm-0"></div>
+		<div class="col-lg-8 col-sm-12" uk-scrollspy="target: > div, h1; cls:uk-animation-fade; delay: 100">
+			<h1 style="margin-top: 60px;" class="uk-heading-primary uk-text-bold  "> I'm a general person </h1>
+			<div class="sub-header">
+				<p class="uk-text-lead"> Read news/ Ask Questions/ Watch and read reviews about product and more/ know what people think about today's market or economics/ Make yourself up-to-date about daily market/ Make better financial decision and more  </p>
 			</div>
-			<h1 style="margin-top: 110px;" class="uk-heading-hero "> I'm a student </h1>
-			<div class="uk-text-lead  sub-header">
-				<p class="ui large header"> Read news/ Ask Questions/ Explore market more intuitively/ Do basic to advance study on anything about market or economics/ Nurture and enhance your knowledge about market or economics every day/ Help yourself to build new things and get advocacy/ Understand global market, local market and more </p>
+			<h1 style="margin-top: 110px;" class="uk-heading-primary uk-text-bold "> I'm a student </h1>
+			<div class="sub-header">
+				<p class="uk-text-lead"> Read news/ Ask Questions/ Explore market more intuitively/ Do basic to advance study on anything about market or economics/ Nurture and enhance your knowledge about market or economics every day/ Help yourself to build new things and get advocacy/ Understand global market, local market and more </p>
 			</div>
-			<h1 style="margin-top: 110px;" class="uk-heading-hero"> I'm an entrepreneur/ Startup/ Market analyst </h1>
-			<div class="uk-text-lead  sub-header">
-				<p class="ui large header"> Read news/ Ask Questions/ Explain your product/ know what people think about your product/ Hubblelook would provide you all necessary tools and information to do the market analysis so now you can focus more on your product and business/ Provide best customer service/ Share your posts in three ways and cpnnect with your customers in every possible way/ Explore what's happening around you and more </p>
+			<h1 style="margin-top: 110px;" class="uk-heading-primary uk-text-bold"> I'm an entrepreneur/ Startup/ Market analyst </h1>
+			<div class="sub-header">
+				<p class="uk-text-lead"> Read news/ Ask Questions/ Explain your product/ know what people think about your product/ Hubblelook would provide you all necessary tools and information to do the market analysis so now you can focus more on your product and business/ Provide best customer service/ Share your posts in three ways and cpnnect with your customers in every possible way/ Explore what's happening around you and more </p>
 			</div>
-			<h1  style="margin-top: 110px;" class="uk-heading-hero"> I'm a business </h1>
-			<div class="uk-text-lead sub-header">
-				<p class="ui large header"> Provide best customer care/ Ask Questions/ Intense analysis market/ Make better business decision/ Inspire yourself with better ideas/ Generate novel ideas/ Track your business/ Engage with your customer profoundly/ Gain local market knowledge and more</p>
+			<h1  style="margin-top: 110px;" class="uk-heading-primary uk-text-bold"> I'm a business </h1>
+			<div class="sub-header">
+				<p class="uk-text-lead"> Provide best customer care/ Ask Questions/ Intense analysis market/ Make better business decision/ Inspire yourself with better ideas/ Generate novel ideas/ Track your business/ Engage with your customer profoundly/ Gain local market knowledge and more</p>
 			</div>
-			<h1 style="margin-top: 110px;" class="uk-heading-hero"> I'm a Market enthusiast </h1>
-			<div style="margin-bottom: 80px;" class="uk-text-lead  sub-header">
-				<p class="ui large header"> Review product/ Ask Questions/ Write articles/ know what other people think about the market/ Follow other courious people/ read daily news and more </p>
+			<h1 style="margin-top: 110px;" class="uk-heading-primary uk-text-bold"> I'm a Market enthusiast </h1>
+			<div style="margin-bottom: 80px;" class="sub-header">
+				<p class="uk-text-lead"> Review product/ Ask Questions/ Write articles/ know what other people think about the market/ Follow other courious people/ read daily news and more </p>
 			</div>
+			<!--blue message for the user -->
 			<div class="ui huge blue message">
 				<div class="header">
-					It does not matter how you want to connect with the market, In Hubblelook you can do it without having any changes. Just select what kind of account you are opening when you are signing up. 
+					It does not matter how you want to connect with the market, In Hubblelook you can do it without having any changes. Just select what kind of account you are opening when you are signing up.
 					<br>
 					Hubblelook offers two kinds of account which are personal and business account, just to give you a clear and relevant user profile section.
 					
 				</div>
 			</div>
-			<div class="col-1"></div>
+			<div class="col-lg-2 col-sm-0"></div>
 		</div>
 	</div>
-<!--footer -->
-<footer class="footer">
-	
-	<div class="row">
-		<div class="col-2"></div>
-		<div class="uk-text-center col-8">
-			<div class="ui horizontal list">
-				<a class="item" href="{% url 'about' %}">ABOUT </a>
-				{% if user.is_authenticated %}
-					<a class="item" href="{% url 'explore' %}"> LEARN </a>
-				{% endif %}
-				<a class="item" href="{% url 'products' %}">PRODUCTS</a>
-				<a class="item" href="{% url 'job-view' %}">JOBS</a>
-				<a class="item" href="{% url 'Privacy-View' %}">PRIVACY AND TERMS</a>
-				<a class="item" href="{% url 'InvCon-view' %}">INVESTMENT</a>
-				<a class="item" href="{% url 'customercare:customecare-view' %}"> KNOWLEDGE </a>
-				<a class="item" href="{% url 'Contact-View' %}">CONTACT</a>
+	<!--footer -->
+	<footer class="footer">
+		
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="uk-text-center col-8">
+				<div class="ui horizontal list">
+					<a class="item" href="{% url 'about' %}">ABOUT </a>
+					{% if user.is_authenticated %}
+						<a class="item" href="{% url 'explore' %}"> LEARN </a>
+					{% endif %}
+					<a class="item" href="{% url 'products' %}">PRODUCTS</a>
+					<a class="item" href="{% url 'job-view' %}">JOBS</a>
+					<a class="item" href="{% url 'Privacy-View' %}">PRIVACY AND TERMS</a>
+					<a class="item" href="{% url 'InvCon-view' %}">INVESTMENT</a>
+					<a class="item" href="{% url 'customercare:customecare-view' %}"> KNOWLEDGE </a>
+					<a class="item" href="{% url 'Contact-View' %}">CONTACT</a>
+				</div>
+			</div>
+			
+			<!--copyright code-->
+			<div class="col-2">
+				<div class="ui right floated horizontal list">
+					<div class="disabled item" href="#">© Hubblelook 2018</div>
+				</div>
 			</div>
 		</div>
 		
-		<!--copyright code-->
-		<div class="col-2">
-			<div class="ui right floated horizontal list">
-				<div class="disabled item" href="#">© Hubblelook 2018</div>
-			</div>
-		</div>
-	</div>
-	
-</footer>
-<!---->
+	</footer>
+	<!---->
 	<style type="text/css" media="screen">
 	html, body {
 		background-color: #f5f5f5;
@@ -79,7 +81,6 @@
 	h1{
 		color: #000;
 	}
-
 	.sub-header {
 		margin-top: 40px;
 	}
@@ -92,7 +93,7 @@
 	.footer {
 	position: relative;
 	padding-top:50px;
-    padding-bottom: 40px;
+	padding-bottom: 40px;
 	margin-left: 0px;
 	margin-right: 0px;
 	background-color: #f5f5f5;

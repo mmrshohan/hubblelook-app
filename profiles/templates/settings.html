@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+	{% load humanize %}
+	<!-- Navigation bar -->
+	{% include 'sinppet/second-nav-bar.html' %}
+	{% block nav %}
+	{% endblock %}
+	<div class="row" style="padding-top: 100px;">
+		<div class="col-2"></div>
+		<div class="col-8">
+			<p class="uk-heading-primary uk-text-bold"> Settings </p>
+			<div class="ui section divider"></div>
+		</div>
+		<div class="col-2"></div>
+	</div>
+	<div class="row">
+		<div class="col-2"></div>
+		<div class="col-6">
+			<p class="uk-text-lead"> Change your password </p>
+		</div>
+		<div class="col-2">
+			<a href="{% url 'password_change' %}" ><button class="ui primary button">Change your password</button></a>
+		</div>
+		<div class="col-2"></div>
+	</div>
+{% endblock %}

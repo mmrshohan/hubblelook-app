@@ -11,7 +11,8 @@ from profiles.models import Profile
 from .forms import Quick_word_form, Add_product_view, Article_form, Contact_form, Official_Letter_Form
 
 
-# template view 
+# template view and search view
+# this view passes all data to the homepage
 class QuickWordView(ListView):
 
     template_name = "index.html"
@@ -21,15 +22,18 @@ class QuickWordView(ListView):
     def get_context_data(self, **Kwargs):
         context = super(QuickWordView, self).get_context_data(**Kwargs)
         official_letter = OfficalLetter.objects.all()
+        main_model = MainModel.objects.all()
         query = self.request.GET.get('q')
         if query:
-            add_product = add_product.filter(Q(product_name__icontains=query) | Q(Prices__icontains=query) | Q(details__icontains=query)
+            add_product = main_model.filter(Q(product_name__icontains=query) | Q(Prices__icontains=query) | Q(details__icontains=query)
                 | Q(title__icontains=query)| Q(launched_time__icontains=query) | Q(topic__icontains=query) )
             official_letter = official_letter.filter(Q(title__icontains=query)| Q(pub_time__icontains=query) |Q(letter__icontains=query))
         elif query != query:
             raise messages.info(request, 'not match search result found')
 
         context['official_letter'] = official_letter
+        context['main_model'] = main_model
+
         return context
 
 
@@ -87,7 +91,7 @@ def article_detials(request, id, slug):
     return render(request, 'article-details.html', context)
 
 
-
+#single page template view
 #Contact View with form for customers 
 class ContactView(CreateView):
     template_name= "footer/Contact.html"

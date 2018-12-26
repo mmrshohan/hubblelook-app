@@ -17,7 +17,9 @@ from .views import (
     AddProductUpdateView, AddProductDeleteView,
     MicroThoughtsDeleteView, MicroThoughtsUpdateView, 
     ArticleUpdateView, ArticleDeleteView, 
-    TeamPageView, Team_Create_View, Team_Update_View, Team_Delete_View
+    TeamPageView, Team_Create_View, Team_Update_View, Team_Delete_View, 
+    Customer_Care_View, 
+    Settings_View
     )
 
 
@@ -55,5 +57,11 @@ urlpatterns = [
     path('<username>/team-form/', Team_Create_View.as_view(), name='team-form'),
     path('<username>/team-update/<int:pk>', Team_Update_View.as_view(), name='team-form-update'),
     path('<username>/team-delete/<int:pk>', Team_Delete_View.as_view(), name='team-form-delete'),
+
+    #Customer care view
+    path('<username>/customer-care/', Customer_Care_View.as_view(), name='customer-care'),
+    #Customer care view
+    path('<username>/settings/', Settings_View.as_view(), name='settings'),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
