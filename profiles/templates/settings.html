@@ -6,21 +6,109 @@
 	{% block nav %}
 	{% endblock %}
 	<div class="row" style="padding-top: 100px;">
-		<div class="col-2"></div>
-		<div class="col-8">
+		<div class="col-lg-2 col-sm-0"></div>
+		<div class="col-lg-8 col-sm-12">
 			<p class="uk-heading-primary uk-text-bold"> Settings </p>
 			<div class="ui section divider"></div>
 		</div>
+		<div class="col-lg-2 col-sm-12 "></div>
+	</div>
+	<div class="row" style="margin-top: 60px;">
+		<div class="col-lg-2 col-sm-0"></div>
+		<div class="col-lg-6 col-sm-8">
+			<p class="uk-text-lead"> Change your password </p>
+		</div>
+		<div class="col-lg-2 col-sm-4">
+			<a href="{% url 'password_change' %}" ><button class="ui primary button">Change your password</button></a>
+		</div>
+
 		<div class="col-2"></div>
 	</div>
 	<div class="row">
-		<div class="col-2"></div>
-		<div class="col-6">
-			<p class="uk-text-lead"> Change your password </p>
+		<div class="col-lg-2 col-sm-0"></div>
+		<div class="col-lg-8 col-sm-12">
+			<div class="ui section divider"></div>
 		</div>
-		<div class="col-2">
-			<a href="{% url 'password_change' %}" ><button class="ui primary button">Change your password</button></a>
+		<div class="col-lg-2 col-sm-0"></div>
+	</div
+
+	<!-- settings for about information-->
+	<div class="row" style="margin-top: 100px;">
+		<div class="col-lg-2 col-sm-0"></div>
+		<div class="col-lg-6 col-sm-8">
+			<p class="uk-text-lead"> Edit your about in here. If you don't want to write anything, then leave this option. About button will not appear at your profile section.   </p>
+			<p class="uk-text-lead"> Remember: About facity will allow other people to know about your company. This is great featurs for any business. </p>
 		</div>
-		<div class="col-2"></div>
+		<div class="col-lg-2 col-sm-4">
+			<a ><button class="ui primary button">Edit about</button></a>
+			<a ><button class="ui red button">Delete about</button></a>
+		</div>
+		<div class="col-lg-2 col-sm-0"></div>
 	</div>
+
+	<div class="row">
+		<div class="col-lg-2 col-sm-0"></div>
+		<div class="col-lg-8 col-sm-12">
+			<div class="ui section divider"></div>
+		</div>
+		<div class="col-lg-2 col-sm-0"></div>
+	</div
+	<!-- Settings for team information -->
+		<div class="row" style="margin-top: 100px;">
+		<div class="col-lg-2 col-sm-0"></div>
+		<div class="col-lg-6 col-sm-8">
+			<p class="uk-text-lead">Add or change your team inforamtion.    </p>
+			<p class="uk-text-lead"> Remember: Team information is very important for any business. People would love to see who are working behind this company </p>
+		</div>
+		<div class="col-lg-2 col-sm-4">
+			<a ><button class="ui primary button">Edit team</button></a>
+			<a ><button class="ui red button">Delete team</button></a>
+		</div>
+		<div class="col-lg-2 col-sm-0"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-2 col-sm-0"></div>
+		<div class="col-lg-8 col-sm-12">
+			<div class="ui section divider"></div>
+		</div>
+		<div class="col-lg-2 col-sm-0"></div>
+	</div>
+	<!-- settings for investment information -->
+	<div class="row" style="margin-top: 100px;">
+		<div class="col-lg-2 col-sm-0"></div>
+		<div class="col-lg-6 col-sm-8">
+			<p class="uk-text-lead">Add or change your information about investment.    </p>
+			<p class="uk-text-lead"> Remember: This is a great facilty for the people who wants to study your businesses. </p>
+		</div>
+		<div class="col-lg-2 col-sm-4">
+			<a ><button class="ui primary button">Edit team</button></a>
+			<a ><button class="ui red button">Delete team</button></a>
+		</div>
+		<div class="col-lg-2 col-sm-0"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-2 col-sm-0"></div>
+		<div class="col-lg-8 col-sm-12">
+			<div class="ui section divider"></div>
+		</div>
+		<div class="col-lg-2 col-sm-0"></div>
+	</div
+<!------------------------------ -->
+<!--footer -->
+{% include 'sinppet/footer.html' %}
+{% block footer %}
+{% endblock %}
+
+<style type="text/css" media="screen">
+
+html, body {
+	margin-left:10px;
+	margin-right: 10px;
+} 
+	
+</style>
+
+
 {% endblock %}

@@ -148,7 +148,7 @@ class ArticleSortView(ListView):
 # ---------  Team page create and edit view ------------
 class TeamPageView(TemplateView):
 
-    template_name = "team.html"
+    template_name = "team/team.html"
 
 
     def get_context_data(self, **kwargs):
