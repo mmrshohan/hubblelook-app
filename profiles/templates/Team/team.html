@@ -8,7 +8,18 @@
 	<div class="row">
 		<div class="col-lg-2 col-sm-0"></div>
 		<div class="col-lg-8 col-sm-12" style="padding-top: 100px;">
+
+			<!-- development guidlines -->
+			<div class="ui info message"> 
+				<p class="ui header"> Development guidelines </p>
+				<p class="ui sub header"> this is a demo page for team view. </p>
+				<p>This is team page view. User should capable of post their team member very organize way. Select a powerful wysiwyg editor to do it.</p> 
+
+			</div>
+			<!-- development guidlines endhere -->
+
 			<div class="uk-text-center">
+
 				<a href="{% url 'profiles:team-form' user.username %}"> <button class="ui gery basic button">Talk about your team</button></a>
 				{% if team.team %}
 				<a href="{% url 'profiles:team-form-update' user.username team.id %}"> <button class="ui gery basic button">Edit your team </button></a>
