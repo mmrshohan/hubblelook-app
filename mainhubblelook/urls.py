@@ -8,11 +8,13 @@ from mainhubblelook.views import ( QuickWordView,
  Article_form, 
  Offical_Letter_Detail_View, 
  article_detials,
+ LandingPageView
  )
 	
 
 urlpatterns = [
-    path('', QuickWordView.as_view(), name='home'), 
+    path('', QuickWordView.as_view(), name='home'),
+    path('landing-page/', LandingPageView.as_view(), name='landing-page'),
     # official letter detials view
     path('official-letter-details/<int:id>/<slug:slug>', views.Offical_Letter_Detail_View, name='letter-details'),
     # article detials view

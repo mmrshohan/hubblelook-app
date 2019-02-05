@@ -135,7 +135,10 @@ class PrivacyAndTermsView(TemplateView):
 
 
 
-
+ #landing page
+class LandingPageView(TemplateView):
+    
+    template_name= "landing-page.html"
 
 
 
